@@ -4,12 +4,12 @@
 
 /* ── WhatsApp Contacts ──────────────────────────────────── */
 const WA_CONTACTS = [
-  { name: 'CS Ufit',    role: 'Head Office',          num: '6287777746874' },
-  { name: 'CS Tika',    role: 'Head Office',          num: '6285123123874' },
-  { name: 'CS Risa',    role: 'Branch — Cikarang',   num: '628158818875'  },
-  { name: 'CS April',   role: 'Branch — Jakarta',    num: '628158818874'  },
-  { name: 'CS Nurul',   role: 'Branch — Surabaya',   num: '6287822999875' },
-  { name: 'CS Eka',     role: 'Branch — Bogor',      num: '6287877598000' },
+  { name: 'CS Julio',    role: 'Head Office',          num: '628119981710' },
+  { name: 'CS Jokowi',    role: 'Head Office',          num: '628119981710' },
+  { name: 'CS Prabowo',    role: 'Branch — Cikarang',   num: '6282119981710'  },
+  { name: 'CS Susilo',   role: 'Branch — Jakarta',    num: '6282119981710'  },
+  { name: 'CS Soeharto',   role: 'Branch — Surabaya',   num: '6282119981710' },
+  { name: 'CS Soekarno',     role: 'Branch — Bogor',      num: '6282119981710' },
 ];
 
 const WA_MSG = encodeURIComponent(
