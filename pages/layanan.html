@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="SGN-Law — Semua Layanan Legalitas dan Perizinan Usaha. Pendirian PT, CV, PMA, HAKI, Perpajakan, Virtual Office, dan lebih dari 18 layanan profesional." />
+  <title>Layanan — SGN-Law</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23060F09'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' fill='%23C8A45A' font-size='18' font-family='serif' font-weight='700'>S</text></svg>" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <style>
+    .page-hero {
+      min-height: 40vh; display: flex; align-items: flex-end;
+      padding-top: 100px; padding-bottom: 3rem;
+      background: var(--bg); position: relative; overflow: hidden;
+    }
+    .page-hero .hero-grid { position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(200,164,90,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(200,164,90,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, black 30%, transparent 100%);
+    }
+    .service-detail {
+      padding: 5rem 0; border-bottom: 1px solid var(--border);
+    }
+    .service-detail-grid { display: grid; gap: 2rem; }
+    .service-detail-body h2 { color: var(--text); margin-bottom: 0.75rem; }
+    .service-detail-body p { margin-bottom: 1rem; }
+    .service-sub-list { display: grid; gap: 0.5rem; margin-top: 1rem; }
+    .service-sub-item {
+      display: flex; align-items: center; gap: 0.75rem;
+      padding: 0.75rem 1rem; border: 1px solid var(--border);
+      border-radius: var(--radius); background: var(--surface);
+      font-size: 0.82rem; color: var(--text-muted);
+      transition: var(--transition);
+    }
+    .service-sub-item:hover { border-color: var(--gold-border); color: var(--text); }
+    .service-sub-item::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--gold); flex-shrink: 0;
+    }
+    @media (min-width: 1024px) {
+      .service-detail-grid { grid-template-columns: 1fr 1.2fr; align-items: start; }
+    }
+  </style>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body>
+
+<!-- NAV (same as index) -->
+<nav class="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <div class="logo-mark">S</div>
+        <div class="logo-text">
+          <span class="logo-name">SGN-Law</span>
+          <span class="logo-tagline">Legal &amp; Business Consultancy</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Beranda</a></li>
+        <li><a href="/about">Tentang Kami</a></li>
+        <li class="has-dropdown"><a href="/layanan" style="color:var(--gold)">Layanan</a>
+          <div class="dropdown dropdown-mega">
+            <a href="#pendirian">Pendirian Perusahaan</a><a href="#penutupan">Penutupan Perusahaan</a>
+            <a href="#virtual-office">Virtual Office</a><a href="#perizinan-khusus">Perizinan Khusus</a>
+            <a href="#perizinan-usaha">Perizinan Usaha</a><a href="#perpajakan">Perpajakan</a>
+            <a href="#haki">HAKI</a><a href="#pma">PMA</a>
+            <a href="#hukum">Layanan Hukum</a><a href="#properti">Perizinan Properti</a>
+            <a href="#perjanjian">Pembuatan Perjanjian</a><a href="#dokumen">Pembuatan Dokumen</a>
+            <a href="#digital">Digital Marketing</a><a href="#idak">Dokter IDAK</a>
+            <a href="#ppiu">Dokter PPIU</a><a href="#siupkk">Dokter SIUPKK</a>
+            <a href="#keuangan">Keuangan</a><a href="#lainnya">Layanan Lainnya</a>
+          </div>
+        </li>
+        <li><a href="/fitur">Fitur</a></li>
+        <li><a href="/artikel">Info Bisnis</a></li>
+        <li><a href="/promo">Promo</a></li>
+      </ul>
+      <div class="nav-cta"><a href="/contact" class="btn btn-gold">Konsultasi Gratis</a></div>
+      <button class="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile drawer simplified -->
+<div class="mobile-drawer">
+  <div class="drawer-header">
+    <a href="/" class="nav-logo"><div class="logo-mark">S</div><div class="logo-text"><span class="logo-name">SGN-Law</span></div></a>
+    <button class="drawer-close">✕</button>
+  </div>
+  <nav class="drawer-nav">
+    <a href="/">Beranda</a><a href="/about">Tentang Kami</a>
+    <a href="/layanan" style="color:var(--gold)">Layanan</a>
+    <a href="/fitur">Fitur</a><a href="/artikel">Info Bisnis</a>
+    <a href="/promo">Promo</a><a href="/contact">Hubungi Kami</a>
+  </nav>
+  <div class="drawer-footer"><a href="https://wa.me/6287822999875" target="_blank" class="btn btn-gold">Konsultasi via WhatsApp</a></div>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="hero-grid"></div>
+  <div class="container" style="position:relative;z-index:2;">
+    <span class="section-label">SGN-Law</span>
+    <h1 style="margin-bottom:0.75rem;">Semua <em style="color:var(--gold);font-style:italic;font-weight:300;">Layanan</em></h1>
+    <p style="max-width:540px;">18+ layanan legalitas dan perizinan usaha komprehensif yang ditangani tim profesional berpengalaman.</p>
+  </div>
+</section>
+
+<!-- SERVICES DETAIL -->
+<div style="background:var(--bg);">
+  <div class="container">
+
+    <!-- 01 Pendirian Perusahaan -->
+    <div class="service-detail" id="pendirian">
+      <div class="service-detail-grid">
+        <div class="service-detail-body">
+          <span class="section-label">01 / Pendirian Perusahaan</span>
+          <h2>Pendirian PT &amp; CV</h2>
+          <div class="divider"></div>
+          <p>Membantu Anda menjalankan bisnis dengan legalitas serta badan usaha yang bonafide. Proses cepat, dokumen lengkap, dan terpercaya.</p>
+          <p>Layanan ini mencakup seluruh proses dari pemilihan nama, pembuatan akta notaris, hingga terbit nya NIB dari sistem OSS.</p>
+          <a href="https://wa.me/6287822999875?text=Hello!%20Saya%20tertarik%20layanan%20Pendirian%20Perusahaan%20SGN-Law." target="_blank" class="btn btn-gold" style="margin-top:1rem;">Konsultasi Sekarang</a>
+        </div>
+        <div class="service-sub-list">
+          <div class="service-sub-item">Pendirian PT (Perseroan Terbatas)</div>
+          <div class="service-sub-item">Pendirian CV (Commanditaire Vennootschap)</div>
+          <div class="service-sub-item">Cek &amp; Pesan Nama Perusahaan</div>
+          <div class="service-sub-item">Akta Pendirian Notaris</div>
+          <div class="service-sub-item">SK Kemenkumham</div>
+          <div class="service-sub-item">NPWP &amp; SKT Pajak Perusahaan</div>
+          <div class="service-sub-item">Nomor Induk Berusaha (NIB/OSS)</div>
+          <div class="service-sub-item">SPPKP (PKP)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 02 Penutupan -->
+    <div class="service-detail" id="penutupan">
+      <div class="service-detail-grid">
+        <div class="service-detail-body">
+          <span class="section-label">02 / Penutupan Perusahaan</span>
+          <h2>Penutupan PT &amp; CV</h2>
+          <div class="divider"></div>
+          <p>Penyelesaian administrasi dan legalitas untuk menghindari akumulasi utang pajak dan menghentikan kewajiban hukum perusahaan secara resmi.</p>
+          <a href="https://wa.me/6287822999875?text=Hello!%20Saya%20tertarik%20layanan%20Penutupan%20Perusahaan%20SGN-Law." target="_blank" class="btn btn-gold" style="margin-top:1rem;">Konsultasi Sekarang</a>
+        </div>
+        <div class="service-sub-list">
+          <div class="service-sub-item">Penutupan / Pembubaran PT</div>
+          <div class="service-sub-item">Penutupan / Pembubaran CV</div>
+          <div class="service-sub-item">Penyelesaian Kewajiban Pajak</div>
+          <div class="service-sub-item">Pencabutan Izin Usaha</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 03 Virtual Office -->
+    <div class="service-detail" id="virtual-office">
+      <div class="service-detail-grid">
+        <div class="service-detail-body">
+          <span class="section-label">03 / Virtual Office</span>
+          <h2>Virtual Office</h2>
+          <div class="divider"></div>
+          <p>Miliki kantor representatif tanpa bentuk fisik yang bisa digunakan sebagai alamat legal perusahaan Anda — hemat biaya operasional, tetap profesional.</p>
+          <a href="https://wa.me/6287822999875?text=Hello!%20Saya%20tertarik%20layanan%20Virtual%20Office%20SGN-Law." target="_blank" class="btn btn-gold" style="margin-top:1rem;">Konsultasi Sekarang</a>
+        </div>
+        <div class="service-sub-list">
+          <div class="service-sub-item">Virtual Office Lite</div>
+          <div class="service-sub-item">Virtual Office Premium</div>
+          <div class="service-sub-item">Alamat Legal Perusahaan</div>
+          <div class="service-sub-item">Penerimaan Surat &amp; Paket</div>
+          <div class="service-sub-item">Layanan Resepsionis Virtual</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 04-18: Compact list for remaining services -->
+    <div style="padding: 3rem 0; border-bottom: 1px solid var(--border);" id="perizinan-khusus">
+      <span class="section-label">04 / Perizinan Khusus</span>
+      <h2 style="margin-bottom:0.5rem;">Perizinan Khusus &amp; Sektoral</h2>
+      <div class="divider"></div>
+      <p>Jasa perizinan khusus untuk menjalankan bisnis di bidang usaha atau sektor tertentu yang memerlukan izin dari instansi spesifik.</p>
+      <div class="service-sub-list" style="margin-top:1rem;">
+        <div class="service-sub-item">Perizinan Perusahaan (Umum)</div>
+        <div class="service-sub-item">Perizinan Khusus / Sektoral</div>
+        <div class="service-sub-item">IUJK (Izin Usaha Jasa Konstruksi)</div>
+        <div class="service-sub-item">Izin Operasional Lembaga Pendidikan</div>
+      </div>
+      <a href="https://wa.me/6287822999875?text=Hello!%20Saya%20tertarik%20layanan%20Perizinan%20Khusus%20SGN-Law." target="_blank" class="btn btn-gold" style="margin-top:1.5rem;">Konsultasi Sekarang</a>
+    </div>
+
+    <div style="padding: 3rem 0; border-bottom: 1px solid var(--border);" id="perizinan-usaha">
+      <span class="section-label">05 / Perizinan Usaha</span>
+      <h2 style="margin-bottom:0.5rem;">Perizinan Usaha OSS &amp; NIB</h2>
+      <div class="divider"></div>
+      <p>Membantu Anda memulai usaha tanpa repot mengurus OSS (Online Single Submission), NIB, dan berbagai kebutuhan perizinan lainnya.</p>
+      <div class="service-sub-list" style="margin-top:1rem;">
+        <div class="service-sub-item">Pendaftaran OSS (Online Single Submission)</div>
+        <div class="service-sub-item">Pengurusan NIB (Nomor Induk Berusaha)</div>
+        <div class="service-sub-item">Izin Usaha Mikro Kecil (IUMK)</div>
+        <div class="service-sub-item">Pemilihan KBLI yang Tepat</div>
+      </div>
+      <a href="https://wa.me/6287822999875?text=Hello!%20Saya%20tertarik%20layanan%20Perizinan%20Usaha%20SGN-Law." target="_blank" class="btn btn-gold" style="margin-top:1.5rem;">Konsultasi Sekarang</a>
+    </div>
+
+    <div style="padding: 3rem 0; border-bottom: 1px solid var(--border);" id="perpajakan">
+      <span class="section-label">06 / Perpajakan &amp; Pembukuan</span>
+      <h2 style="margin-bottom:0.5rem;">Perpajakan &amp; Pembukuan</h2>
+      <div class="divider"></div>
+      <p>Menghitung dan mengelola berbagai keperluan pajak pribadi maupun perusahaan, serta penyusunan laporan pembukuan yang akurat dan sesuai regulasi.</p>
+      <div class="service-sub-list" style="margin-top:1rem;">
+        <div class="service-sub-item">Laporan Perpajakan (PPh, PPN, dll)</div>
+        <div class="service-sub-item">Laporan Pembukuan Bulanan</div>
+        <div class="service-sub-item">Konsultasi Pajak Perusahaan</div>
+        <div class="service-sub-item">Pengurusan NPWP &amp; PKP</div>
+      </div>
+      <a href="https://wa.me/6287822999875?text=Hello!%20Saya%20tertarik%20layanan%20Perpajakan%20SGN-Law." target="_blank" class="btn btn-gold" style="margin-top:1.5rem;">Konsultasi Sekarang</a>
+    </div>
+
+    <div style="padding: 3rem 0; border-bottom: 1px solid var(--border);" id="haki">
+      <span class="section-label">07 / HAKI</span>
+      <h2 style="margin-bottom:0.5rem;">Hak Kekayaan Intelektual</h2>
+      <div class="divider"></div>
+      <p>Layanan perlindungan kekayaan intelektual bisnis Anda — dari merek dagang hingga hak paten, kami pastikan aset intelektual Anda terlindungi secara hukum.</p>
+      <div class="service-sub-list" style="margin-top:1rem;">
+        <div class="service-sub-item">Pendaftaran Merek Dagang</div>
+        <div class="service-sub-item">Pendaftaran Hak Cipta</div>
+        <div class="service-sub-item">Pendaftaran Paten</div>
+        <div class="service-sub-item">Desain Industri</div>
+        <div class="service-sub-item">Perpanjangan &amp; Perubahan HAKI</div>
+      </div>
+      <a href="https://wa.me/6287822999875?text=Hello!%20Saya%20tertarik%20layanan%20HAKI%20SGN-Law." target="_blank" class="btn btn-gold" style="margin-top:1.5rem;">Konsultasi Sekarang</a>
+    </div>
+
+    <div style="padding: 3rem 0; border-bottom: 1px solid var(--border);" id="pma">
+      <span class="section-label">08 / PMA</span>
+      <h2 style="margin-bottom:0.5rem;">Penanaman Modal Asing</h2>
+      <div class="divider"></div>
+      <p>Membantu warga negara asing dan perusahaan asing mengatasi kerumitan dalam mendirikan bisnis di Indonesia, termasuk pengurusan KITAS dan KITAP.</p>
+      <div class="service-sub-list" style="margin-top:1rem;">
+        <div class="service-sub-item">Pendirian PT PMA</div>
+        <div class="service-sub-item">Pengurusan KITAS</div>
+        <div class="service-sub-item">Pengurusan KITAP</div>
+        <div class="service-sub-item">Izin Tinggal WNA</div>
+        <div class="service-sub-item">Perubahan Kepemilikan Asing</div>
+      </div>
+      <a href="https://wa.me/6287822999875?text=Hello!%20Saya%20tertarik%20layanan%20PMA%20SGN-Law." target="_blank" class="btn btn-gold" style="margin-top:1.5rem;">Konsultasi Sekarang</a>
+    </div>
+
+    <div style="padding: 3rem 0; border-bottom: 1px solid var(--border);" id="hukum">
+      <span class="section-label">09 / Layanan Hukum</span>
+      <h2 style="margin-bottom:0.5rem;">Layanan Hukum Profesional</h2>
+      <div class="divider"></div>
+      <p>Layanan berbagai kebutuhan dan konsultasi hukum dengan pengacara berpengalaman. Solusi hukum profesional dengan biaya yang transparan.</p>
+      <div class="service-sub-list" style="margin-top:1rem;">
+        <div class="service-sub-item">Konsultasi Hukum Bisnis</div>
+        <div class="service-sub-item">Pendampingan Litigasi</div>
+        <div class="service-sub-item">Mediasi &amp; Arbitrase</div>
+        <div class="service-sub-item">Legal Opinion</div>
+      </div>
+      <a href="https://wa.me/6287822999875?text=Hello!%20Saya%20tertarik%20layanan%20Hukum%20SGN-Law." target="_blank" class="btn btn-gold" style="margin-top:1.5rem;">Konsultasi Sekarang</a>
+    </div>
+
+    <!-- Remaining services in a grid -->
+    <div style="padding: 3rem 0;">
+      <span class="section-label">Layanan Lainnya</span>
+      <h2 style="margin-bottom:2rem;">Layanan Spesialis</h2>
+      <div style="display:grid;grid-template-columns:1fr;gap:1.5rem;" id="specialist-grid">
+
+        <div style="border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem;background:var(--surface);" id="properti">
+          <span class="section-label" style="margin-bottom:0.5rem;">Perizinan Properti</span>
+          <h4 style="color:var(--text);margin-bottom:0.5rem;">Perizinan Properti</h4>
+          <p style="font-size:0.82rem;">Solusi profesional untuk mengurus kebutuhan legalitas seputar tanah dan properti di Indonesia.</p>
+          <a href="https://wa.me/6287822999875?text=Hello!%20Saya%20tertarik%20layanan%20Perizinan%20Properti%20SGN-Law." target="_blank" class="btn btn-outline" style="margin-top:1rem;font-size:0.72rem;padding:0.6rem 1rem;">Konsultasi →</a>
+        </div>
+
+        <div style="border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem;background:var(--surface);" id="perjanjian">
+          <span class="section-label" style="margin-bottom:0.5rem;">Pembuatan Perjanjian</span>
+          <h4 style="color:var(--text);margin-bottom:0.5rem;">Pembuatan &amp; Peninjauan Perjanjian</h4>
+          <p style="font-size:0.82rem;">Memastikan perjanjian tertulis dengan jelas dan mengikat — Perjanjian Kerja, Perjanjian Investasi, NDA, dll.</p>
+          <a href="https://wa.me/6287822999875?text=Hello!%20Saya%20tertarik%20layanan%20Pembuatan%20Perjanjian%20SGN-Law." target="_blank" class="btn btn-outline" style="margin-top:1rem;font-size:0.72rem;padding:0.6rem 1rem;">Konsultasi →</a>
+        </div>
+
+        <div style="border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem;background:var(--surface);" id="dokumen">
+          <span class="section-label" style="margin-bottom:0.5rem;">Pembuatan Dokumen</span>
+          <h4 style="color:var(--text);margin-bottom:0.5rem;">Pembuatan &amp; Perubahan Dokumen</h4>
+          <p style="font-size:0.82rem;">Perubahan Akta Perusahaan, Perubahan Direksi/Komisaris, Perubahan Modal, dan dokumen korporasi lainnya.</p>
+          <a href="https://wa.me/6287822999875?text=Hello!%20Saya%20tertarik%20layanan%20Pembuatan%20Dokumen%20SGN-Law." target="_blank" class="btn btn-outline" style="margin-top:1rem;font-size:0.72rem;padding:0.6rem 1rem;">Konsultasi →</a>
+        </div>
+
+        <div style="border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem;background:var(--surface);" id="digital">
+          <span class="section-label" style="margin-bottom:0.5rem;">Digital Marketing</span>
+          <h4 style="color:var(--text);margin-bottom:0.5rem;">Digital Marketing</h4>
+          <p style="font-size:0.82rem;">Pembuatan website profesional, pendaftaran domain, dan profil digital untuk bisnis Anda.</p>
+          <a href="https://wa.me/6287822999875?text=Hello!%20Saya%20tertarik%20layanan%20Digital%20Marketing%20SGN-Law." target="_blank" class="btn btn-outline" style="margin-top:1rem;font-size:0.72rem;padding:0.6rem 1rem;">Konsultasi →</a>
+        </div>
+
+        <div style="border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem;background:var(--surface);" id="idak">
+          <span class="section-label" style="margin-bottom:0.5rem;">Dokter IDAK</span>
+          <h4 style="color:var(--text);margin-bottom:0.5rem;">Izin Distribusi Alat Kesehatan (IDAK)</h4>
+          <p style="font-size:0.82rem;">Solusi legalitas alat kesehatan — izin edar, distribusi, dan sertifikasi peralatan medis dari Kemenkes.</p>
+          <a href="https://wa.me/6287822999875?text=Hello!%20Saya%20tertarik%20layanan%20IDAK%20SGN-Law." target="_blank" class="btn btn-outline" style="margin-top:1rem;font-size:0.72rem;padding:0.6rem 1rem;">Konsultasi →</a>
+        </div>
+
+        <div style="border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem;background:var(--surface);" id="ppiu">
+          <span class="section-label" style="margin-bottom:0.5rem;">Dokter PPIU</span>
+          <h4 style="color:var(--text);margin-bottom:0.5rem;">Penyelenggara Perjalanan Ibadah Umroh</h4>
+          <p style="font-size:0.82rem;">Solusi legalitas seputar perjalanan umroh — izin operasional PPIU dari Kementerian Agama.</p>
+          <a href="https://wa.me/6287822999875?text=Hello!%20Saya%20tertarik%20layanan%20PPIU%20SGN-Law." target="_blank" class="btn btn-outline" style="margin-top:1rem;font-size:0.72rem;padding:0.6rem 1rem;">Konsultasi →</a>
+        </div>
+
+        <div style="border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem;background:var(--surface);" id="siupkk">
+          <span class="section-label" style="margin-bottom:0.5rem;">Dokter SIUPKK / SIUPBM</span>
+          <h4 style="color:var(--text);margin-bottom:0.5rem;">Keagenan Kapal &amp; Bongkar Muat</h4>
+          <p style="font-size:0.82rem;">Solusi izin SIUPKK (Keagenan Kapal) dan SIUPBM (Perusahaan Bongkar Muat) dari Kemenhub.</p>
+          <a href="https://wa.me/6287822999875?text=Hello!%20Saya%20tertarik%20layanan%20SIUPKK%20SGN-Law." target="_blank" class="btn btn-outline" style="margin-top:1rem;font-size:0.72rem;padding:0.6rem 1rem;">Konsultasi →</a>
+        </div>
+
+        <div style="border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem;background:var(--surface);" id="keuangan">
+          <span class="section-label" style="margin-bottom:0.5rem;">Keuangan</span>
+          <h4 style="color:var(--text);margin-bottom:0.5rem;">Layanan Keuangan</h4>
+          <p style="font-size:0.82rem;">Mendukung bisnis Anda dengan solusi keuangan yang terpercaya, akurat, dan sesuai regulasi yang berlaku.</p>
+          <a href="https://wa.me/6287822999875?text=Hello!%20Saya%20tertarik%20layanan%20Keuangan%20SGN-Law." target="_blank" class="btn btn-outline" style="margin-top:1rem;font-size:0.72rem;padding:0.6rem 1rem;">Konsultasi →</a>
+        </div>
+
+        <div style="border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem;background:var(--surface);" id="lainnya">
+          <span class="section-label" style="margin-bottom:0.5rem;">Layanan Lainnya</span>
+          <h4 style="color:var(--text);margin-bottom:0.5rem;">Layanan Pendukung</h4>
+          <p style="font-size:0.82rem;">Penerjemah tersumpah, pelaporan LKPM, dan berbagai layanan pendukung operasional bisnis Anda.</p>
+          <a href="https://wa.me/6287822999875?text=Hello!%20Saya%20tertarik%20layanan%20lainnya%20SGN-Law." target="_blank" class="btn btn-outline" style="margin-top:1rem;font-size:0.72rem;padding:0.6rem 1rem;">Konsultasi →</a>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<style>
+  @media (min-width: 768px) {
+    #specialist-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  }
+  @media (min-width: 1024px) {
+    #specialist-grid { grid-template-columns: repeat(3, 1fr) !important; }
+  }
+</style>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <div class="container">
+    <span class="section-label" style="justify-content:center;">Mulai Sekarang</span>
+    <h2>Tidak Yakin Layanan Mana yang Tepat?</h2>
+    <p>Konsultasi gratis dengan tim ahli kami — kami akan membantu memilih solusi terbaik untuk bisnis Anda.</p>
+    <div class="btn-group">
+      <a href="https://wa.me/6287822999875?text=Hello!%20Saya%20butuh%20panduan%20memilih%20layanan%20yang%20tepat%20di%20SGN-Law." target="_blank" class="btn btn-gold">Konsultasi via WhatsApp</a>
+      <a href="/contact" class="btn btn-outline">Hubungi Kami</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:1rem;align-items:center;text-align:center;padding:2rem 0;">
+      <div style="display:flex;align-items:center;gap:0.75rem;">
+        <div class="logo-mark" style="width:32px;height:32px;font-size:0.95rem;">S</div>
+        <span class="logo-name">SGN-Law</span>
+      </div>
+      <p style="font-size:0.78rem;max-width:400px;">Konsultan Legalitas dan Perizinan Usaha Terpercaya di Indonesia.</p>
+      <p style="font-size:0.72rem;color:var(--text-dim);">© 2024 – 2026 SGN-Law. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- WA FAB -->
+<div class="wa-fab">
+  <button class="wa-fab-btn" aria-label="Chat WhatsApp">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </button>
+  <div class="wa-pulse"></div>
+  <div class="wa-popup">
+    <div class="wa-popup-head">
+      <div class="avatar">S</div>
+      <div class="info"><strong>SGN-Law Support</strong><span>Biasanya membalas dalam menit</span></div>
+    </div>
+    <div class="wa-popup-list"></div>
+  </div>
+</div>
+<button class="back-top" aria-label="Back to top">↑</button>
+
+<script src="../assets/js/main.js"></script>
+<script>if (typeof lucide !== 'undefined') lucide.createIcons();</script>
+</body>
+</html>

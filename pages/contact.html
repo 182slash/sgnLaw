@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Hubungi SGN-Law — Konsultasi gratis legalitas dan perizinan usaha. Tersedia via WhatsApp, email, atau kunjungi kantor kami." />
+  <title>Hubungi Kami — SGN-Law</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23060F09'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' fill='%23C8A45A' font-size='18' font-family='serif' font-weight='700'>S</text></svg>" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <style>
+    .page-hero { min-height: 40vh; display: flex; align-items: flex-end; padding-top: 100px; padding-bottom: 3rem; background: var(--bg); position: relative; overflow: hidden; }
+    .page-hero .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(200,164,90,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(200,164,90,0.04) 1px, transparent 1px); background-size: 60px 60px; mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, black 30%, transparent 100%); }
+    .page-hero .hero-glow { position: absolute; top: -20%; right: -5%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(29,110,71,0.14) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
+
+    /* Contact Layout */
+    .contact-section { background: var(--bg); padding: 5rem 0; }
+    .contact-grid { display: grid; gap: 3rem; }
+    @media (min-width: 1024px) { .contact-grid { grid-template-columns: 1.1fr 1fr; align-items: start; } }
+
+    /* Form */
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+    .form-row { display: grid; gap: 1rem; }
+    @media (min-width: 600px) { .form-row { grid-template-columns: 1fr 1fr; } }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-label { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); }
+    .form-control {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 0.85rem 1rem;
+      color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+      transition: var(--transition); width: 100%; min-height: 48px;
+    }
+    .form-control:focus { outline: none; border-color: var(--gold-border); background: var(--surface-2); }
+    .form-control::placeholder { color: var(--text-dim); font-size: 0.85rem; }
+    textarea.form-control { min-height: 120px; resize: vertical; }
+    select.form-control { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' stroke='%23C8A45A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.5rem; }
+    .form-check { display: flex; align-items: flex-start; gap: 0.75rem; }
+    .form-check input[type="checkbox"] { width: 18px; height: 18px; margin-top: 1px; accent-color: var(--gold); flex-shrink: 0; cursor: pointer; }
+    .form-check label { font-size: 0.8rem; color: var(--text-muted); cursor: pointer; }
+    .form-check a { color: var(--gold); }
+
+    /* Contact Info Cards */
+    .contact-info { display: flex; flex-direction: column; gap: 1rem; }
+    .contact-info-card {
+      border: 1px solid var(--border); border-radius: var(--radius-lg);
+      padding: 1.5rem; background: var(--surface);
+      display: flex; gap: 1rem; align-items: flex-start;
+      transition: var(--transition);
+    }
+    .contact-info-card:hover { border-color: var(--gold-border); }
+    .contact-info-icon { width: 44px; height: 44px; flex-shrink: 0; border: 1px solid var(--gold-border); display: grid; place-items: center; color: var(--gold); border-radius: var(--radius); }
+    .contact-info-body strong { display: block; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.35rem; }
+    .contact-info-body a, .contact-info-body p { font-size: 0.9rem; color: var(--text); font-family: 'Cormorant Garamond', serif; font-weight: 500; text-decoration: none; display: block; line-height: 1.5; }
+    .contact-info-body a:hover { color: var(--gold); }
+    .contact-info-body .sub { font-size: 0.72rem; color: var(--text-dim); font-family: 'DM Sans', sans-serif; font-weight: 400; margin-top: 0.2rem; }
+
+    /* WA Agents */
+    .wa-agents { margin-top: 2rem; }
+    .wa-agents h4 { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+    .wa-agents-grid { display: grid; gap: 0.75rem; }
+    @media (min-width: 600px) { .wa-agents-grid { grid-template-columns: 1fr 1fr; } }
+    .wa-agent {
+      display: flex; align-items: center; gap: 0.75rem;
+      padding: 0.85rem 1rem; border: 1px solid var(--border);
+      border-radius: var(--radius-lg); background: var(--surface);
+      transition: var(--transition); text-decoration: none;
+    }
+    .wa-agent:hover { border-color: rgba(37,211,102,0.3); background: rgba(37,211,102,0.05); }
+    .wa-agent-av { width: 36px; height: 36px; background: #25D366; border-radius: 50%; display: grid; place-items: center; color: white; font-size: 0.78rem; font-weight: 700; flex-shrink: 0; }
+    .wa-agent-info strong { display: block; font-size: 0.82rem; color: var(--text); }
+    .wa-agent-info span { font-size: 0.7rem; color: var(--text-dim); }
+
+    /* Office Map Cards */
+    .offices-contact { background: var(--surface); padding: 5rem 0; }
+    .office-cards { display: grid; gap: 1rem; margin-top: 2.5rem; }
+    .office-contact-card { border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; background: var(--bg); transition: var(--transition); }
+    .office-contact-card:hover { border-color: var(--gold-border); }
+    .office-contact-card .tag { font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; display: block; }
+    .office-contact-card h4 { font-size: 1rem; color: var(--text); margin-bottom: 0.5rem; }
+    .office-contact-card p { font-size: 0.78rem; color: var(--text-dim); line-height: 1.6; margin-bottom: 0.75rem; }
+    .office-contact-links { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    @media (min-width: 768px) { .office-cards { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .office-cards { grid-template-columns: repeat(3, 1fr); } }
+  </style>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <div class="logo-mark">S</div>
+        <div class="logo-text"><span class="logo-name">SGN-Law</span><span class="logo-tagline">Legal &amp; Business Consultancy</span></div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Beranda</a></li>
+        <li><a href="/about">Tentang Kami</a></li>
+        <li class="has-dropdown"><a href="/layanan">Layanan</a>
+          <div class="dropdown dropdown-mega">
+            <a href="/layanan#pendirian">Pendirian Perusahaan</a><a href="/layanan#penutupan">Penutupan Perusahaan</a>
+            <a href="/layanan#virtual-office">Virtual Office</a><a href="/layanan#perizinan-khusus">Perizinan Khusus</a>
+            <a href="/layanan#perizinan-usaha">Perizinan Usaha</a><a href="/layanan#perpajakan">Perpajakan</a>
+            <a href="/layanan#haki">HAKI</a><a href="/layanan#pma">PMA</a>
+            <a href="/layanan#hukum">Layanan Hukum</a><a href="/layanan#properti">Perizinan Properti</a>
+            <a href="/layanan#keuangan">Keuangan</a><a href="/layanan#lainnya">Layanan Lainnya</a>
+          </div>
+        </li>
+        <li><a href="/fitur">Fitur</a></li>
+        <li><a href="/artikel">Info Bisnis</a></li>
+        <li><a href="/promo">Promo</a></li>
+      </ul>
+      <div class="nav-cta"><a href="/contact" class="btn btn-gold" style="border:1px solid var(--gold);">Hubungi Kami</a></div>
+      <button class="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-drawer">
+  <div class="drawer-header">
+    <a href="/" class="nav-logo"><div class="logo-mark">S</div><div class="logo-text"><span class="logo-name">SGN-Law</span></div></a>
+    <button class="drawer-close">✕</button>
+  </div>
+  <nav class="drawer-nav">
+    <a href="/">Beranda</a><a href="/about">Tentang Kami</a>
+    <a href="/layanan">Layanan</a><a href="/fitur">Fitur</a>
+    <a href="/artikel">Info Bisnis</a><a href="/promo">Promo</a>
+    <a href="/contact" style="color:var(--gold)">Hubungi Kami</a>
+  </nav>
+  <div class="drawer-footer"><a href="https://wa.me/6287822999875" target="_blank" class="btn btn-gold">Konsultasi via WhatsApp</a></div>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="container" style="position:relative;z-index:2;">
+    <span class="section-label">SGN-Law</span>
+    <h1 style="margin-bottom:0.75rem;">Hubungi <em style="color:var(--gold);font-style:italic;font-weight:300;">Kami</em></h1>
+    <p style="max-width:500px;">Konsultasi gratis bersama tim ahli kami. Tidak ada biaya tersembunyi, tidak ada komitmen awal.</p>
+  </div>
+</section>
+
+<!-- CONTACT MAIN -->
+<section class="contact-section">
+  <div class="container">
+    <div class="contact-grid">
+
+      <!-- Left: Form -->
+      <div>
+        <span class="section-label">Kirim Pesan</span>
+        <h2 class="section-title" style="margin-bottom:0.5rem;">Kami Siap<br /><em class="serif" style="color:var(--gold);font-style:italic;font-weight:300;">Membantu Anda</em></h2>
+        <div class="divider"></div>
+        <p style="margin-bottom:2rem;">Isi formulir di bawah dan tim kami akan menghubungi Anda dalam 1×24 jam kerja.</p>
+
+        <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="nama">Nama Lengkap *</label>
+              <input type="text" id="nama" name="nama" class="form-control" placeholder="Budi Santoso" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="telepon">No. WhatsApp / Telepon *</label>
+              <input type="tel" id="telepon" name="telepon" class="form-control" placeholder="08xxxxxxxxxx" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="email">Alamat Email</label>
+            <input type="email" id="email" name="email" class="form-control" placeholder="email@perusahaan.com" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="layanan">Layanan yang Diminati *</label>
+            <select id="layanan" name="layanan" class="form-control" required>
+              <option value="" disabled selected>Pilih layanan...</option>
+              <option>Pendirian PT</option>
+              <option>Pendirian CV</option>
+              <option>Penutupan Perusahaan</option>
+              <option>Virtual Office</option>
+              <option>Perizinan Usaha / NIB</option>
+              <option>Perizinan Khusus</option>
+              <option>Perpajakan &amp; Pembukuan</option>
+              <option>HAKI</option>
+              <option>Penanaman Modal Asing (PMA)</option>
+              <option>Layanan Hukum</option>
+              <option>Perizinan Properti</option>
+              <option>Pembuatan Perjanjian</option>
+              <option>Digital Marketing</option>
+              <option>Dokter IDAK</option>
+              <option>Dokter PPIU</option>
+              <option>Dokter SIUPKK</option>
+              <option>Keuangan</option>
+              <option>Lainnya</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="pesan">Pesan / Pertanyaan *</label>
+            <textarea id="pesan" name="pesan" class="form-control" placeholder="Ceritakan kebutuhan bisnis Anda..." required></textarea>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" id="agree" required />
+            <label for="agree">Saya menyetujui <a href="#">Kebijakan Privasi</a> SGN-Law dan bersedia dihubungi oleh tim kami.</label>
+          </div>
+          <button type="submit" class="btn btn-gold" style="margin-top:0.5rem;">
+            Kirim Pesan &nbsp;→
+          </button>
+          <div id="formMsg" style="display:none;padding:0.85rem 1rem;border-radius:var(--radius);font-size:0.85rem;"></div>
+        </form>
+      </div>
+
+      <!-- Right: Info -->
+      <div>
+        <span class="section-label">Info Kontak</span>
+        <h2 class="section-title" style="margin-bottom:0.5rem;">Atau Langsung<br /><em class="serif" style="color:var(--gold);font-style:italic;font-weight:300;">Hubungi Kami</em></h2>
+        <div class="divider"></div>
+        <div class="contact-info" style="margin-bottom:2rem;">
+          <div class="contact-info-card">
+            <div class="contact-info-icon"><i data-lucide="phone" width="20" height="20"></i></div>
+            <div class="contact-info-body">
+              <strong>Telepon / WhatsApp</strong>
+              <a href="tel:+6287822999875">+62 878-2299-9875</a>
+              <span class="sub">Senin – Jumat, 08.00 – 17.00 WIB</span>
+            </div>
+          </div>
+          <div class="contact-info-card">
+            <div class="contact-info-icon"><i data-lucide="mail" width="20" height="20"></i></div>
+            <div class="contact-info-body">
+              <strong>Email</strong>
+              <a href="mailto:info@sgnlaw.co.id">info@sgnlaw.co.id</a>
+              <span class="sub">Balasan dalam 1×24 jam kerja</span>
+            </div>
+          </div>
+          <div class="contact-info-card">
+            <div class="contact-info-icon"><i data-lucide="map-pin" width="20" height="20"></i></div>
+            <div class="contact-info-body">
+              <strong>Head Office</strong>
+              <p>Citra Grand Cibubur CBD, Ruko Marquette Blok AR1 No.27, Bekasi 17434</p>
+              <span class="sub">Jawa Barat, Indonesia</span>
+            </div>
+          </div>
+          <div class="contact-info-card">
+            <div class="contact-info-icon"><i data-lucide="clock" width="20" height="20"></i></div>
+            <div class="contact-info-body">
+              <strong>Jam Operasional</strong>
+              <p>Senin – Jumat: 08.00 – 17.00 WIB</p>
+              <span class="sub">WhatsApp tersedia 7 hari seminggu</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- WA Agents -->
+        <div class="wa-agents">
+          <h4>Pilih CS via WhatsApp</h4>
+          <div class="wa-agents-grid">
+            <a href="https://wa.me/6287777746874?text=Hello!%20Saya%20ingin%20konsultasi%20gratis." target="_blank" class="wa-agent">
+              <div class="wa-agent-av">U</div>
+              <div class="wa-agent-info"><strong>CS Ufit</strong><span>Head Office</span></div>
+            </a>
+            <a href="https://wa.me/6285123123874?text=Hello!%20Saya%20ingin%20konsultasi%20gratis." target="_blank" class="wa-agent">
+              <div class="wa-agent-av">T</div>
+              <div class="wa-agent-info"><strong>CS Tika</strong><span>Head Office</span></div>
+            </a>
+            <a href="https://wa.me/628158818875?text=Hello!%20Saya%20ingin%20konsultasi%20gratis." target="_blank" class="wa-agent">
+              <div class="wa-agent-av">R</div>
+              <div class="wa-agent-info"><strong>CS Risa</strong><span>Cikarang</span></div>
+            </a>
+            <a href="https://wa.me/628158818874?text=Hello!%20Saya%20ingin%20konsultasi%20gratis." target="_blank" class="wa-agent">
+              <div class="wa-agent-av">A</div>
+              <div class="wa-agent-info"><strong>CS April</strong><span>Jakarta</span></div>
+            </a>
+            <a href="https://wa.me/6287822999875?text=Hello!%20Saya%20ingin%20konsultasi%20gratis." target="_blank" class="wa-agent">
+              <div class="wa-agent-av">N</div>
+              <div class="wa-agent-info"><strong>CS Nurul</strong><span>Surabaya</span></div>
+            </a>
+            <a href="https://wa.me/6287877598000?text=Hello!%20Saya%20ingin%20konsultasi%20gratis." target="_blank" class="wa-agent">
+              <div class="wa-agent-av">E</div>
+              <div class="wa-agent-info"><strong>CS Eka</strong><span>Bogor</span></div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- OFFICES -->
+<section class="offices-contact">
+  <div class="container">
+    <div class="section-header centered">
+      <span class="section-label">Kantor Kami</span>
+      <h2 class="section-title">Kunjungi Kami<br /><em class="serif" style="color:var(--gold);font-style:italic;font-weight:300;">Langsung</em></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="office-cards">
+      <div class="office-contact-card">
+        <span class="tag">Head Office</span>
+        <h4>Cibubur — Bekasi</h4>
+        <p>Citra Grand Cibubur CBD, Ruko Marquette Blok AR1 No.27, Jatirangga, Kec. Jatisampurna, Kota Bekasi, Jawa Barat 17434</p>
+        <div class="office-contact-links">
+          <a href="https://maps.app.goo.gl/o8hvksdFG1zWT3ETA" target="_blank" class="btn btn-outline" style="font-size:0.72rem;padding:0.55rem 0.9rem;">Google Maps →</a>
+          <a href="https://wa.me/6287777746874" target="_blank" class="btn btn-outline" style="font-size:0.72rem;padding:0.55rem 0.9rem;">WhatsApp</a>
+        </div>
+      </div>
+      <div class="office-contact-card">
+        <span class="tag">Branch Office</span>
+        <h4>Cikarang — Bekasi</h4>
+        <p>Ruko Tanamera, Lippo Cikarang, Jl. Waterfront River Drive No.B32 Lt 2, Cibatu, Cikarang Sel., Kab. Bekasi, Jawa Barat 17530</p>
+        <div class="office-contact-links">
+          <a href="https://maps.app.goo.gl/KTRz9UvB2kv5escLA" target="_blank" class="btn btn-outline" style="font-size:0.72rem;padding:0.55rem 0.9rem;">Google Maps →</a>
+          <a href="https://wa.me/628158818875" target="_blank" class="btn btn-outline" style="font-size:0.72rem;padding:0.55rem 0.9rem;">WhatsApp</a>
+        </div>
+      </div>
+      <div class="office-contact-card">
+        <span class="tag">Branch Office</span>
+        <h4>Surabaya — Jawa Timur</h4>
+        <p>Spazio Tower Office, Lantai 5 Unit 501A, Jl. Mayjend. Jonosewojo Kav.3, Dukuhpakis, Surabaya, Jawa Timur 60225</p>
+        <div class="office-contact-links">
+          <a href="https://maps.app.goo.gl/gh4aCzBjtQcvUdYc7" target="_blank" class="btn btn-outline" style="font-size:0.72rem;padding:0.55rem 0.9rem;">Google Maps →</a>
+          <a href="https://wa.me/6287822999875" target="_blank" class="btn btn-outline" style="font-size:0.72rem;padding:0.55rem 0.9rem;">WhatsApp</a>
+        </div>
+      </div>
+      <div class="office-contact-card">
+        <span class="tag">Branch Office</span>
+        <h4>Bogor — Jawa Barat</h4>
+        <p>Bukit Cimanggu City, Ruko Prominent Blok KD1 No.16, Jl. Kencana Residence, Kel. Sukadamai, Kota Bogor, Jawa Barat 16165</p>
+        <div class="office-contact-links">
+          <a href="https://maps.app.goo.gl/o8hvksdFG1zWT3ETA" target="_blank" class="btn btn-outline" style="font-size:0.72rem;padding:0.55rem 0.9rem;">Google Maps →</a>
+          <a href="https://wa.me/6287877598000" target="_blank" class="btn btn-outline" style="font-size:0.72rem;padding:0.55rem 0.9rem;">WhatsApp</a>
+        </div>
+      </div>
+      <div class="office-contact-card">
+        <span class="tag">Branch Office</span>
+        <h4>Jakarta Selatan</h4>
+        <p>Menara Hijau Lt. 7, Jl. Letjen M.T. Haryono No. Kav.33, Cikoko, Kec. Pancoran, Jakarta Selatan 12770</p>
+        <div class="office-contact-links">
+          <a href="https://maps.app.goo.gl/UwhL3aNBraKAeHga6" target="_blank" class="btn btn-outline" style="font-size:0.72rem;padding:0.55rem 0.9rem;">Google Maps →</a>
+          <a href="https://wa.me/628158818874" target="_blank" class="btn btn-outline" style="font-size:0.72rem;padding:0.55rem 0.9rem;">WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ QUICK -->
+<section style="background:var(--bg);padding:5rem 0;">
+  <div class="container">
+    <div class="section-header centered">
+      <span class="section-label">FAQ</span>
+      <h2 class="section-title">Pertanyaan yang<br /><em class="serif" style="color:var(--gold);font-style:italic;font-weight:300;">Sering Diajukan</em></h2>
+      <div class="divider"></div>
+    </div>
+    <div style="max-width:700px;margin:2.5rem auto 0;display:flex;flex-direction:column;gap:0.75rem;" id="faqList">
+      <!-- rendered by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:1rem;align-items:center;text-align:center;padding:2rem 0;">
+      <div style="display:flex;align-items:center;gap:0.75rem;">
+        <div class="logo-mark" style="width:32px;height:32px;font-size:0.95rem;">S</div>
+        <span class="logo-name">SGN-Law</span>
+      </div>
+      <p style="font-size:0.78rem;max-width:400px;">Konsultan Legalitas dan Perizinan Usaha Terpercaya di Indonesia.</p>
+      <div style="display:flex;gap:2rem;font-size:0.78rem;flex-wrap:wrap;justify-content:center;">
+        <a href="/" style="color:var(--text-muted);">Beranda</a>
+        <a href="/layanan" style="color:var(--text-muted);">Layanan</a>
+        <a href="/about" style="color:var(--text-muted);">Tentang</a>
+        <a href="/contact" style="color:var(--text-muted);">Kontak</a>
+      </div>
+      <p style="font-size:0.72rem;color:var(--text-dim);">© 2024 – 2026 SGN-Law. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- WA FAB -->
+<div class="wa-fab">
+  <button class="wa-fab-btn" aria-label="Chat WhatsApp">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </button>
+  <div class="wa-pulse"></div>
+  <div class="wa-popup">
+    <div class="wa-popup-head"><div class="avatar">S</div><div class="info"><strong>SGN-Law Support</strong><span>Biasanya membalas dalam menit</span></div></div>
+    <div class="wa-popup-list"></div>
+  </div>
+</div>
+<button class="back-top" aria-label="Back to top">↑</button>
+
+<script src="../assets/js/main.js"></script>
+<script>
+  if (typeof lucide !== 'undefined') lucide.createIcons();
+
+  // FAQ accordion
+  const faqs = [
+    { q: 'Berapa lama proses pendirian PT?', a: 'Rata-rata 7–14 hari kerja tergantung kelengkapan dokumen dan jenis perusahaan. Proses bisa lebih cepat untuk paket express.' },
+    { q: 'Apakah ada biaya konsultasi awal?', a: 'Konsultasi awal sepenuhnya gratis. Biaya baru dikenakan setelah Anda memilih dan menyepakati paket layanan.' },
+    { q: 'Apakah bisa diurus dari luar kota?', a: 'Ya, semua layanan dapat diurus secara online. Kami melayani klien dari seluruh Indonesia, bahkan dari luar negeri.' },
+    { q: 'Dokumen apa yang perlu disiapkan?', a: 'Tergantung jenis layanan. Tim kami akan memberi daftar dokumen lengkap setelah sesi konsultasi awal.' },
+    { q: 'Apakah ada jaminan keberhasilan?', a: 'Kami memiliki tingkat keberhasilan 99%. Jika ada kendala, tim kami akan menangani sampai dokumen Anda terselesaikan.' },
+  ];
+  const faqList = document.getElementById('faqList');
+  faqList.innerHTML = faqs.map((f, i) => `
+    <div style="border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;">
+      <button onclick="toggleFaq(${i})" id="fq-btn-${i}" style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:1rem 1.25rem;background:var(--surface);color:var(--text);font-family:'DM Sans',sans-serif;font-size:0.88rem;font-weight:500;cursor:pointer;text-align:left;border:none;gap:1rem;">
+        <span>${f.q}</span>
+        <span id="fq-icon-${i}" style="color:var(--gold);flex-shrink:0;font-size:1.1rem;line-height:1;">+</span>
+      </button>
+      <div id="fq-body-${i}" style="max-height:0;overflow:hidden;transition:max-height 0.3s ease;">
+        <p style="padding:1rem 1.25rem 1.25rem;font-size:0.82rem;border-top:1px solid var(--border);">${f.a}</p>
+      </div>
+    </div>
+  `).join('');
+
+  function toggleFaq(i) {
+    const body = document.getElementById(`fq-body-${i}`);
+    const icon = document.getElementById(`fq-icon-${i}`);
+    const isOpen = body.style.maxHeight !== '0px' && body.style.maxHeight !== '';
+    // Close all
+    faqs.forEach((_, j) => {
+      document.getElementById(`fq-body-${j}`).style.maxHeight = '0';
+      document.getElementById(`fq-icon-${j}`).textContent = '+';
+    });
+    if (!isOpen) { body.style.maxHeight = body.scrollHeight + 'px'; icon.textContent = '−'; }
+  }
+
+  // Form submit (redirect to WhatsApp)
+  function handleSubmit(e) {
+    e.preventDefault();
+    const nama = document.getElementById('nama').value;
+    const tel = document.getElementById('telepon').value;
+    const layanan = document.getElementById('layanan').value;
+    const pesan = document.getElementById('pesan').value;
+    const msg = encodeURIComponent(`Hello SGN-Law!\n\nNama: ${nama}\nTelepon: ${tel}\nLayanan: ${layanan}\n\n${pesan}`);
+    const div = document.getElementById('formMsg');
+    div.style.display = 'block';
+    div.style.background = 'rgba(29,110,71,0.15)';
+    div.style.border = '1px solid rgba(29,110,71,0.3)';
+    div.style.color = 'var(--text)';
+    div.innerHTML = '✓ Pesan Anda sedang dikirim via WhatsApp...';
+    setTimeout(() => { window.open(`https://wa.me/6287822999875?text=${msg}`, '_blank'); }, 800);
+  }
+</script>
+</body>
+</html>

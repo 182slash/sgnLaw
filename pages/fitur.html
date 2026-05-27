@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Fitur Platform SGN-Law — Cek Nama PT, System Tracking, KBLI Terbaru, dan Kalkulator Pajak online gratis." />
+  <title>Fitur Platform — SGN-Law</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23060F09'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' fill='%23C8A45A' font-size='18' font-family='serif' font-weight='700'>S</text></svg>" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <style>
+    .page-hero { min-height: 40vh; display: flex; align-items: flex-end; padding-top: 100px; padding-bottom: 3rem; background: var(--bg); position: relative; overflow: hidden; }
+    .page-hero .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(200,164,90,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(200,164,90,0.04) 1px, transparent 1px); background-size: 60px 60px; mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, black 30%, transparent 100%); }
+    .page-hero .hero-glow { position: absolute; top: -20%; right: -5%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(29,110,71,0.14) 0%, transparent 70%); border-radius: 50%; }
+
+    /* Tool card */
+    .tool-section { padding: 5rem 0; }
+    .tool-section:nth-child(even) { background: var(--surface); }
+    .tool-section:nth-child(odd) { background: var(--bg); }
+    .tool-grid { display: grid; gap: 3rem; }
+    @media (min-width: 1024px) { .tool-grid { grid-template-columns: 1fr 1fr; align-items: center; } }
+    .tool-widget { border: 1px solid var(--gold-border); border-radius: var(--radius-lg); background: var(--surface); overflow: hidden; }
+    .tool-widget-head { background: linear-gradient(135deg, var(--surface-2), var(--surface-3)); padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--gold-border); display: flex; align-items: center; gap: 0.75rem; }
+    .tool-widget-dots { display: flex; gap: 0.4rem; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; }
+    .tool-widget-body { padding: 1.5rem; }
+    .tool-input { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 0.85rem 1rem; color: var(--text); font-family: 'DM Sans',sans-serif; font-size: 0.9rem; width: 100%; min-height: 48px; transition: var(--transition); }
+    .tool-input:focus { outline: none; border-color: var(--gold-border); }
+    .tool-input::placeholder { color: var(--text-dim); }
+    .tool-result { margin-top: 1rem; padding: 1rem; border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg); min-height: 52px; display: flex; align-items: center; }
+    .result-available { color: #28A363; font-size: 0.85rem; display: flex; align-items: center; gap: 0.5rem; }
+    .result-taken { color: #E05C5C; font-size: 0.85rem; display: flex; align-items: center; gap: 0.5rem; }
+    .result-idle { color: var(--text-dim); font-size: 0.82rem; }
+    select.tool-input { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' stroke='%23C8A45A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; background-color: var(--bg); padding-right: 2.5rem; cursor: pointer; }
+    .tool-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 0.75rem; }
+    .tool-label { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 0.3rem; }
+    .tax-result-box { margin-top: 1rem; padding: 1rem; border: 1px solid var(--gold-border); border-radius: var(--radius); background: var(--gold-dim); }
+    .tax-line { display: flex; justify-content: space-between; align-items: center; padding: 0.35rem 0; border-bottom: 1px solid var(--border); font-size: 0.8rem; color: var(--text-muted); }
+    .tax-line:last-child { border-bottom: none; font-weight: 600; color: var(--gold); font-size: 0.88rem; }
+    .tax-line span:last-child { font-family: 'Cormorant Garamond', serif; font-weight: 600; color: var(--text); }
+    .tax-line:last-child span:last-child { color: var(--gold); }
+    .tracking-order { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 1rem; }
+    .tracking-step { display: flex; gap: 1rem; align-items: flex-start; }
+    .tracking-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; margin-top: 3px; border: 2px solid var(--border); }
+    .tracking-dot.done { background: var(--green-light); border-color: var(--green-light); }
+    .tracking-dot.active { background: var(--gold); border-color: var(--gold); box-shadow: 0 0 0 3px rgba(200,164,90,0.2); }
+    .tracking-line { flex: 1; }
+    .tracking-line strong { display: block; font-size: 0.8rem; color: var(--text); }
+    .tracking-line span { font-size: 0.7rem; color: var(--text-dim); }
+    .kbli-result-list { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 1rem; max-height: 240px; overflow-y: auto; }
+    .kbli-item { padding: 0.75rem 1rem; border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg); }
+    .kbli-item .code { font-size: 0.7rem; letter-spacing: 0.1em; color: var(--gold); margin-bottom: 0.2rem; font-weight: 600; }
+    .kbli-item .name { font-size: 0.8rem; color: var(--text); }
+    .kbli-result-list::-webkit-scrollbar { width: 4px; }
+    .kbli-result-list::-webkit-scrollbar-track { background: var(--surface); }
+    .kbli-result-list::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 2px; }
+  </style>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo"><div class="logo-mark">S</div><div class="logo-text"><span class="logo-name">SGN-Law</span><span class="logo-tagline">Legal &amp; Business Consultancy</span></div></a>
+      <ul class="nav-links">
+        <li><a href="/">Beranda</a></li><li><a href="/about">Tentang Kami</a></li>
+        <li class="has-dropdown"><a href="/layanan">Layanan</a>
+          <div class="dropdown dropdown-mega">
+            <a href="/layanan#pendirian">Pendirian Perusahaan</a><a href="/layanan#penutupan">Penutupan Perusahaan</a>
+            <a href="/layanan#virtual-office">Virtual Office</a><a href="/layanan#perizinan-khusus">Perizinan Khusus</a>
+            <a href="/layanan#perizinan-usaha">Perizinan Usaha</a><a href="/layanan#perpajakan">Perpajakan</a>
+            <a href="/layanan#haki">HAKI</a><a href="/layanan#pma">PMA</a>
+            <a href="/layanan#hukum">Layanan Hukum</a><a href="/layanan#lainnya">Layanan Lainnya</a>
+          </div>
+        </li>
+        <li><a href="/fitur" style="color:var(--gold)">Fitur</a></li>
+        <li><a href="/artikel">Info Bisnis</a></li><li><a href="/promo">Promo</a></li>
+      </ul>
+      <div class="nav-cta"><a href="/contact" class="btn btn-gold">Konsultasi Gratis</a></div>
+      <button class="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-drawer">
+  <div class="drawer-header"><a href="/" class="nav-logo"><div class="logo-mark">S</div><div class="logo-text"><span class="logo-name">SGN-Law</span></div></a><button class="drawer-close">✕</button></div>
+  <nav class="drawer-nav"><a href="/">Beranda</a><a href="/about">Tentang Kami</a><a href="/layanan">Layanan</a><a href="/fitur" style="color:var(--gold)">Fitur</a><a href="/artikel">Info Bisnis</a><a href="/promo">Promo</a><a href="/contact">Hubungi Kami</a></nav>
+  <div class="drawer-footer"><a href="https://wa.me/6287822999875" target="_blank" class="btn btn-gold">Konsultasi via WhatsApp</a></div>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="container" style="position:relative;z-index:2;">
+    <span class="section-label">SGN-Law Platform</span>
+    <h1 style="margin-bottom:0.75rem;">Fitur <em style="color:var(--gold);font-style:italic;font-weight:300;">Eksklusif</em></h1>
+    <p style="max-width:520px;">Tools gratis yang membantu Anda memulai dan mengelola bisnis dengan lebih mudah dan terinformasi.</p>
+  </div>
+</section>
+
+<!-- TOOL 1: CEK NAMA PT -->
+<section class="tool-section" id="cek-nama">
+  <div class="container">
+    <div class="tool-grid">
+      <div>
+        <span class="section-label">Fitur 01</span>
+        <h2 class="section-title">Pengecekan<br /><em class="serif" style="color:var(--gold);font-style:italic;font-weight:300;">Nama PT</em></h2>
+        <div class="divider"></div>
+        <p style="margin-bottom:1.25rem;">Sebelum mendirikan PT, cek terlebih dahulu apakah nama yang Anda inginkan sudah tersedia atau sudah digunakan oleh perusahaan lain di Indonesia.</p>
+        <p>Nama PT yang sudah terdaftar tidak dapat digunakan kembali. Pastikan nama pilihan Anda unik, tidak menyerupai instansi pemerintah, dan minimal terdiri dari 3 kata.</p>
+      </div>
+      <div class="tool-widget" id="cek-nama">
+        <div class="tool-widget-head">
+          <div class="tool-widget-dots"><span class="dot" style="background:#E05C5C"></span><span class="dot" style="background:#E0B55C"></span><span class="dot" style="background:#28A363"></span></div>
+          <span style="font-size:0.72rem;color:var(--text-dim);letter-spacing:0.1em;text-transform:uppercase;">Cek Nama PT</span>
+        </div>
+        <div class="tool-widget-body">
+          <div class="tool-label">Masukkan nama PT yang diinginkan</div>
+          <input type="text" class="tool-input" id="namaInput" placeholder="Contoh: Maju Sejahtera Global" oninput="cekNama()" />
+          <div style="display:flex;gap:0.5rem;margin-top:0.75rem;">
+            <button class="btn btn-gold" style="flex:1;" onclick="simulasiCek()">Cek Ketersediaan</button>
+          </div>
+          <div class="tool-result" id="namaResult">
+            <span class="result-idle">Ketik nama PT dan klik tombol cek</span>
+          </div>
+          <p style="font-size:0.7rem;color:var(--text-dim);margin-top:0.75rem;">* Ini adalah demo simulasi. Untuk cek resmi, konsultasikan dengan tim SGN-Law.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOL 2: TRACKING -->
+<section class="tool-section" id="tracking">
+  <div class="container">
+    <div class="tool-grid">
+      <div class="tool-widget">
+        <div class="tool-widget-head">
+          <div class="tool-widget-dots"><span class="dot" style="background:#E05C5C"></span><span class="dot" style="background:#E0B55C"></span><span class="dot" style="background:#28A363"></span></div>
+          <span style="font-size:0.72rem;color:var(--text-dim);letter-spacing:0.1em;text-transform:uppercase;">System Tracking</span>
+        </div>
+        <div class="tool-widget-body">
+          <div class="tool-label">Nomor Order / Kode Tracking</div>
+          <div style="display:flex;gap:0.5rem;">
+            <input type="text" class="tool-input" id="trackingInput" placeholder="Contoh: SGN-2024-001234" style="flex:1;" />
+            <button class="btn btn-gold" style="white-space:nowrap;" onclick="cekTracking()">Cek</button>
+          </div>
+          <div id="trackingResult" style="display:none;margin-top:1rem;">
+            <div style="padding:0.75rem 1rem;border:1px solid var(--gold-border);border-radius:var(--radius);background:var(--gold-dim);margin-bottom:0.75rem;">
+              <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;">
+                <div><span style="font-size:0.65rem;color:var(--gold);letter-spacing:0.12em;text-transform:uppercase;">Order ID</span><div style="font-size:0.9rem;color:var(--text);font-family:'Cormorant Garamond',serif;font-weight:600;">SGN-2024-001234</div></div>
+                <span style="font-size:0.65rem;background:rgba(40,163,99,0.15);border:1px solid rgba(40,163,99,0.3);color:#28A363;padding:0.25rem 0.6rem;border-radius:100px;letter-spacing:0.1em;text-transform:uppercase;">Dalam Proses</span>
+              </div>
+              <div style="margin-top:0.5rem;font-size:0.75rem;color:var(--text-dim);">Layanan: Pendirian PT · Estimasi Selesai: 7–10 hari kerja</div>
+            </div>
+            <div class="tracking-order">
+              <div class="tracking-step"><div class="tracking-dot done"></div><div class="tracking-line"><strong>Pembayaran Diterima</strong><span>12 Jan 2025, 10:23 WIB</span></div></div>
+              <div class="tracking-step"><div class="tracking-dot done"></div><div class="tracking-line"><strong>Dokumen Diterima &amp; Diverifikasi</strong><span>13 Jan 2025, 09:00 WIB</span></div></div>
+              <div class="tracking-step"><div class="tracking-dot done"></div><div class="tracking-line"><strong>Pengajuan ke Notaris</strong><span>14 Jan 2025, 11:15 WIB</span></div></div>
+              <div class="tracking-step"><div class="tracking-dot active"></div><div class="tracking-line"><strong>Proses di Kemenkumham</strong><span>Sedang berlangsung...</span></div></div>
+              <div class="tracking-step"><div class="tracking-dot"></div><div class="tracking-line"><strong>Dokumen Selesai &amp; Dikirim</strong><span>Menunggu</span></div></div>
+            </div>
+          </div>
+          <p style="font-size:0.7rem;color:var(--text-dim);margin-top:0.75rem;">* Demo: gunakan kode SGN-2024-001234 untuk melihat contoh tracking.</p>
+        </div>
+      </div>
+      <div>
+        <span class="section-label">Fitur 02</span>
+        <h2 class="section-title">System<br /><em class="serif" style="color:var(--gold);font-style:italic;font-weight:300;">Tracking</em></h2>
+        <div class="divider"></div>
+        <p style="margin-bottom:1.25rem;">Pantau perkembangan proses pengurusan dokumen Anda secara real-time. Tidak perlu bertanya-tanya — semua informasi tersedia kapan saja dan di mana saja.</p>
+        <div style="display:flex;flex-direction:column;gap:0.75rem;margin-top:1.5rem;">
+          <div class="pillar"><div class="pillar-icon"><i data-lucide="eye" width="16" height="16"></i></div><div><h4 style="font-size:0.88rem;">Transparansi Penuh</h4><p style="font-size:0.78rem;">Setiap tahap proses terlihat jelas, dari pembayaran hingga dokumen selesai.</p></div></div>
+          <div class="pillar"><div class="pillar-icon"><i data-lucide="bell" width="16" height="16"></i></div><div><h4 style="font-size:0.88rem;">Notifikasi Update</h4><p style="font-size:0.78rem;">Tim kami akan menghubungi Anda via WhatsApp setiap ada perkembangan.</p></div></div>
+          <div class="pillar"><div class="pillar-icon"><i data-lucide="clock" width="16" height="16"></i></div><div><h4 style="font-size:0.88rem;">Estimasi Waktu</h4><p style="font-size:0.78rem;">Lihat estimasi waktu penyelesaian yang akurat untuk setiap layanan.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOL 3: KBLI -->
+<section class="tool-section" id="kbli">
+  <div class="container">
+    <div class="tool-grid">
+      <div>
+        <span class="section-label">Fitur 03</span>
+        <h2 class="section-title">KBLI<br /><em class="serif" style="color:var(--gold);font-style:italic;font-weight:300;">Terbaru 2024</em></h2>
+        <div class="divider"></div>
+        <p style="margin-bottom:1.25rem;">Klasifikasi Baku Lapangan Usaha Indonesia (KBLI) adalah kode yang menentukan bidang usaha perusahaan Anda dalam NIB. Pilih KBLI yang tepat agar izin usaha Anda sesuai dengan kegiatan bisnis yang dijalankan.</p>
+        <p>Tidak yakin KBLI mana yang tepat? Tim SGN-Law siap membantu Anda memilih KBLI yang paling sesuai secara gratis.</p>
+        <a href="https://wa.me/6287822999875?text=Hello!%20Saya%20butuh%20bantuan%20memilih%20KBLI%20yang%20tepat%20untuk%20bisnis%20saya." target="_blank" class="btn btn-gold" style="margin-top:1.5rem;">Konsultasi KBLI Gratis</a>
+      </div>
+      <div class="tool-widget">
+        <div class="tool-widget-head">
+          <div class="tool-widget-dots"><span class="dot" style="background:#E05C5C"></span><span class="dot" style="background:#E0B55C"></span><span class="dot" style="background:#28A363"></span></div>
+          <span style="font-size:0.72rem;color:var(--text-dim);letter-spacing:0.1em;text-transform:uppercase;">Pencarian KBLI</span>
+        </div>
+        <div class="tool-widget-body">
+          <div class="tool-label">Cari berdasarkan nama bidang usaha atau kode KBLI</div>
+          <input type="text" class="tool-input" id="kbliInput" placeholder="Contoh: restoran, teknologi, konstruksi..." oninput="cariKBLI()" />
+          <div class="kbli-result-list" id="kbliList">
+            <div style="padding:1rem;text-align:center;color:var(--text-dim);font-size:0.82rem;">Ketik kata kunci untuk mencari KBLI</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOL 4: KALKULATOR PAJAK -->
+<section class="tool-section" id="kalkulator">
+  <div class="container">
+    <div class="tool-grid">
+      <div class="tool-widget">
+        <div class="tool-widget-head">
+          <div class="tool-widget-dots"><span class="dot" style="background:#E05C5C"></span><span class="dot" style="background:#E0B55C"></span><span class="dot" style="background:#28A363"></span></div>
+          <span style="font-size:0.72rem;color:var(--text-dim);letter-spacing:0.1em;text-transform:uppercase;">Kalkulator PPh 21</span>
+        </div>
+        <div class="tool-widget-body">
+          <div class="tool-label">Status PTKP</div>
+          <select class="tool-input" id="ptkpStatus" onchange="hitungPajak()">
+            <option value="54000000">TK/0 — Tidak Kawin (Rp 54.000.000)</option>
+            <option value="58500000">TK/1 — Tidak Kawin + 1 tanggungan (Rp 58.500.000)</option>
+            <option value="63000000">K/0 — Kawin tanpa tanggungan (Rp 63.000.000)</option>
+            <option value="67500000">K/1 — Kawin + 1 tanggungan (Rp 67.500.000)</option>
+            <option value="72000000">K/2 — Kawin + 2 tanggungan (Rp 72.000.000)</option>
+            <option value="76500000">K/3 — Kawin + 3 tanggungan (Rp 76.500.000)</option>
+          </select>
+          <div class="tool-row" style="margin-top:0.75rem;">
+            <div>
+              <div class="tool-label">Gaji Bruto / Bulan (Rp)</div>
+              <input type="number" class="tool-input" id="gajiInput" placeholder="10000000" oninput="hitungPajak()" />
+            </div>
+            <div>
+              <div class="tool-label">Tunjangan / Bulan (Rp)</div>
+              <input type="number" class="tool-input" id="tunjanganInput" placeholder="0" oninput="hitungPajak()" />
+            </div>
+          </div>
+          <div class="tax-result-box" id="taxResult" style="display:none;">
+            <div class="tax-line"><span>Penghasilan Bruto / Tahun</span><span id="trBruto">–</span></div>
+            <div class="tax-line"><span>Biaya Jabatan (5%)</span><span id="trBiaya">–</span></div>
+            <div class="tax-line"><span>PTKP</span><span id="trPtkp">–</span></div>
+            <div class="tax-line"><span>PKP (Penghasilan Kena Pajak)</span><span id="trPkp">–</span></div>
+            <div class="tax-line"><span>PPh 21 / Tahun</span><span id="trPph">–</span></div>
+            <div class="tax-line"><span>PPh 21 / Bulan</span><span id="trPphBulan">–</span></div>
+          </div>
+          <p style="font-size:0.7rem;color:var(--text-dim);margin-top:0.75rem;">* Berdasarkan UU HPP No. 7 Tahun 2021 &amp; tarif PPh 21 terbaru. Untuk konsultasi pajak lengkap, hubungi tim kami.</p>
+        </div>
+      </div>
+      <div>
+        <span class="section-label">Fitur 04</span>
+        <h2 class="section-title">Kalkulator<br /><em class="serif" style="color:var(--gold);font-style:italic;font-weight:300;">Pajak Online</em></h2>
+        <div class="divider"></div>
+        <p style="margin-bottom:1.25rem;">Hitung Pajak Penghasilan (PPh 21) karyawan Anda dengan mudah. Masukkan data penghasilan dan status PTKP untuk mendapatkan estimasi pajak yang harus dibayarkan.</p>
+        <p>Butuh perhitungan pajak yang lebih kompleks atau konsultasi perpajakan perusahaan? Tim ahli pajak SGN-Law siap membantu.</p>
+        <a href="https://wa.me/6287822999875?text=Hello!%20Saya%20membutuhkan%20konsultasi%20perpajakan%20dari%20SGN-Law." target="_blank" class="btn btn-gold" style="margin-top:1.5rem;">Konsultasi Pajak Gratis</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-banner">
+  <div class="container">
+    <span class="section-label" style="justify-content:center;">Butuh Bantuan Lebih?</span>
+    <h2>Fitur yang Bagus Dimulai dari<br /><em class="serif" style="color:var(--gold);font-style:italic;font-weight:300;">Legalitas yang Kuat</em></h2>
+    <p>Tools di atas adalah awal. Biarkan SGN-Law yang mengurus sisanya — legalitas bisnis Anda, dari A sampai Z.</p>
+    <div class="btn-group">
+      <a href="https://wa.me/6287822999875" target="_blank" class="btn btn-gold">Konsultasi Gratis</a>
+      <a href="/layanan" class="btn btn-outline">Lihat Semua Layanan</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:1rem;align-items:center;text-align:center;padding:2rem 0;">
+      <div style="display:flex;align-items:center;gap:0.75rem;"><div class="logo-mark" style="width:32px;height:32px;font-size:0.95rem;">S</div><span class="logo-name">SGN-Law</span></div>
+      <p style="font-size:0.78rem;max-width:400px;">Konsultan Legalitas dan Perizinan Usaha Terpercaya di Indonesia.</p>
+      <p style="font-size:0.72rem;color:var(--text-dim);">© 2024 – 2026 SGN-Law. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<div class="wa-fab">
+  <button class="wa-fab-btn" aria-label="Chat WhatsApp"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></button>
+  <div class="wa-pulse"></div>
+  <div class="wa-popup"><div class="wa-popup-head"><div class="avatar">S</div><div class="info"><strong>SGN-Law Support</strong><span>Biasanya membalas dalam menit</span></div></div><div class="wa-popup-list"></div></div>
+</div>
+<button class="back-top" aria-label="Back to top">↑</button>
+
+<script src="../assets/js/main.js"></script>
+<script>
+  if (typeof lucide !== 'undefined') lucide.createIcons();
+
+  // ── CEK NAMA PT ──────────────────────────────────────────
+  const takenNames = ['maju bersama','sejahtera abadi','karya mandiri','indo makmur','nusantara jaya','berkah utama','prima karya','global sukses'];
+  function cekNama() {}
+  function simulasiCek() {
+    const val = document.getElementById('namaInput').value.trim().toLowerCase();
+    const res = document.getElementById('namaResult');
+    if (!val) { res.innerHTML = '<span class="result-idle">Masukkan nama PT terlebih dahulu.</span>'; return; }
+    const taken = takenNames.some(n => val.includes(n));
+    if (taken) {
+      res.innerHTML = '<span class="result-taken">✕ Nama ini sudah digunakan. Silakan coba nama lain.</span>';
+    } else {
+      res.innerHTML = '<span class="result-available">✓ Nama tersedia! Hubungi SGN-Law untuk pemesanan resmi.</span>';
+    }
+  }
+
+  // ── TRACKING ─────────────────────────────────────────────
+  function cekTracking() {
+    const val = document.getElementById('trackingInput').value.trim().toUpperCase();
+    const res = document.getElementById('trackingResult');
+    if (val === 'SGN-2024-001234' || val === 'SGN2024001234') {
+      res.style.display = 'block';
+    } else if (val) {
+      res.style.display = 'block';
+      res.innerHTML = '<div style="padding:1rem;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface);color:var(--text-dim);font-size:0.82rem;text-align:center;">Nomor order tidak ditemukan. Hubungi CS kami untuk bantuan.</div>';
+    } else {
+      res.style.display = 'none';
+    }
+  }
+
+  // ── KBLI DATA ─────────────────────────────────────────────
+  const kbliData = [
+    { code: '56101', name: 'Restoran dan Bar' },
+    { code: '56102', name: 'Warung Makan, Rumah Makan, dan Sejenisnya' },
+    { code: '62010', name: 'Aktivitas Pemrograman Komputer' },
+    { code: '62020', name: 'Aktivitas Konsultasi Komputer dan Manajemen Fasilitas Komputer' },
+    { code: '62090', name: 'Aktivitas Teknologi Informasi dan Jasa Komputer Lainnya' },
+    { code: '41010', name: 'Konstruksi Gedung Hunian' },
+    { code: '41020', name: 'Konstruksi Gedung Perkantoran' },
+    { code: '45101', name: 'Perdagangan Besar Mobil Baru' },
+    { code: '47111', name: 'Perdagangan Eceran Berbagai Macam Barang' },
+    { code: '63120', name: 'Portal Web dan/atau Platform Digital' },
+    { code: '70200', name: 'Aktivitas Konsultasi Manajemen' },
+    { code: '69100', name: 'Aktivitas Hukum' },
+    { code: '69200', name: 'Aktivitas Akuntansi, Pembukuan, dan Audit' },
+    { code: '68100', name: 'Real Estate yang Dimiliki Sendiri atau Disewa' },
+    { code: '68200', name: 'Real Estate atas Dasar Balas Jasa' },
+    { code: '85499', name: 'Pendidikan Lainnya' },
+    { code: '86101', name: 'Aktivitas Rumah Sakit Umum' },
+    { code: '73100', name: 'Periklanan' },
+    { code: '74100', name: 'Aktivitas Desain Khusus' },
+    { code: '49300', name: 'Angkutan Darat Penumpang Lainnya' },
+  ];
+  function cariKBLI() {
+    const q = document.getElementById('kbliInput').value.trim().toLowerCase();
+    const list = document.getElementById('kbliList');
+    if (!q) { list.innerHTML = '<div style="padding:1rem;text-align:center;color:var(--text-dim);font-size:0.82rem;">Ketik kata kunci untuk mencari KBLI</div>'; return; }
+    const results = kbliData.filter(k => k.name.toLowerCase().includes(q) || k.code.includes(q));
+    if (!results.length) { list.innerHTML = '<div style="padding:1rem;text-align:center;color:var(--text-dim);font-size:0.82rem;">KBLI tidak ditemukan. Coba kata kunci lain.</div>'; return; }
+    list.innerHTML = results.map(k => `<div class="kbli-item"><div class="code">KBLI ${k.code}</div><div class="name">${k.name}</div></div>`).join('');
+  }
+
+  // ── KALKULATOR PAJAK ─────────────────────────────────────
+  function fmt(n) { return 'Rp ' + Math.round(n).toLocaleString('id-ID'); }
+  function hitungPajak() {
+    const ptkp = parseFloat(document.getElementById('ptkpStatus').value);
+    const gaji = parseFloat(document.getElementById('gajiInput').value) || 0;
+    const tunj = parseFloat(document.getElementById('tunjanganInput').value) || 0;
+    if (!gaji) { document.getElementById('taxResult').style.display = 'none'; return; }
+    const brutoTahunan = (gaji + tunj) * 12;
+    const biayaJabatan = Math.min(brutoTahunan * 0.05, 6000000);
+    const penghasilanNeto = brutoTahunan - biayaJabatan;
+    const pkp = Math.max(penghasilanNeto - ptkp, 0);
+    let pph = 0;
+    if (pkp <= 60000000) pph = pkp * 0.05;
+    else if (pkp <= 250000000) pph = 3000000 + (pkp - 60000000) * 0.15;
+    else if (pkp <= 500000000) pph = 31500000 + (pkp - 250000000) * 0.25;
+    else if (pkp <= 5000000000) pph = 94000000 + (pkp - 500000000) * 0.30;
+    else pph = 1444000000 + (pkp - 5000000000) * 0.35;
+    document.getElementById('taxResult').style.display = 'block';
+    document.getElementById('trBruto').textContent = fmt(brutoTahunan);
+    document.getElementById('trBiaya').textContent = fmt(biayaJabatan);
+    document.getElementById('trPtkp').textContent = fmt(ptkp);
+    document.getElementById('trPkp').textContent = fmt(pkp);
+    document.getElementById('trPph').textContent = fmt(pph);
+    document.getElementById('trPphBulan').textContent = fmt(pph / 12);
+  }
+</script>
+</body>
+</html>

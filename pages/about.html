@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Tentang SGN-Law — Konsultan legalitas dan perizinan usaha terpercaya di Indonesia dengan pengalaman lebih dari 7 tahun." />
+  <title>Tentang Kami — SGN-Law</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23060F09'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' fill='%23C8A45A' font-size='18' font-family='serif' font-weight='700'>S</text></svg>" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <style>
+    .page-hero {
+      min-height: 45vh; display: flex; align-items: flex-end;
+      padding-top: 100px; padding-bottom: 3rem;
+      background: var(--bg); position: relative; overflow: hidden;
+    }
+    .page-hero .hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(200,164,90,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(200,164,90,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, black 30%, transparent 100%);
+    }
+    .page-hero .hero-glow {
+      position: absolute; top: -20%; right: -5%;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(29,110,71,0.14) 0%, transparent 70%);
+      border-radius: 50%; pointer-events: none;
+    }
+
+    /* Values */
+    .values { background: var(--surface); padding: 5rem 0; }
+    .values-grid { display: grid; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; margin-top: 2.5rem; }
+    .value-card { background: var(--surface); padding: 2rem 1.5rem; position: relative; transition: var(--transition); }
+    .value-card:hover { background: var(--surface-2); }
+    .value-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4rem; font-weight: 700;
+      color: var(--gold); opacity: 0.12; line-height: 1;
+      position: absolute; top: 1rem; right: 1.25rem;
+    }
+    .value-card h4 { font-size: 1.1rem; color: var(--text); margin-bottom: 0.5rem; position: relative; z-index: 1; }
+    .value-card p { font-size: 0.82rem; position: relative; z-index: 1; }
+    @media (min-width: 768px) { .values-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .values-grid { grid-template-columns: repeat(3, 1fr); } }
+
+    /* Timeline */
+    .history { background: var(--bg); padding: 5rem 0; }
+    .timeline { position: relative; margin-top: 2.5rem; }
+    .timeline::before {
+      content: ''; position: absolute; left: 23px; top: 0; bottom: 0;
+      width: 1px; background: linear-gradient(to bottom, var(--gold-border), transparent);
+    }
+    .timeline-item { display: flex; gap: 1.5rem; margin-bottom: 2.5rem; position: relative; }
+    .timeline-dot {
+      width: 48px; height: 48px; flex-shrink: 0;
+      border: 1px solid var(--gold-border); background: var(--surface);
+      display: grid; place-items: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.75rem; font-weight: 700; color: var(--gold);
+      position: relative; z-index: 1;
+    }
+    .timeline-body { padding-top: 0.75rem; }
+    .timeline-year {
+      font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 0.35rem;
+    }
+    .timeline-body h4 { font-size: 1rem; color: var(--text); margin-bottom: 0.4rem; }
+    .timeline-body p { font-size: 0.82rem; }
+    @media (min-width: 768px) {
+      .timeline::before { left: 50%; transform: translateX(-50%); }
+      .timeline { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem 4rem; }
+      .timeline-item { flex-direction: column; gap: 1rem; }
+      .timeline::before { display: none; }
+    }
+
+    /* Team */
+    .team { background: var(--surface); padding: 5rem 0; }
+    .team-grid { display: grid; gap: 1.25rem; margin-top: 2.5rem; }
+    .team-card {
+      border: 1px solid var(--border); border-radius: var(--radius-lg);
+      overflow: hidden; transition: var(--transition); background: var(--bg);
+    }
+    .team-card:hover { border-color: var(--gold-border); transform: translateY(-2px); }
+    .team-avatar {
+      height: 140px; background: linear-gradient(135deg, var(--surface-3), var(--green-dim));
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem; font-weight: 700; color: var(--gold); opacity: 0.6;
+    }
+    .team-body { padding: 1.25rem; }
+    .team-body h4 { font-size: 1rem; color: var(--text); margin-bottom: 0.2rem; }
+    .team-role { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); }
+    .team-body p { font-size: 0.78rem; margin-top: 0.5rem; }
+    @media (min-width: 768px) { .team-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .team-grid { grid-template-columns: repeat(4, 1fr); } }
+
+    /* Stats strip */
+    .stats-strip { background: linear-gradient(135deg, var(--green-dim), var(--surface-3)); padding: 3.5rem 0; border-top: 1px solid var(--gold-border); border-bottom: 1px solid var(--gold-border); }
+    .stats-strip-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+    .strip-stat { text-align: center; }
+    .strip-num { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 700; color: var(--gold); display: block; line-height: 1; }
+    .strip-label { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); margin-top: 0.25rem; display: block; }
+    @media (min-width: 768px) { .stats-strip-grid { grid-template-columns: repeat(4, 1fr); } }
+
+    /* Awards */
+    .awards { background: var(--bg); padding: 5rem 0; }
+    .awards-grid { display: grid; gap: 1rem; margin-top: 2.5rem; }
+    .award-card {
+      display: flex; gap: 1.25rem; align-items: flex-start;
+      padding: 1.25rem; border: 1px solid var(--border);
+      border-radius: var(--radius-lg); background: var(--surface);
+      transition: var(--transition);
+    }
+    .award-card:hover { border-color: var(--gold-border); }
+    .award-icon { width: 44px; height: 44px; flex-shrink: 0; border: 1px solid var(--gold-border); display: grid; place-items: center; color: var(--gold); border-radius: var(--radius); }
+    .award-body h4 { font-size: 0.95rem; color: var(--text); margin-bottom: 0.25rem; }
+    .award-body p { font-size: 0.78rem; }
+    @media (min-width: 768px) { .awards-grid { grid-template-columns: repeat(2, 1fr); } }
+  </style>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <div class="logo-mark">S</div>
+        <div class="logo-text">
+          <span class="logo-name">SGN-Law</span>
+          <span class="logo-tagline">Legal &amp; Business Consultancy</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Beranda</a></li>
+        <li><a href="/about" style="color:var(--gold)">Tentang Kami</a></li>
+        <li class="has-dropdown"><a href="/layanan">Layanan</a>
+          <div class="dropdown dropdown-mega">
+            <a href="/layanan#pendirian">Pendirian Perusahaan</a><a href="/layanan#penutupan">Penutupan Perusahaan</a>
+            <a href="/layanan#virtual-office">Virtual Office</a><a href="/layanan#perizinan-khusus">Perizinan Khusus</a>
+            <a href="/layanan#perizinan-usaha">Perizinan Usaha</a><a href="/layanan#perpajakan">Perpajakan</a>
+            <a href="/layanan#haki">HAKI</a><a href="/layanan#pma">PMA</a>
+            <a href="/layanan#hukum">Layanan Hukum</a><a href="/layanan#properti">Perizinan Properti</a>
+            <a href="/layanan#perjanjian">Pembuatan Perjanjian</a><a href="/layanan#dokumen">Pembuatan Dokumen</a>
+            <a href="/layanan#digital">Digital Marketing</a><a href="/layanan#idak">Dokter IDAK</a>
+            <a href="/layanan#ppiu">Dokter PPIU</a><a href="/layanan#siupkk">Dokter SIUPKK</a>
+            <a href="/layanan#keuangan">Keuangan</a><a href="/layanan#lainnya">Layanan Lainnya</a>
+          </div>
+        </li>
+        <li><a href="/fitur">Fitur</a></li>
+        <li><a href="/artikel">Info Bisnis</a></li>
+        <li><a href="/promo">Promo</a></li>
+      </ul>
+      <div class="nav-cta"><a href="/contact" class="btn btn-gold">Konsultasi Gratis</a></div>
+      <button class="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-drawer">
+  <div class="drawer-header">
+    <a href="/" class="nav-logo"><div class="logo-mark">S</div><div class="logo-text"><span class="logo-name">SGN-Law</span></div></a>
+    <button class="drawer-close">✕</button>
+  </div>
+  <nav class="drawer-nav">
+    <a href="/">Beranda</a><a href="/about" style="color:var(--gold)">Tentang Kami</a>
+    <a href="/layanan">Layanan</a><a href="/fitur">Fitur</a>
+    <a href="/artikel">Info Bisnis</a><a href="/promo">Promo</a>
+    <a href="/contact">Hubungi Kami</a>
+  </nav>
+  <div class="drawer-footer"><a href="https://wa.me/6287822999875" target="_blank" class="btn btn-gold">Konsultasi via WhatsApp</a></div>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="container" style="position:relative;z-index:2;">
+    <span class="section-label">SGN-Law</span>
+    <h1 style="margin-bottom:0.75rem;">Tentang <em style="color:var(--gold);font-style:italic;font-weight:300;">Kami</em></h1>
+    <p style="max-width:560px;">Tim profesional yang berdedikasi membantu bisnis Indonesia berkembang di atas fondasi hukum yang kuat dan terpercaya.</p>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section style="background:var(--bg);padding:5rem 0;">
+  <div class="container">
+    <div style="display:grid;gap:3rem;" class="about-grid">
+      <div>
+        <span class="section-label">Siapa Kami</span>
+        <h2 class="section-title">Konsultan Legalitas yang<br /><em class="serif" style="color:var(--gold);font-style:italic;font-weight:300;">Benar-Benar Peduli</em></h2>
+        <div class="divider"></div>
+        <p style="margin-bottom:1.25rem;">SGN-Law merupakan perusahaan Jasa Konsultan untuk Pengurusan Izin Usaha dan Legalitas Perusahaan yang ditangani oleh tenaga-tenaga muda profesional, yang tergabung dalam tim berpengalaman lebih dari 7 tahun di bidang hukum bisnis dan perizinan Indonesia.</p>
+        <p style="margin-bottom:1.25rem;">Kami hadir dengan satu misi: menyederhanakan proses legalitas yang rumit agar pengusaha Indonesia bisa fokus pada hal yang paling penting — membangun dan mengembangkan bisnis mereka.</p>
+        <p>Dari pendirian perusahaan pertama kami hingga ribuan klien yang telah kami layani, semangat itu tidak pernah berubah. SGN-Law bukan sekadar konsultan — kami adalah mitra terpercaya dalam perjalanan bisnis Anda.</p>
+        <div style="display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap;">
+          <a href="/layanan" class="btn btn-gold">Lihat Layanan Kami</a>
+          <a href="/contact" class="btn btn-outline">Hubungi Kami</a>
+        </div>
+      </div>
+      <div class="about-visual">
+        <div class="about-frame">
+          <div class="about-frame-inner">
+            <div class="about-emblem">S</div>
+            <div class="about-frame-text">
+              <h3>SGN-Law</h3>
+              <p>Legal &amp; Business Consultancy</p>
+              <p style="margin-top:0.5rem;font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);">Est. 2018</p>
+            </div>
+            <svg style="position:absolute;top:0;left:0;width:24px;height:24px" viewBox="0 0 24 24"><path d="M0 24 L0 0 L24 0" stroke="#C8A45A" stroke-width="1" fill="none" opacity="0.5"/></svg>
+            <svg style="position:absolute;bottom:0;right:0;width:24px;height:24px" viewBox="0 0 24 24"><path d="M24 0 L24 24 L0 24" stroke="#C8A45A" stroke-width="1" fill="none" opacity="0.5"/></svg>
+          </div>
+          <div class="about-badge">
+            <span class="num">7+</span>
+            <span class="lbl">Years<br />Trusted</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="container">
+    <div class="stats-strip-grid">
+      <div class="strip-stat">
+        <span class="strip-num" data-count="1500" data-suffix="+">1500+</span>
+        <span class="strip-label">Projects Selesai</span>
+      </div>
+      <div class="strip-stat">
+        <span class="strip-num" data-count="99" data-suffix="%">99%</span>
+        <span class="strip-label">Tingkat Keberhasilan</span>
+      </div>
+      <div class="strip-stat">
+        <span class="strip-num">30+</span>
+        <span class="strip-label">Tim Profesional</span>
+      </div>
+      <div class="strip-stat">
+        <span class="strip-num">5</span>
+        <span class="strip-label">Kantor di Indonesia</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VALUES -->
+<section class="values">
+  <div class="container">
+    <div class="section-header centered">
+      <span class="section-label">Nilai Kami</span>
+      <h2 class="section-title">Prinsip yang Memandu<br /><em class="serif" style="color:var(--gold);font-style:italic;font-weight:300;">Setiap Langkah Kami</em></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-num">01</div>
+        <div style="width:40px;height:40px;border:1px solid var(--gold-border);display:grid;place-items:center;color:var(--gold);border-radius:var(--radius);margin-bottom:1rem;position:relative;z-index:1;">
+          <i data-lucide="shield" width="18" height="18"></i>
+        </div>
+        <h4>Integritas</h4>
+        <p>Kami menjaga kepercayaan klien dengan transparansi penuh dalam setiap proses, biaya, dan perkembangan pekerjaan.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-num">02</div>
+        <div style="width:40px;height:40px;border:1px solid var(--gold-border);display:grid;place-items:center;color:var(--gold);border-radius:var(--radius);margin-bottom:1rem;position:relative;z-index:1;">
+          <i data-lucide="zap" width="18" height="18"></i>
+        </div>
+        <h4>Efisiensi</h4>
+        <p>Proses yang terstruktur dan tim yang berpengalaman memastikan setiap pengurusan selesai tepat waktu dan efisien.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-num">03</div>
+        <div style="width:40px;height:40px;border:1px solid var(--gold-border);display:grid;place-items:center;color:var(--gold);border-radius:var(--radius);margin-bottom:1rem;position:relative;z-index:1;">
+          <i data-lucide="users" width="18" height="18"></i>
+        </div>
+        <h4>Orientasi Klien</h4>
+        <p>Kepuasan klien adalah prioritas utama. Kami mendengarkan kebutuhan dan memberikan solusi yang paling tepat.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-num">04</div>
+        <div style="width:40px;height:40px;border:1px solid var(--gold-border);display:grid;place-items:center;color:var(--gold);border-radius:var(--radius);margin-bottom:1rem;position:relative;z-index:1;">
+          <i data-lucide="book-open" width="18" height="18"></i>
+        </div>
+        <h4>Keahlian Hukum</h4>
+        <p>Tim kami terdiri dari para ahli hukum yang terus mengikuti perkembangan regulasi terbaru di Indonesia.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-num">05</div>
+        <div style="width:40px;height:40px;border:1px solid var(--gold-border);display:grid;place-items:center;color:var(--gold);border-radius:var(--radius);margin-bottom:1rem;position:relative;z-index:1;">
+          <i data-lucide="handshake" width="18" height="18"></i>
+        </div>
+        <h4>Kemitraan Jangka Panjang</h4>
+        <p>Kami tidak sekadar menyelesaikan satu pekerjaan — kami membangun hubungan jangka panjang yang saling menguntungkan.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-num">06</div>
+        <div style="width:40px;height:40px;border:1px solid var(--gold-border);display:grid;place-items:center;color:var(--gold);border-radius:var(--radius);margin-bottom:1rem;position:relative;z-index:1;">
+          <i data-lucide="trending-up" width="18" height="18"></i>
+        </div>
+        <h4>Inovasi Berkelanjutan</h4>
+        <p>Kami terus berinovasi dalam sistem dan layanan untuk memberikan pengalaman terbaik bagi setiap klien.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HISTORY -->
+<section class="history">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Perjalanan Kami</span>
+      <h2 class="section-title">Tumbuh Bersama<br /><em class="serif" style="color:var(--gold);font-style:italic;font-weight:300;">Bisnis Indonesia</em></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot">18</div>
+        <div class="timeline-body">
+          <div class="timeline-year">2018 — Pendirian</div>
+          <h4>SGN-Law Didirikan</h4>
+          <p>Berawal dari visi sederhana: membuat proses legalitas bisnis menjadi mudah dan terjangkau bagi semua pengusaha Indonesia.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot">19</div>
+        <div class="timeline-body">
+          <div class="timeline-year">2019 — Ekspansi Layanan</div>
+          <h4>100 Klien Pertama</h4>
+          <p>Mencapai tonggak 100 klien dalam satu tahun pertama, memperluas tim dan menambahkan layanan HAKI dan PMA.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot">20</div>
+        <div class="timeline-body">
+          <div class="timeline-year">2020 — Digitalisasi</div>
+          <h4>Layanan Full Online</h4>
+          <p>Bertransformasi ke layanan digital penuh — memungkinkan klien mengurus legalitas dari mana saja tanpa perlu tatap muka.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot">21</div>
+        <div class="timeline-body">
+          <div class="timeline-year">2021 — Pembukaan Cabang</div>
+          <h4>Ekspansi ke Surabaya &amp; Bogor</h4>
+          <p>Membuka kantor cabang di Surabaya dan Bogor untuk melayani klien di Jawa Timur dan Jawa Barat dengan lebih dekat.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot">22</div>
+        <div class="timeline-body">
+          <div class="timeline-year">2022 — 500+ Klien</div>
+          <h4>Peluncuran Platform Tracking</h4>
+          <p>Meluncurkan sistem tracking real-time sehingga klien dapat memantau perkembangan pengurusan dokumen kapan saja.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot">24</div>
+        <div class="timeline-body">
+          <div class="timeline-year">2024 — Saat Ini</div>
+          <h4>1.500+ Projects &amp; 5 Kantor</h4>
+          <p>Kini hadir dengan 5 kantor di Cibubur, Cikarang, Surabaya, Bogor, dan Jakarta Selatan, melayani lebih dari 1.500 klien.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team">
+  <div class="container">
+    <div class="section-header centered">
+      <span class="section-label">Tim Kami</span>
+      <h2 class="section-title">Orang-Orang di Balik<br /><em class="serif" style="color:var(--gold);font-style:italic;font-weight:300;">SGN-Law</em></h2>
+      <div class="divider"></div>
+      <p class="section-sub">Tim profesional multidisiplin yang berdedikasi memberikan solusi legalitas terbaik untuk bisnis Anda.</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-avatar">A</div>
+        <div class="team-body">
+          <h4>Ahmad Santoso, S.H.</h4>
+          <div class="team-role">Founder &amp; CEO</div>
+          <p>Pakar hukum bisnis dengan pengalaman 10+ tahun di bidang perizinan usaha dan hukum korporasi.</p>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">R</div>
+        <div class="team-body">
+          <h4>Rina Kusuma, S.H., M.H.</h4>
+          <div class="team-role">Head of Legal</div>
+          <p>Spesialis HAKI dan Hukum Properti dengan rekam jejak lebih dari 500 kasus berhasil diselesaikan.</p>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">B</div>
+        <div class="team-body">
+          <h4>Budi Prasetyo, Ak., M.M.</h4>
+          <div class="team-role">Head of Tax &amp; Finance</div>
+          <p>Akuntan berpengalaman spesialis perpajakan korporasi dan konsultasi keuangan bisnis.</p>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">D</div>
+        <div class="team-body">
+          <h4>Dewi Anggraeni, S.H.</h4>
+          <div class="team-role">Senior Legal Consultant</div>
+          <p>Ahli PMA dan perizinan khusus dengan pengalaman membantu lebih dari 200 investor asing di Indonesia.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AWARDS -->
+<section class="awards">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Kepercayaan &amp; Pengakuan</span>
+      <h2 class="section-title">Dipercaya Ribuan<br /><em class="serif" style="color:var(--gold);font-style:italic;font-weight:300;">Klien &amp; Mitra</em></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="awards-grid">
+      <div class="award-card">
+        <div class="award-icon"><i data-lucide="award" width="20" height="20"></i></div>
+        <div class="award-body">
+          <h4>Top Legal Consultant 2023</h4>
+          <p>Diakui sebagai salah satu konsultan legalitas usaha terpercaya di Indonesia oleh Asosiasi Konsultan Bisnis.</p>
+        </div>
+      </div>
+      <div class="award-card">
+        <div class="award-icon"><i data-lucide="star" width="20" height="20"></i></div>
+        <div class="award-body">
+          <h4>Rating 4.9/5 dari Klien</h4>
+          <p>Berdasarkan 500+ ulasan klien, SGN-Law secara konsisten mempertahankan rating kepuasan tertinggi.</p>
+        </div>
+      </div>
+      <div class="award-card">
+        <div class="award-icon"><i data-lucide="verified" width="20" height="20"></i></div>
+        <div class="award-body">
+          <h4>Terdaftar Resmi Kemenkumham</h4>
+          <p>SGN-Law adalah konsultan hukum yang terdaftar dan diakui secara resmi oleh Kementerian Hukum dan HAM RI.</p>
+        </div>
+      </div>
+      <div class="award-card">
+        <div class="award-icon"><i data-lucide="globe" width="20" height="20"></i></div>
+        <div class="award-body">
+          <h4>Mitra Investor Asing Terpercaya</h4>
+          <p>Dipercaya oleh investor dari 15+ negara untuk membantu proses pendirian dan perizinan bisnis di Indonesia.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <div class="container">
+    <span class="section-label" style="justify-content:center;">Bergabung Bersama Kami</span>
+    <h2>Siap Membangun Bisnis<br />di Atas Fondasi Hukum yang Kuat?</h2>
+    <p>Lebih dari 1.500 pengusaha telah mempercayakan legalitas bisnis mereka kepada SGN-Law.</p>
+    <div class="btn-group">
+      <a href="https://wa.me/6287822999875?text=Hello!%20Saya%20ingin%20konsultasi%20gratis%20mengenai%20layanan%20SGN-Law." target="_blank" class="btn btn-gold">Konsultasi via WhatsApp</a>
+      <a href="/layanan" class="btn btn-outline">Lihat Layanan Kami</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:1rem;align-items:center;text-align:center;padding:2rem 0;">
+      <div style="display:flex;align-items:center;gap:0.75rem;">
+        <div class="logo-mark" style="width:32px;height:32px;font-size:0.95rem;">S</div>
+        <span class="logo-name">SGN-Law</span>
+      </div>
+      <p style="font-size:0.78rem;max-width:400px;">Konsultan Legalitas dan Perizinan Usaha Terpercaya di Indonesia.</p>
+      <div style="display:flex;gap:2rem;font-size:0.78rem;">
+        <a href="/" style="color:var(--text-muted);">Beranda</a>
+        <a href="/layanan" style="color:var(--text-muted);">Layanan</a>
+        <a href="/contact" style="color:var(--text-muted);">Kontak</a>
+      </div>
+      <p style="font-size:0.72rem;color:var(--text-dim);">© 2024 – 2026 SGN-Law. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- WA FAB -->
+<div class="wa-fab">
+  <button class="wa-fab-btn" aria-label="Chat WhatsApp">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </button>
+  <div class="wa-pulse"></div>
+  <div class="wa-popup">
+    <div class="wa-popup-head">
+      <div class="avatar">S</div>
+      <div class="info"><strong>SGN-Law Support</strong><span>Biasanya membalas dalam menit</span></div>
+    </div>
+    <div class="wa-popup-list"></div>
+  </div>
+</div>
+<button class="back-top" aria-label="Back to top">↑</button>
+
+<script src="../assets/js/main.js"></script>
+<script>if (typeof lucide !== 'undefined') lucide.createIcons();</script>
+</body>
+</html>

@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Promo SGN-Law — Penawaran spesial layanan legalitas dan perizinan usaha. Diskon pendirian PT, HAKI, virtual office, dan lebih banyak lagi." />
+  <title>Promo Spesial — SGN-Law</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23060F09'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' fill='%23C8A45A' font-size='18' font-family='serif' font-weight='700'>S</text></svg>" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <style>
+    .page-hero { min-height: 40vh; display: flex; align-items: flex-end; padding-top: 100px; padding-bottom: 3rem; background: var(--bg); position: relative; overflow: hidden; }
+    .page-hero .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(200,164,90,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(200,164,90,0.04) 1px, transparent 1px); background-size: 60px 60px; mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, black 30%, transparent 100%); }
+    .page-hero .hero-glow { position: absolute; top: -20%; right: -5%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(200,164,90,0.1) 0%, transparent 70%); border-radius: 50%; }
+
+    /* Countdown */
+    .countdown-strip { background: linear-gradient(135deg, var(--surface-3), var(--green-dim)); border-top: 1px solid var(--gold-border); border-bottom: 1px solid var(--gold-border); padding: 1.5rem 0; }
+    .countdown-inner { display: flex; align-items: center; justify-content: center; gap: 1.5rem; flex-wrap: wrap; text-align: center; }
+    .countdown-label { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
+    .countdown-timer { display: flex; gap: 0.75rem; align-items: center; }
+    .time-block { text-align: center; }
+    .time-num { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 700; color: var(--text); display: block; line-height: 1; min-width: 64px; background: var(--surface); border: 1px solid var(--gold-border); padding: 0.5rem 0.75rem; border-radius: var(--radius); }
+    .time-label { font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-dim); margin-top: 0.35rem; display: block; }
+    .time-sep { font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: var(--gold); opacity: 0.5; margin-bottom: 1rem; }
+
+    /* Promo Section */
+    .promo-section { background: var(--bg); padding: 5rem 0; }
+    .promo-grid { display: grid; gap: 1.5rem; }
+    @media (min-width: 768px) { .promo-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .promo-grid { grid-template-columns: repeat(3, 1fr); } }
+
+    /* Promo Card */
+    .promo-card { border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; background: var(--surface); transition: var(--transition); display: flex; flex-direction: column; position: relative; }
+    .promo-card:hover { border-color: var(--gold-border); transform: translateY(-2px); box-shadow: var(--shadow); }
+    .promo-card.hot { border-color: var(--gold); }
+    .promo-head { padding: 1.5rem; border-bottom: 1px solid var(--border); background: linear-gradient(135deg, var(--surface-2), var(--surface)); }
+    .promo-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.75rem; }
+    .promo-tag { font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: 100px; }
+    .promo-tag.new { background: rgba(40,163,99,0.15); border: 1px solid rgba(40,163,99,0.3); color: #28A363; }
+    .promo-tag.hot-tag { background: rgba(200,164,90,0.15); border: 1px solid var(--gold-border); color: var(--gold); }
+    .promo-tag.limited { background: rgba(224,92,92,0.1); border: 1px solid rgba(224,92,92,0.3); color: #E05C5C; }
+    .promo-head h3 { font-size: 1.15rem; color: var(--text); margin-bottom: 0.25rem; }
+    .promo-head p { font-size: 0.78rem; }
+    .promo-price-block { padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+    .promo-original { font-size: 1rem; color: var(--text-dim); text-decoration: line-through; font-family: 'Cormorant Garamond', serif; }
+    .promo-discounted { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 700; color: var(--gold); line-height: 1; }
+    .promo-save { font-size: 0.68rem; background: rgba(40,163,99,0.15); border: 1px solid rgba(40,163,99,0.3); color: #28A363; padding: 0.2rem 0.6rem; border-radius: 100px; letter-spacing: 0.08em; white-space: nowrap; }
+    .promo-includes { padding: 1.25rem 1.5rem; flex: 1; }
+    .promo-includes h5 { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 0.75rem; }
+    .promo-includes li { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; color: var(--text-muted); padding: 0.3rem 0; }
+    .promo-includes li::before { content: ''; width: 14px; height: 14px; flex-shrink: 0; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath d='M3 7l2.5 2.5L11 4' stroke='%2328A363' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") center/12px no-repeat; }
+    .promo-expires { padding: 0.75rem 1.5rem; background: var(--bg); display: flex; align-items: center; gap: 0.5rem; font-size: 0.7rem; color: var(--text-dim); border-top: 1px solid var(--border); }
+    .promo-expires i { color: var(--gold); }
+    .promo-action { padding: 1.25rem 1.5rem; border-top: 1px solid var(--border); }
+    .promo-action .btn { width: 100%; justify-content: center; }
+
+    /* Featured Promo Banner */
+    .featured-promo { background: linear-gradient(135deg, var(--green-dim), var(--surface-3)); border: 1px solid var(--gold-border); border-radius: var(--radius-lg); padding: 2.5rem; margin-bottom: 3rem; position: relative; overflow: hidden; }
+    .featured-promo::before { content: 'PROMO'; position: absolute; right: -1rem; top: 50%; transform: translateY(-50%) rotate(90deg); font-family: 'Cormorant Garamond', serif; font-size: 8rem; font-weight: 700; color: var(--gold); opacity: 0.04; pointer-events: none; letter-spacing: 0.1em; }
+    .featured-promo-grid { display: grid; gap: 2rem; }
+    @media (min-width: 768px) { .featured-promo-grid { grid-template-columns: 1fr auto; align-items: center; } }
+    .featured-promo-body h2 { color: var(--text); margin-bottom: 0.5rem; }
+    .featured-promo-body p { max-width: 500px; }
+    .featured-promo-price { text-align: center; }
+    .featured-promo-price .was { font-size: 0.8rem; color: var(--text-dim); margin-bottom: 0.25rem; }
+    .featured-promo-price .was del { color: var(--text-dim); }
+    .featured-promo-price .now { font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; font-weight: 700; color: var(--gold); line-height: 1; display: block; }
+    .featured-promo-price .save { display: inline-block; background: rgba(40,163,99,0.2); border: 1px solid rgba(40,163,99,0.4); color: #28A363; font-size: 0.72rem; padding: 0.25rem 0.75rem; border-radius: 100px; margin: 0.5rem 0 1.25rem; }
+
+    /* Reseller Section */
+    .reseller-section { background: var(--surface); padding: 5rem 0; }
+    .reseller-grid { display: grid; gap: 1.5rem; }
+    @media (min-width: 768px) { .reseller-grid { grid-template-columns: repeat(3, 1fr); } }
+    .reseller-card { border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 2rem 1.5rem; background: var(--bg); transition: var(--transition); text-align: center; }
+    .reseller-card:hover { border-color: var(--gold-border); transform: translateY(-2px); }
+    .reseller-icon { width: 56px; height: 56px; border: 1px solid var(--gold-border); display: grid; place-items: center; color: var(--gold); border-radius: var(--radius); margin: 0 auto 1.25rem; }
+    .reseller-card h4 { font-size: 1.05rem; color: var(--text); margin-bottom: 0.5rem; }
+    .reseller-card p { font-size: 0.8rem; }
+    .reseller-commission { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 700; color: var(--gold); display: block; margin: 0.75rem 0 0.25rem; }
+    .reseller-comm-label { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim); }
+  </style>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo"><div class="logo-mark">S</div><div class="logo-text"><span class="logo-name">SGN-Law</span><span class="logo-tagline">Legal &amp; Business Consultancy</span></div></a>
+      <ul class="nav-links">
+        <li><a href="/">Beranda</a></li><li><a href="/about">Tentang Kami</a></li>
+        <li class="has-dropdown"><a href="/layanan">Layanan</a>
+          <div class="dropdown dropdown-mega">
+            <a href="/layanan#pendirian">Pendirian Perusahaan</a><a href="/layanan#perizinan-usaha">Perizinan Usaha</a>
+            <a href="/layanan#perpajakan">Perpajakan</a><a href="/layanan#haki">HAKI</a>
+            <a href="/layanan#pma">PMA</a><a href="/layanan#hukum">Layanan Hukum</a>
+            <a href="/layanan#virtual-office">Virtual Office</a><a href="/layanan#lainnya">Layanan Lainnya</a>
+          </div>
+        </li>
+        <li><a href="/fitur">Fitur</a></li>
+        <li><a href="/artikel">Info Bisnis</a></li>
+        <li><a href="/promo" style="color:var(--gold)">Promo</a></li>
+      </ul>
+      <div class="nav-cta"><a href="/contact" class="btn btn-gold">Konsultasi Gratis</a></div>
+      <button class="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-drawer">
+  <div class="drawer-header"><a href="/" class="nav-logo"><div class="logo-mark">S</div><div class="logo-text"><span class="logo-name">SGN-Law</span></div></a><button class="drawer-close">✕</button></div>
+  <nav class="drawer-nav"><a href="/">Beranda</a><a href="/about">Tentang Kami</a><a href="/layanan">Layanan</a><a href="/fitur">Fitur</a><a href="/artikel">Info Bisnis</a><a href="/promo" style="color:var(--gold)">Promo</a><a href="/contact">Hubungi Kami</a></nav>
+  <div class="drawer-footer"><a href="https://wa.me/6287822999875" target="_blank" class="btn btn-gold">Konsultasi via WhatsApp</a></div>
+</div>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="container" style="position:relative;z-index:2;">
+    <div class="hero-eyebrow"><span></span>Penawaran Terbatas — Jangan Sampai Terlewat</div>
+    <h1 style="margin-bottom:0.75rem;">Promo <em style="color:var(--gold);font-style:italic;font-weight:300;">Spesial</em></h1>
+    <p style="max-width:520px;">Dapatkan layanan legalitas berkualitas premium dengan harga eksklusif. Penawaran berlaku untuk waktu terbatas.</p>
+  </div>
+</section>
+
+<!-- COUNTDOWN -->
+<div class="countdown-strip">
+  <div class="container">
+    <div class="countdown-inner">
+      <span class="countdown-label">Promo Berakhir Dalam</span>
+      <div class="countdown-timer">
+        <div class="time-block"><span class="time-num" id="cdDays">00</span><span class="time-label">Hari</span></div>
+        <span class="time-sep">:</span>
+        <div class="time-block"><span class="time-num" id="cdHours">00</span><span class="time-label">Jam</span></div>
+        <span class="time-sep">:</span>
+        <div class="time-block"><span class="time-num" id="cdMins">00</span><span class="time-label">Menit</span></div>
+        <span class="time-sep">:</span>
+        <div class="time-block"><span class="time-num" id="cdSecs">00</span><span class="time-label">Detik</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROMO SECTION -->
+<section class="promo-section">
+  <div class="container">
+
+    <!-- Featured Promo -->
+    <div class="featured-promo">
+      <div class="featured-promo-grid">
+        <div class="featured-promo-body">
+          <div class="promo-tags" style="margin-bottom:0.75rem;">
+            <span class="promo-tag hot-tag">⭐ Promo Terbaik</span>
+            <span class="promo-tag limited">Kuota Terbatas</span>
+          </div>
+          <h2>Paket Pendirian PT + NIB + HAKI<br /><em class="serif" style="color:var(--gold);font-style:italic;font-weight:300;">All-in-One</em></h2>
+          <div class="divider"></div>
+          <p>Paket paling lengkap untuk memulai bisnis Anda. Dapatkan pendirian PT, pengurusan NIB, dan pendaftaran merek HAKI dalam satu paket super hemat.</p>
+          <ul style="margin-top:1rem;display:flex;flex-direction:column;gap:0.35rem;">
+            <li style="display:flex;align-items:center;gap:0.6rem;font-size:0.82rem;color:var(--text-muted);"><span style="color:#28A363;font-weight:700;">✓</span> Pendirian PT Lengkap (Akta + SK Kemenkumham + NPWP)</li>
+            <li style="display:flex;align-items:center;gap:0.6rem;font-size:0.82rem;color:var(--text-muted);"><span style="color:#28A363;font-weight:700;">✓</span> NIB / OSS Perizinan Usaha</li>
+            <li style="display:flex;align-items:center;gap:0.6rem;font-size:0.82rem;color:var(--text-muted);"><span style="color:#28A363;font-weight:700;">✓</span> Pendaftaran Merek HAKI (1 kelas)</li>
+            <li style="display:flex;align-items:center;gap:0.6rem;font-size:0.82rem;color:var(--text-muted);"><span style="color:#28A363;font-weight:700;">✓</span> Konsultasi gratis 30 hari pasca layanan</li>
+          </ul>
+          <div style="margin-top:1.5rem;display:flex;gap:0.75rem;flex-wrap:wrap;">
+            <a href="https://wa.me/6287822999875?text=Hello!%20Saya%20tertarik%20dengan%20Paket%20All-in-One%20SGN-Law." target="_blank" class="btn btn-gold">Ambil Promo Ini</a>
+            <a href="/contact" class="btn btn-outline">Tanya Dulu</a>
+          </div>
+        </div>
+        <div class="featured-promo-price">
+          <div class="was">Harga Normal: <del>Rp 12.000.000</del></div>
+          <span class="now">Rp 8.500.000</span>
+          <span class="save">Hemat Rp 3.500.000</span>
+          <br />
+          <a href="https://wa.me/6287822999875?text=Hello!%20Saya%20tertarik%20dengan%20Paket%20All-in-One%20SGN-Law." target="_blank" class="btn btn-gold" style="white-space:nowrap;">Klaim Sekarang →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section Label -->
+    <div class="section-header" style="margin-bottom:2rem;">
+      <span class="section-label">Promo Aktif</span>
+      <h2 class="section-title">Semua Penawaran<br /><em class="serif" style="color:var(--gold);font-style:italic;font-weight:300;">Spesial Kami</em></h2>
+      <div class="divider"></div>
+    </div>
+
+    <!-- Promo Grid -->
+    <div class="promo-grid">
+
+      <!-- 1 -->
+      <div class="promo-card">
+        <div class="promo-head">
+          <div class="promo-tags"><span class="promo-tag new">Baru</span></div>
+          <h3>Pendirian PT Starter</h3>
+          <p>Solusi terjangkau untuk memulai bisnis berbadan hukum PT dengan cepat dan resmi.</p>
+        </div>
+        <div class="promo-price-block">
+          <div>
+            <div class="promo-original">Rp 5.000.000</div>
+            <div class="promo-discounted">Rp 3.999.000</div>
+          </div>
+          <span class="promo-save">Hemat 20%</span>
+        </div>
+        <div class="promo-includes">
+          <h5>Sudah Termasuk</h5>
+          <ul>
+            <li>Akta Pendirian PT</li>
+            <li>SK Kemenkumham</li>
+            <li>NPWP &amp; SKT Perusahaan</li>
+            <li>NIB / OSS</li>
+            <li>Konsultasi 7 hari</li>
+          </ul>
+        </div>
+        <div class="promo-expires"><i data-lucide="clock" width="12" height="12"></i> Berlaku s.d. 31 Juli 2025</div>
+        <div class="promo-action">
+          <a href="https://wa.me/6287822999875?text=Hello!%20Saya%20tertarik%20Promo%20Pendirian%20PT%20Starter%20SGN-Law." target="_blank" class="btn btn-gold">Klaim Promo</a>
+        </div>
+      </div>
+
+      <!-- 2 -->
+      <div class="promo-card hot">
+        <div class="promo-head">
+          <div class="promo-tags"><span class="promo-tag hot-tag">🔥 Terlaris</span><span class="promo-tag limited">Kuota Terbatas</span></div>
+          <h3>Pendirian CV + NIB</h3>
+          <p>Paket lengkap pendirian CV dengan NIB untuk usaha kecil dan perorangan.</p>
+        </div>
+        <div class="promo-price-block">
+          <div>
+            <div class="promo-original">Rp 4.000.000</div>
+            <div class="promo-discounted">Rp 2.999.000</div>
+          </div>
+          <span class="promo-save">Hemat 25%</span>
+        </div>
+        <div class="promo-includes">
+          <h5>Sudah Termasuk</h5>
+          <ul>
+            <li>Akta Pendirian CV</li>
+            <li>SK Kemenkumham</li>
+            <li>NPWP Perusahaan</li>
+            <li>NIB / OSS</li>
+            <li>Konsultasi 14 hari</li>
+          </ul>
+        </div>
+        <div class="promo-expires"><i data-lucide="clock" width="12" height="12"></i> Berlaku s.d. 31 Agustus 2025</div>
+        <div class="promo-action">
+          <a href="https://wa.me/6287822999875?text=Hello!%20Saya%20tertarik%20Promo%20Pendirian%20CV%20%2B%20NIB%20SGN-Law." target="_blank" class="btn btn-gold">Klaim Promo</a>
+        </div>
+      </div>
+
+      <!-- 3 -->
+      <div class="promo-card">
+        <div class="promo-head">
+          <div class="promo-tags"><span class="promo-tag new">Baru</span></div>
+          <h3>Pendaftaran Merek HAKI</h3>
+          <p>Lindungi merek dagang Anda dengan harga spesial. Proses cepat dan terjamin.</p>
+        </div>
+        <div class="promo-price-block">
+          <div>
+            <div class="promo-original">Rp 3.500.000</div>
+            <div class="promo-discounted">Rp 2.499.000</div>
+          </div>
+          <span class="promo-save">Hemat 29%</span>
+        </div>
+        <div class="promo-includes">
+          <h5>Sudah Termasuk</h5>
+          <ul>
+            <li>Pendaftaran 1 Kelas Merek</li>
+            <li>Penyusunan Deskripsi Merek</li>
+            <li>Tanda Terima Resmi DJKI</li>
+            <li>Pemantauan Status</li>
+            <li>Konsultasi Merek</li>
+          </ul>
+        </div>
+        <div class="promo-expires"><i data-lucide="clock" width="12" height="12"></i> Berlaku s.d. 30 Juni 2025</div>
+        <div class="promo-action">
+          <a href="https://wa.me/6287822999875?text=Hello!%20Saya%20tertarik%20Promo%20Pendaftaran%20Merek%20HAKI%20SGN-Law." target="_blank" class="btn btn-gold">Klaim Promo</a>
+        </div>
+      </div>
+
+      <!-- 4 -->
+      <div class="promo-card">
+        <div class="promo-head">
+          <div class="promo-tags"><span class="promo-tag hot-tag">Eksklusif Online</span></div>
+          <h3>Virtual Office Premium 1 Tahun</h3>
+          <p>Kantor virtual di lokasi strategis Jakarta untuk alamat legal perusahaan Anda.</p>
+        </div>
+        <div class="promo-price-block">
+          <div>
+            <div class="promo-original">Rp 3.000.000/tahun</div>
+            <div class="promo-discounted">Rp 1.999.000</div>
+          </div>
+          <span class="promo-save">Hemat 33%</span>
+        </div>
+        <div class="promo-includes">
+          <h5>Sudah Termasuk</h5>
+          <ul>
+            <li>Alamat Prestise Jakarta</li>
+            <li>Penerimaan Surat &amp; Paket</li>
+            <li>Laporan Surat Digital</li>
+            <li>Masa Aktif 12 Bulan</li>
+            <li>Sertifikat Domisili</li>
+          </ul>
+        </div>
+        <div class="promo-expires"><i data-lucide="clock" width="12" height="12"></i> Berlaku s.d. 31 Agustus 2025</div>
+        <div class="promo-action">
+          <a href="https://wa.me/6287822999875?text=Hello!%20Saya%20tertarik%20Promo%20Virtual%20Office%20SGN-Law." target="_blank" class="btn btn-gold">Klaim Promo</a>
+        </div>
+      </div>
+
+      <!-- 5 -->
+      <div class="promo-card">
+        <div class="promo-head">
+          <div class="promo-tags"><span class="promo-tag limited">Waktu Terbatas</span></div>
+          <h3>Paket Perpajakan Bulanan</h3>
+          <p>Laporan pajak perusahaan Anda ditangani profesional setiap bulan dengan harga terjangkau.</p>
+        </div>
+        <div class="promo-price-block">
+          <div>
+            <div class="promo-original">Rp 2.000.000/bln</div>
+            <div class="promo-discounted">Rp 1.499.000</div>
+          </div>
+          <span class="promo-save">Hemat 25%</span>
+        </div>
+        <div class="promo-includes">
+          <h5>Sudah Termasuk</h5>
+          <ul>
+            <li>SPT Masa PPN Bulanan</li>
+            <li>Laporan PPh 21 Karyawan</li>
+            <li>Laporan PPh Badan Tahunan</li>
+            <li>Konsultasi Pajak Unlimited</li>
+            <li>Kontrak Min. 3 Bulan</li>
+          </ul>
+        </div>
+        <div class="promo-expires"><i data-lucide="clock" width="12" height="12"></i> Berlaku s.d. 30 September 2025</div>
+        <div class="promo-action">
+          <a href="https://wa.me/6287822999875?text=Hello!%20Saya%20tertarik%20Promo%20Paket%20Perpajakan%20SGN-Law." target="_blank" class="btn btn-gold">Klaim Promo</a>
+        </div>
+      </div>
+
+      <!-- 6 -->
+      <div class="promo-card">
+        <div class="promo-head">
+          <div class="promo-tags"><span class="promo-tag new">Baru</span><span class="promo-tag hot-tag">Populer</span></div>
+          <h3>Perubahan Akta PT / CV</h3>
+          <p>Perubahan direksi, komisaris, modal, atau nama perusahaan dengan proses cepat dan profesional.</p>
+        </div>
+        <div class="promo-price-block">
+          <div>
+            <div class="promo-original">Rp 3.000.000</div>
+            <div class="promo-discounted">Rp 2.199.000</div>
+          </div>
+          <span class="promo-save">Hemat 27%</span>
+        </div>
+        <div class="promo-includes">
+          <h5>Sudah Termasuk</h5>
+          <ul>
+            <li>Akta Perubahan Notaris</li>
+            <li>SK Kemenkumham</li>
+            <li>Update Data OSS / NIB</li>
+            <li>1× Revisi Dokumen</li>
+            <li>Konsultasi 7 hari</li>
+          </ul>
+        </div>
+        <div class="promo-expires"><i data-lucide="clock" width="12" height="12"></i> Berlaku s.d. 31 Juli 2025</div>
+        <div class="promo-action">
+          <a href="https://wa.me/6287822999875?text=Hello!%20Saya%20tertarik%20Promo%20Perubahan%20Akta%20SGN-Law." target="_blank" class="btn btn-gold">Klaim Promo</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- RESELLER PROGRAM -->
+<section class="reseller-section" id="reseller">
+  <div class="container">
+    <div class="section-header centered">
+      <span class="section-label">Program Reseller</span>
+      <h2 class="section-title">Hasilkan Pendapatan Tambahan<br /><em class="serif" style="color:var(--gold);font-style:italic;font-weight:300;">Bersama SGN-Law</em></h2>
+      <div class="divider"></div>
+      <p class="section-sub">Bergabunglah sebagai Reseller SGN-Law dan dapatkan komisi menarik dari setiap klien yang Anda referensikan. Tidak perlu modal, tidak perlu keahlian hukum khusus.</p>
+    </div>
+    <div class="reseller-grid">
+      <div class="reseller-card">
+        <div class="reseller-icon"><i data-lucide="user-plus" width="24" height="24"></i></div>
+        <h4>Daftar Gratis</h4>
+        <p>Daftar sebagai mitra reseller SGN-Law tanpa biaya apapun. Proses pendaftaran mudah dan cepat.</p>
+      </div>
+      <div class="reseller-card">
+        <div class="reseller-icon"><i data-lucide="share-2" width="24" height="24"></i></div>
+        <h4>Referensikan Klien</h4>
+        <p>Bagikan layanan SGN-Law kepada kenalan, rekan bisnis, atau komunitas Anda. Kami yang urus sisanya.</p>
+        <span class="reseller-commission">Up to 15%</span>
+        <span class="reseller-comm-label">Komisi per transaksi</span>
+      </div>
+      <div class="reseller-card">
+        <div class="reseller-icon"><i data-lucide="wallet" width="24" height="24"></i></div>
+        <h4>Terima Komisi</h4>
+        <p>Komisi langsung ditransfer ke rekening Anda setiap kali klien referral Anda menyelesaikan pembayaran.</p>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2.5rem;">
+      <a href="https://wa.me/6287822999875?text=Hello!%20Saya%20tertarik%20bergabung%20sebagai%20Reseller%20SGN-Law." target="_blank" class="btn btn-gold" style="margin-right:0.75rem;">Daftar Reseller Sekarang</a>
+      <a href="/contact" class="btn btn-outline">Pelajari Lebih Lanjut</a>
+    </div>
+  </div>
+</section>
+
+<!-- TERMS -->
+<section style="background:var(--bg);padding:3rem 0;">
+  <div class="container">
+    <div style="max-width:700px;margin:0 auto;border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem;background:var(--surface);">
+      <h4 style="font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;">Syarat &amp; Ketentuan Promo</h4>
+      <ul style="display:flex;flex-direction:column;gap:0.5rem;">
+        <li style="display:flex;gap:0.6rem;font-size:0.78rem;color:var(--text-muted);"><span style="color:var(--gold);flex-shrink:0;">·</span> Promo berlaku untuk klien baru maupun klien lama yang belum pernah menggunakan layanan yang sama.</li>
+        <li style="display:flex;gap:0.6rem;font-size:0.78rem;color:var(--text-muted);"><span style="color:var(--gold);flex-shrink:0;">·</span> Harga promo sudah termasuk biaya jasa SGN-Law, belum termasuk biaya notaris dan PNBP pemerintah.</li>
+        <li style="display:flex;gap:0.6rem;font-size:0.78rem;color:var(--text-muted);"><span style="color:var(--gold);flex-shrink:0;">·</span> Kuota promo terbatas. SGN-Law berhak mengakhiri promo sewaktu-waktu bila kuota habis.</li>
+        <li style="display:flex;gap:0.6rem;font-size:0.78rem;color:var(--text-muted);"><span style="color:var(--gold);flex-shrink:0;">·</span> Promo tidak dapat digabungkan dengan diskon atau penawaran lain kecuali dinyatakan secara tertulis.</li>
+        <li style="display:flex;gap:0.6rem;font-size:0.82rem;color:var(--text-muted);"><span style="color:var(--gold);flex-shrink:0;">·</span> Hubungi tim kami via WhatsApp untuk konfirmasi ketersediaan dan detail promo sebelum melakukan pembayaran.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-banner">
+  <div class="container">
+    <span class="section-label" style="justify-content:center;">Jangan Sampai Terlewat</span>
+    <h2>Ambil Promo Sekarang<br /><em class="serif" style="color:var(--gold);font-style:italic;font-weight:300;">Sebelum Kehabisan</em></h2>
+    <p>Hubungi tim kami via WhatsApp untuk konfirmasi ketersediaan dan proses pemesanan layanan.</p>
+    <div class="btn-group">
+      <a href="https://wa.me/6287822999875?text=Hello!%20Saya%20ingin%20mengetahui%20lebih%20lanjut%20tentang%20promo%20SGN-Law." target="_blank" class="btn btn-gold">Tanya via WhatsApp</a>
+      <a href="/layanan" class="btn btn-outline">Lihat Semua Layanan</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:1rem;align-items:center;text-align:center;padding:2rem 0;">
+      <div style="display:flex;align-items:center;gap:0.75rem;"><div class="logo-mark" style="width:32px;height:32px;font-size:0.95rem;">S</div><span class="logo-name">SGN-Law</span></div>
+      <div style="display:flex;gap:2rem;font-size:0.78rem;flex-wrap:wrap;justify-content:center;"><a href="/" style="color:var(--text-muted);">Beranda</a><a href="/layanan" style="color:var(--text-muted);">Layanan</a><a href="/contact" style="color:var(--text-muted);">Kontak</a></div>
+      <p style="font-size:0.72rem;color:var(--text-dim);">© 2024 – 2026 SGN-Law. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- WA FAB -->
+<div class="wa-fab">
+  <button class="wa-fab-btn" aria-label="Chat WhatsApp"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></button>
+  <div class="wa-pulse"></div>
+  <div class="wa-popup"><div class="wa-popup-head"><div class="avatar">S</div><div class="info"><strong>SGN-Law Support</strong><span>Biasanya membalas dalam menit</span></div></div><div class="wa-popup-list"></div></div>
+</div>
+<button class="back-top" aria-label="Back to top">↑</button>
+
+<script src="../assets/js/main.js"></script>
+<script>
+  if (typeof lucide !== 'undefined') lucide.createIcons();
+
+  // Countdown to end of month
+  function updateCountdown() {
+    const now = new Date();
+    const end = new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59);
+    const diff = end - now;
+    if (diff <= 0) return;
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('cdDays').textContent = String(d).padStart(2,'0');
+    document.getElementById('cdHours').textContent = String(h).padStart(2,'0');
+    document.getElementById('cdMins').textContent = String(m).padStart(2,'0');
+    document.getElementById('cdSecs').textContent = String(s).padStart(2,'0');
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+</script>
+</body>
+</html>

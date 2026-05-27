@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Info Bisnis SGN-Law — Artikel, berita, dan tips seputar legalitas usaha, perizinan, pajak, dan HAKI di Indonesia." />
+  <title>Info Bisnis &amp; Artikel — SGN-Law</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23060F09'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' fill='%23C8A45A' font-size='18' font-family='serif' font-weight='700'>S</text></svg>" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <style>
+    .page-hero { min-height: 40vh; display: flex; align-items: flex-end; padding-top: 100px; padding-bottom: 3rem; background: var(--bg); position: relative; overflow: hidden; }
+    .page-hero .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(200,164,90,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(200,164,90,0.04) 1px, transparent 1px); background-size: 60px 60px; mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, black 30%, transparent 100%); }
+    .page-hero .hero-glow { position: absolute; top: -20%; right: -5%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(29,110,71,0.14) 0%, transparent 70%); border-radius: 50%; }
+    .artikel-section { background: var(--bg); padding: 5rem 0; }
+    .filter-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+    .filter-btn { padding: 0.5rem 1rem; border: 1px solid var(--border); border-radius: 100px; font-size: 0.75rem; letter-spacing: 0.08em; color: var(--text-muted); background: var(--surface); cursor: pointer; transition: var(--transition); }
+    .filter-btn:hover, .filter-btn.active { border-color: var(--gold); color: var(--gold); background: var(--gold-dim); }
+    .featured-article { display: grid; gap: 1.5rem; border: 1px solid var(--gold-border); border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 2.5rem; background: var(--surface); }
+    @media (min-width: 768px) { .featured-article { grid-template-columns: 1.2fr 1fr; } }
+    .featured-thumb { min-height: 240px; background: linear-gradient(135deg, var(--surface-3), var(--green-dim)); display: flex; align-items: center; justify-content: center; font-size: 4rem; color: var(--gold); opacity: 0.4; }
+    .featured-body { padding: 2rem; display: flex; flex-direction: column; justify-content: center; }
+    .featured-tag { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+    .featured-tag::before { content: '★'; }
+    .featured-body h2 { color: var(--text); font-size: clamp(1.2rem,3vw,1.8rem); margin-bottom: 0.75rem; line-height: 1.3; }
+    .featured-body p { font-size: 0.85rem; margin-bottom: 1.5rem; }
+    .articles-grid { display: grid; gap: 1.25rem; }
+    @media (min-width: 768px) { .articles-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .articles-grid { grid-template-columns: repeat(3, 1fr); } }
+    .article-card { border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; background: var(--surface); transition: var(--transition); display: flex; flex-direction: column; }
+    .article-card:hover { border-color: var(--gold-border); transform: translateY(-2px); }
+    .article-thumb { height: 150px; background: linear-gradient(135deg, var(--surface-3), var(--surface)); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; color: var(--gold); opacity: 0.35; }
+    .article-body { padding: 1.25rem; flex: 1; display: flex; flex-direction: column; }
+    .article-cat { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; }
+    .article-body h4 { font-size: 0.95rem; color: var(--text); margin-bottom: 0.4rem; font-family: 'Cormorant Garamond', serif; line-height: 1.4; flex: 1; }
+    .article-body p { font-size: 0.78rem; margin-bottom: 0; }
+    .article-meta { display: flex; align-items: center; justify-content: space-between; margin-top: 1rem; padding-top: 0.75rem; border-top: 1px solid var(--border); font-size: 0.7rem; color: var(--text-dim); }
+    .article-meta a { color: var(--gold); }
+    /* Sidebar */
+    .artikel-layout { display: grid; gap: 2.5rem; }
+    @media (min-width: 1024px) { .artikel-layout { grid-template-columns: 1fr 300px; align-items: start; } }
+    .sidebar-card { border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; background: var(--surface); margin-bottom: 1.5rem; }
+    .sidebar-card h5 { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.25rem; }
+    .sidebar-cat { display: flex; align-items: center; justify-content: space-between; padding: 0.6rem 0; border-bottom: 1px solid var(--border); font-size: 0.82rem; color: var(--text-muted); cursor: pointer; transition: var(--transition); }
+    .sidebar-cat:last-child { border-bottom: none; }
+    .sidebar-cat:hover { color: var(--gold); }
+    .sidebar-cat span { font-family: 'Cormorant Garamond', serif; font-size: 0.9rem; color: var(--text-dim); }
+    .recent-item { display: flex; gap: 0.75rem; padding: 0.6rem 0; border-bottom: 1px solid var(--border); }
+    .recent-item:last-child { border-bottom: none; }
+    .recent-num { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 700; color: var(--gold); opacity: 0.3; flex-shrink: 0; line-height: 1; margin-top: 2px; }
+    .recent-item h6 { font-size: 0.8rem; color: var(--text); line-height: 1.4; font-family: 'Cormorant Garamond', serif; font-weight: 600; }
+    .recent-item p { font-size: 0.68rem; color: var(--text-dim); margin-top: 0.2rem; }
+  </style>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo"><div class="logo-mark">S</div><div class="logo-text"><span class="logo-name">SGN-Law</span><span class="logo-tagline">Legal &amp; Business Consultancy</span></div></a>
+      <ul class="nav-links">
+        <li><a href="/">Beranda</a></li><li><a href="/about">Tentang Kami</a></li>
+        <li class="has-dropdown"><a href="/layanan">Layanan</a>
+          <div class="dropdown dropdown-mega">
+            <a href="/layanan#pendirian">Pendirian Perusahaan</a><a href="/layanan#perizinan-usaha">Perizinan Usaha</a>
+            <a href="/layanan#perpajakan">Perpajakan</a><a href="/layanan#haki">HAKI</a>
+            <a href="/layanan#pma">PMA</a><a href="/layanan#hukum">Layanan Hukum</a>
+            <a href="/layanan#virtual-office">Virtual Office</a><a href="/layanan#lainnya">Layanan Lainnya</a>
+          </div>
+        </li>
+        <li><a href="/fitur">Fitur</a></li>
+        <li><a href="/artikel" style="color:var(--gold)">Info Bisnis</a></li>
+        <li><a href="/promo">Promo</a></li>
+      </ul>
+      <div class="nav-cta"><a href="/contact" class="btn btn-gold">Konsultasi Gratis</a></div>
+      <button class="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="mobile-drawer">
+  <div class="drawer-header"><a href="/" class="nav-logo"><div class="logo-mark">S</div><div class="logo-text"><span class="logo-name">SGN-Law</span></div></a><button class="drawer-close">✕</button></div>
+  <nav class="drawer-nav"><a href="/">Beranda</a><a href="/about">Tentang Kami</a><a href="/layanan">Layanan</a><a href="/fitur">Fitur</a><a href="/artikel" style="color:var(--gold)">Info Bisnis</a><a href="/promo">Promo</a><a href="/contact">Hubungi Kami</a></nav>
+  <div class="drawer-footer"><a href="https://wa.me/6287822999875" target="_blank" class="btn btn-gold">Konsultasi via WhatsApp</a></div>
+</div>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="container" style="position:relative;z-index:2;">
+    <span class="section-label">SGN-Law Blog</span>
+    <h1 style="margin-bottom:0.75rem;">Info <em style="color:var(--gold);font-style:italic;font-weight:300;">Bisnis</em></h1>
+    <p style="max-width:500px;">Artikel, tips, dan panduan seputar legalitas usaha, perizinan, pajak, dan bisnis di Indonesia.</p>
+  </div>
+</section>
+
+<!-- ARTICLES -->
+<section class="artikel-section">
+  <div class="container">
+
+    <!-- Filter -->
+    <div class="filter-bar">
+      <button class="filter-btn active">Semua</button>
+      <button class="filter-btn">Pendirian Usaha</button>
+      <button class="filter-btn">Perizinan</button>
+      <button class="filter-btn">Perpajakan</button>
+      <button class="filter-btn">HAKI</button>
+      <button class="filter-btn">PMA</button>
+      <button class="filter-btn">Hukum</button>
+      <button class="filter-btn">Umum</button>
+    </div>
+
+    <div class="artikel-layout">
+      <!-- Main Content -->
+      <div>
+        <!-- Featured -->
+        <div class="featured-article">
+          <div class="featured-thumb">⚖️</div>
+          <div class="featured-body">
+            <div class="featured-tag">Artikel Pilihan</div>
+            <h2>Mengapa Legalitas Usaha Adalah Fondasi Bisnis yang Kuat di 2025</h2>
+            <p>Di tengah persaingan bisnis yang semakin ketat, legalitas usaha bukan lagi pilihan, melainkan keharusan bagi setiap pengusaha yang ingin berkembang lebih jauh dan lebih aman.</p>
+            <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;">
+              <span style="font-size:0.72rem;color:var(--text-dim);">26 Januari 2025</span>
+              <a href="#" class="btn btn-outline" style="font-size:0.72rem;padding:0.55rem 1rem;">Baca Selengkapnya →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Grid -->
+        <div class="articles-grid">
+
+          <article class="article-card">
+            <div class="article-thumb">📋</div>
+            <div class="article-body">
+              <div class="article-cat">Perizinan Usaha</div>
+              <h4>NIB dalam 3 Hari! Proses Cepat, Dijamin Aman, dan Resmi</h4>
+              <p>Pengurusan NIB kini semakin mudah dan cepat. Pelajari cara prosesnya bersama SGN-Law.</p>
+              <div class="article-meta"><span>6 Feb 2025</span><a href="#">Baca →</a></div>
+            </div>
+          </article>
+
+          <article class="article-card">
+            <div class="article-thumb">🏗️</div>
+            <div class="article-body">
+              <div class="article-cat">Perizinan Khusus</div>
+              <h4>Pentingnya Izin Konstruksi dalam Proyek Pembangunan</h4>
+              <p>Setiap proyek wajib memiliki izin konstruksi yang sah. Pahami regulasinya agar proyek Anda berjalan lancar.</p>
+              <div class="article-meta"><span>19 Mar 2025</span><a href="#">Baca →</a></div>
+            </div>
+          </article>
+
+          <article class="article-card">
+            <div class="article-thumb">™️</div>
+            <div class="article-body">
+              <div class="article-cat">HAKI</div>
+              <h4>Cara Mendaftarkan Merek Dagang di Indonesia: Panduan Lengkap 2025</h4>
+              <p>Lindungi identitas bisnis Anda. Panduan langkah demi langkah mendaftarkan merek ke DJKI.</p>
+              <div class="article-meta"><span>5 Apr 2025</span><a href="#">Baca →</a></div>
+            </div>
+          </article>
+
+          <article class="article-card">
+            <div class="article-thumb">💰</div>
+            <div class="article-body">
+              <div class="article-cat">Perpajakan</div>
+              <h4>Panduan Lengkap PPh 21 untuk Karyawan Perusahaan di 2025</h4>
+              <p>Perhitungan dan kewajiban PPh 21 yang wajib diketahui setiap HR dan pemilik bisnis.</p>
+              <div class="article-meta"><span>12 Apr 2025</span><a href="#">Baca →</a></div>
+            </div>
+          </article>
+
+          <article class="article-card">
+            <div class="article-thumb">🌏</div>
+            <div class="article-body">
+              <div class="article-cat">PMA</div>
+              <h4>Panduan Mendirikan PT PMA di Indonesia untuk Investor Asing</h4>
+              <p>Persyaratan, modal minimum, bidang usaha yang terbuka, dan proses pendirian PT PMA secara lengkap.</p>
+              <div class="article-meta"><span>20 Apr 2025</span><a href="#">Baca →</a></div>
+            </div>
+          </article>
+
+          <article class="article-card">
+            <div class="article-thumb">🏢</div>
+            <div class="article-body">
+              <div class="article-cat">Pendirian Usaha</div>
+              <h4>PT vs CV: Mana yang Lebih Cocok untuk Bisnis Anda?</h4>
+              <p>Perbandingan lengkap antara PT dan CV — modal, kewajiban, perpajakan, dan reputasi bisnis.</p>
+              <div class="article-meta"><span>1 Mei 2025</span><a href="#">Baca →</a></div>
+            </div>
+          </article>
+
+          <article class="article-card">
+            <div class="article-thumb">📱</div>
+            <div class="article-body">
+              <div class="article-cat">Perizinan Usaha</div>
+              <h4>OSS RBA: Sistem Perizinan Berbasis Risiko yang Wajib Anda Pahami</h4>
+              <p>OSS Risk Based Approach mengklasifikasikan usaha berdasarkan tingkat risiko. Apa dampaknya bagi bisnis Anda?</p>
+              <div class="article-meta"><span>15 Mei 2025</span><a href="#">Baca →</a></div>
+            </div>
+          </article>
+
+          <article class="article-card">
+            <div class="article-thumb">🔒</div>
+            <div class="article-body">
+              <div class="article-cat">Hukum</div>
+              <h4>Perjanjian Kerja Sama yang Sah: Syarat dan Cara Membuatnya</h4>
+              <p>Tidak semua perjanjian memiliki kekuatan hukum. Ketahui syarat sah perjanjian berdasarkan KUH Perdata.</p>
+              <div class="article-meta"><span>22 Mei 2025</span><a href="#">Baca →</a></div>
+            </div>
+          </article>
+
+          <article class="article-card">
+            <div class="article-thumb">🏥</div>
+            <div class="article-body">
+              <div class="article-cat">Perizinan Khusus</div>
+              <h4>Cara Mengurus Izin Edar Alat Kesehatan (IDAK) di Indonesia</h4>
+              <p>Persyaratan dan alur proses perizinan distribusi alat kesehatan dari Kemenkes RI.</p>
+              <div class="article-meta"><span>3 Jun 2025</span><a href="#">Baca →</a></div>
+            </div>
+          </article>
+
+        </div>
+
+        <div style="text-align:center;margin-top:2.5rem;">
+          <button class="btn btn-outline">Muat Lebih Banyak Artikel</button>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside>
+        <div class="sidebar-card">
+          <h5>Kategori</h5>
+          <div class="sidebar-cat">Pendirian Usaha <span>12</span></div>
+          <div class="sidebar-cat">Perizinan <span>18</span></div>
+          <div class="sidebar-cat">Perpajakan <span>9</span></div>
+          <div class="sidebar-cat">HAKI <span>7</span></div>
+          <div class="sidebar-cat">PMA <span>5</span></div>
+          <div class="sidebar-cat">Hukum <span>11</span></div>
+          <div class="sidebar-cat">Umum <span>8</span></div>
+        </div>
+        <div class="sidebar-card">
+          <h5>Artikel Populer</h5>
+          <div class="recent-item"><div class="recent-num">01</div><div><h6>PT vs CV: Mana yang Lebih Cocok?</h6><p>1 Mei 2025</p></div></div>
+          <div class="recent-item"><div class="recent-num">02</div><div><h6>Cara Mendaftarkan Merek Dagang 2025</h6><p>5 Apr 2025</p></div></div>
+          <div class="recent-item"><div class="recent-num">03</div><div><h6>NIB dalam 3 Hari!</h6><p>6 Feb 2025</p></div></div>
+          <div class="recent-item"><div class="recent-num">04</div><div><h6>Panduan PPh 21 Karyawan</h6><p>12 Apr 2025</p></div></div>
+          <div class="recent-item"><div class="recent-num">05</div><div><h6>Panduan PT PMA untuk Investor Asing</h6><p>20 Apr 2025</p></div></div>
+        </div>
+        <div class="sidebar-card" style="background:var(--gold-dim);border-color:var(--gold-border);">
+          <h5>Konsultasi Gratis</h5>
+          <p style="font-size:0.82rem;margin-bottom:1rem;">Punya pertanyaan seputar legalitas bisnis? Tim ahli SGN-Law siap membantu!</p>
+          <a href="https://wa.me/6287822999875?text=Hello!%20Saya%20ingin%20konsultasi%20gratis." target="_blank" class="btn btn-gold" style="width:100%;justify-content:center;">WhatsApp Sekarang</a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div style="display:flex;flex-direction:column;gap:1rem;align-items:center;text-align:center;padding:2rem 0;">
+      <div style="display:flex;align-items:center;gap:0.75rem;"><div class="logo-mark" style="width:32px;height:32px;font-size:0.95rem;">S</div><span class="logo-name">SGN-Law</span></div>
+      <div style="display:flex;gap:2rem;font-size:0.78rem;flex-wrap:wrap;justify-content:center;"><a href="/" style="color:var(--text-muted);">Beranda</a><a href="/layanan" style="color:var(--text-muted);">Layanan</a><a href="/contact" style="color:var(--text-muted);">Kontak</a></div>
+      <p style="font-size:0.72rem;color:var(--text-dim);">© 2024 – 2026 SGN-Law. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<div class="wa-fab">
+  <button class="wa-fab-btn" aria-label="Chat WhatsApp"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></button>
+  <div class="wa-pulse"></div>
+  <div class="wa-popup"><div class="wa-popup-head"><div class="avatar">S</div><div class="info"><strong>SGN-Law Support</strong><span>Biasanya membalas dalam menit</span></div></div><div class="wa-popup-list"></div></div>
+</div>
+<button class="back-top" aria-label="Back to top">↑</button>
+<script src="../assets/js/main.js"></script>
+<script>
+  if (typeof lucide !== 'undefined') lucide.createIcons();
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
