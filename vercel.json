@@ -1,4 +1,5 @@
 {
+  "version": 2,
   "cleanUrls": true,
   "trailingSlash": false,
   "headers": [
@@ -11,13 +12,13 @@
       ]
     }
   ],
-  "rewrites": [
-    { "source": "/layanan", "destination": "/pages/layanan.html" },
-    { "source": "/about",   "destination": "/pages/about.html" },
-    { "source": "/contact", "destination": "/pages/contact.html" },
-    { "source": "/fitur",   "destination": "/pages/fitur.html" },
-    { "source": "/artikel", "destination": "/pages/artikel.html" },
-    { "source": "/promo",   "destination": "/pages/promo.html" },
-    { "source": "/",        "destination": "/index.html" }
+  "routes": [
+    { "src": "/layanan", "dest": "/pages/layanan.html" },
+    { "src": "/about",   "dest": "/pages/about.html" },
+    { "src": "/contact", "dest": "/pages/contact.html" },
+    { "src": "/fitur",   "dest": "/pages/fitur.html" },
+    { "src": "/artikel", "dest": "/pages/artikel.html" },
+    { "src": "/promo",   "dest": "/pages/promo.html" },
+    { "src": "/(.*)",    "dest": "/$1" }
   ]
 }
