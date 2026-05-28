@@ -9,10 +9,10 @@
 /* ── CSS Variables ──────────────────────────────────────── */
 :root {
   --bg:           #FFFFFF;
-  --bg-2:         #F8F7F5;
-  --surface:      #F4F2EE;
-  --surface-2:    #EDE9E3;
-  --surface-3:    #E5E0D8;
+  --bg-2:         #F2F7F5;
+  --surface:      #EDF5F2;
+  --surface-2:    #E3F0EB;
+  --surface-3:    #D6EAE3;
   --gold:         #00674F;
   --gold-bright:  #00876A;
   --gold-light:   #00A080;
