@@ -21,7 +21,7 @@ const SGN_I18N = {
     nav_reseller:       'Program Reseller',
     nav_promo:          'Promo',
     nav_contact:        'Hubungi Kami',
-    nav_cta:            'Konsultasi Gratis',
+    nav_cta:            'Konsultasi',
 
     /* — Service dropdown items — */
     svc_pendirian:      'Pendirian Perusahaan',
@@ -251,7 +251,7 @@ const SGN_I18N = {
     nav_reseller:       'Reseller Program',
     nav_promo:          'Promotions',
     nav_contact:        'Contact Us',
-    nav_cta:            'Free Consultation',
+    nav_cta:            'Consultation',
 
     /* — Service dropdown items — */
     svc_pendirian:      'Company Formation',

@@ -302,6 +302,10 @@ p  { font-size: 0.95rem; color: var(--text-muted); line-height: 1.75; }
   font-size: 0.68rem; letter-spacing: 0.2em;
   text-transform: uppercase; color: var(--gold);
   margin-bottom: 1.5rem;
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .hero-eyebrow span { width: 5px; height: 5px; background: var(--gold); border-radius: 50%; }
 .hero h1 { color: var(--text); margin-bottom: 1.5rem; }
