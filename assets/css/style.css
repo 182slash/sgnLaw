@@ -299,15 +299,21 @@ p  { font-size: 0.95rem; color: var(--text-muted); line-height: 1.75; }
   background: var(--gold-dim);
   border: 1px solid var(--gold-border);
   padding: 0.4rem 0.9rem; border-radius: 100px;
-  font-size: 0.68rem; letter-spacing: 0.2em;
+  font-size: 0.68rem; letter-spacing: 0.15em;
   text-transform: uppercase; color: var(--gold);
   margin-bottom: 1.5rem;
   white-space: nowrap;
-  max-width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  flex-wrap: nowrap;
 }
-.hero-eyebrow span { width: 5px; height: 5px; background: var(--gold); border-radius: 50%; }
+.hero-eyebrow span:first-child {
+  width: 6px; height: 6px; flex-shrink: 0;
+  background: var(--gold); border-radius: 50%;
+  display: inline-block;
+}
+.hero-eyebrow span:last-child {
+  white-space: nowrap;
+  color: var(--gold);
+}
 .hero h1 { color: var(--text); margin-bottom: 1.5rem; }
 .hero h1 em {
   font-style: italic; color: var(--gold);
