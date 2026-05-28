@@ -13,10 +13,11 @@
   ],
   "rewrites": [
     { "source": "/layanan", "destination": "/pages/layanan.html" },
-    { "source": "/about", "destination": "/pages/about.html" },
+    { "source": "/about",   "destination": "/pages/about.html" },
     { "source": "/contact", "destination": "/pages/contact.html" },
-    { "source": "/fitur", "destination": "/pages/fitur.html" },
+    { "source": "/fitur",   "destination": "/pages/fitur.html" },
     { "source": "/artikel", "destination": "/pages/artikel.html" },
-    { "source": "/promo", "destination": "/pages/promo.html" }
+    { "source": "/promo",   "destination": "/pages/promo.html" },
+    { "source": "/",        "destination": "/index.html" }
   ]
 }
