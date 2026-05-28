@@ -10,7 +10,7 @@
   <style>
     .page-hero { min-height: 40vh; display: flex; align-items: flex-end; padding-top: 100px; padding-bottom: 3rem; background: var(--bg); position: relative; overflow: hidden; }
     .page-hero .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(200,164,90,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(200,164,90,0.04) 1px, transparent 1px); background-size: 60px 60px; mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, black 30%, transparent 100%); }
-    .page-hero .hero-glow { position: absolute; top: -20%; right: -5%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(29,110,71,0.14) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
+    .page-hero .hero-glow { position: absolute; top: -20%; right: -5%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(201,168,76,0.09) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
 
     /* Contact Layout */
     .contact-section { background: var(--bg); padding: 5rem 0; }
@@ -64,7 +64,7 @@
       border-radius: var(--radius-lg); background: var(--surface);
       transition: var(--transition); text-decoration: none;
     }
-    .wa-agent:hover { border-color: rgba(37,211,102,0.3); background: rgba(37,211,102,0.05); }
+    .wa-agent:hover { border-color: var(--gold-border); background: var(--gold-dim); }
     .wa-agent-av { width: 36px; height: 36px; background: #25D366; border-radius: 50%; display: grid; place-items: center; color: white; font-size: 0.78rem; font-weight: 700; flex-shrink: 0; }
     .wa-agent-info strong { display: block; font-size: 0.82rem; color: var(--text); }
     .wa-agent-info span { font-size: 0.7rem; color: var(--text-dim); }
@@ -91,26 +91,33 @@
     <div class="nav-inner">
       <a href="/" class="nav-logo">
         <div class="logo-mark">S</div>
-        <div class="logo-text"><span class="logo-name">SGN-Law</span><span class="logo-tagline">Legal &amp; Business Consultancy</span></div>
+        <div class="logo-text"><span class="logo-name">SGN-Law</span><span class="logo-tagline" data-i18n="footer_tagline">Legal &amp; Business Consultancy</span></div>
       </a>
       <ul class="nav-links">
-        <li><a href="/">Beranda</a></li>
-        <li><a href="/about">Tentang Kami</a></li>
-        <li class="has-dropdown"><a href="/layanan">Layanan</a>
+        <li><a href="/" data-i18n="nav_home">Beranda</a></li>
+        <li><a href="/about" data-i18n="nav_about">Tentang Kami</a></li>
+        <li class="has-dropdown"><a href="/layanan" data-i18n="nav_services">Layanan</a>
           <div class="dropdown dropdown-mega">
-            <a href="/layanan#pendirian">Pendirian Perusahaan</a><a href="/layanan#penutupan">Penutupan Perusahaan</a>
-            <a href="/layanan#virtual-office">Virtual Office</a><a href="/layanan#perizinan-khusus">Perizinan Khusus</a>
-            <a href="/layanan#perizinan-usaha">Perizinan Usaha</a><a href="/layanan#perpajakan">Perpajakan</a>
-            <a href="/layanan#haki">HAKI</a><a href="/layanan#pma">PMA</a>
-            <a href="/layanan#hukum">Layanan Hukum</a><a href="/layanan#properti">Perizinan Properti</a>
-            <a href="/layanan#keuangan">Keuangan</a><a href="/layanan#lainnya">Layanan Lainnya</a>
+            <a href="/layanan#pendirian" data-i18n="svc_pendirian">Pendirian Perusahaan</a><a href="/layanan#penutupan" data-i18n="svc_penutupan">Penutupan Perusahaan</a>
+            <a href="/layanan#virtual-office" data-i18n="svc_virtual">Virtual Office</a><a href="/layanan#perizinan-khusus" data-i18n="svc_khusus">Perizinan Khusus</a>
+            <a href="/layanan#perizinan-usaha" data-i18n="svc_usaha">Perizinan Usaha</a><a href="/layanan#perpajakan">Perpajakan</a>
+            <a href="/layanan#haki" data-i18n="svc_haki">HAKI</a><a href="/layanan#pma" data-i18n="svc_pma">PMA</a>
+            <a href="/layanan#hukum" data-i18n="svc_hukum">Layanan Hukum</a><a href="/layanan#properti" data-i18n="svc_properti">Perizinan Properti</a>
+            <a href="/layanan#keuangan" data-i18n="svc_keuangan">Keuangan</a><a href="/layanan#lainnya" data-i18n="svc_lainnya">Layanan Lainnya</a>
           </div>
         </li>
-        <li><a href="/fitur">Fitur</a></li>
-        <li><a href="/artikel">Info Bisnis</a></li>
-        <li><a href="/promo">Promo</a></li>
+        <li><a href="/fitur" data-i18n="nav_features">Fitur</a></li>
+        <li><a href="/artikel" data-i18n="nav_info">Info Bisnis</a></li>
+        <li><a href="/promo" data-i18n="nav_promo">Promo</a></li>
       </ul>
-      <div class="nav-cta"><a href="/contact" class="btn btn-gold" style="border:1px solid var(--gold);">Hubungi Kami</a></div>
+      <div class="nav-cta">
+<!-- Language Switcher -->
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="ID">ID</button>
+          <button class="lang-btn" data-lang="EN">EN</button>
+          <button class="lang-btn" data-lang="CN">中</button>
+        </div>
+        <a href="/contact" class="btn btn-gold" style="border:1px solid var(--gold);" data-i18n="nav_contact">Hubungi Kami</a></div>
       <button class="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -122,12 +129,21 @@
     <button class="drawer-close">✕</button>
   </div>
   <nav class="drawer-nav">
-    <a href="/">Beranda</a><a href="/about">Tentang Kami</a>
-    <a href="/layanan">Layanan</a><a href="/fitur">Fitur</a>
-    <a href="/artikel">Info Bisnis</a><a href="/promo">Promo</a>
-    <a href="/contact" style="color:var(--gold)">Hubungi Kami</a>
+    <a href="/" data-i18n="nav_home">Beranda</a><a href="/about" data-i18n="nav_about">Tentang Kami</a>
+    <a href="/layanan" data-i18n="nav_services">Layanan</a><a href="/fitur" data-i18n="nav_features">Fitur</a>
+    <a href="/artikel" data-i18n="nav_info">Info Bisnis</a><a href="/promo" data-i18n="nav_promo">Promo</a>
+    <a href="/contact" style="color:var(--gold)" data-i18n="nav_contact">Hubungi Kami</a>
   </nav>
-  <div class="drawer-footer"><a href="https://wa.me/6287822999875" target="_blank" class="btn btn-gold">Konsultasi via WhatsApp</a></div>
+  <!-- Lang switcher in mobile drawer -->
+  <div class="drawer-lang">
+    <span class="drawer-lang-label">Lang</span>
+    <div class="lang-switcher">
+      <button class="lang-btn active" data-lang="ID">ID</button>
+      <button class="lang-btn" data-lang="EN">EN</button>
+      <button class="lang-btn" data-lang="CN">中</button>
+    </div>
+  </div>
+  <div class="drawer-footer"><a href="https://wa.me/6287822999875" target="_blank" class="btn btn-gold" data-i18n="cta_btn1">Konsultasi via WhatsApp</a></div>
 </div>
 
 <!-- PAGE HERO -->
@@ -136,8 +152,8 @@
   <div class="hero-glow"></div>
   <div class="container" style="position:relative;z-index:2;">
     <span class="section-label">SGN-Law</span>
-    <h1 style="margin-bottom:0.75rem;">Hubungi <em style="color:var(--gold);font-style:italic;font-weight:300;">Kami</em></h1>
-    <p style="max-width:500px;">Konsultasi gratis bersama tim ahli kami. Tidak ada biaya tersembunyi, tidak ada komitmen awal.</p>
+    <h1 style="margin-bottom:0.75rem;"><span data-i18n="nav_contact">Hubungi Kami</span></h1>
+    <p style="max-width:500px;" data-i18n="cta_desc">Konsultasi gratis bersama tim ahli kami. Tidak ada biaya tersembunyi, tidak ada komitmen awal.</p>
   </div>
 </section>
 
@@ -148,10 +164,10 @@
 
       <!-- Left: Form -->
       <div>
-        <span class="section-label">Kirim Pesan</span>
-        <h2 class="section-title" style="margin-bottom:0.5rem;">Kami Siap<br /><em class="serif" style="color:var(--gold);font-style:italic;font-weight:300;">Membantu Anda</em></h2>
+        <span class="section-label" data-i18n="cta_label">Kirim Pesan</span>
+        <h2 class="section-title" style="margin-bottom:0.5rem;"><span data-i18n="cta_title1">Kami Siap</span><br /><em class="serif" style="color:var(--gold);font-style:italic;font-weight:300;" data-i18n="cta_title2">Membantu Anda</em></h2>
         <div class="divider"></div>
-        <p style="margin-bottom:2rem;">Isi formulir di bawah dan tim kami akan menghubungi Anda dalam 1×24 jam kerja.</p>
+        <p style="margin-bottom:2rem;" data-i18n="sec_about_p2">Isi formulir di bawah dan tim kami akan menghubungi Anda dalam 1×24 jam kerja.</p>
 
         <form class="contact-form" id="contactForm" onsubmit="handleSubmit(event)">
           <div class="form-row">
@@ -209,8 +225,8 @@
 
       <!-- Right: Info -->
       <div>
-        <span class="section-label">Info Kontak</span>
-        <h2 class="section-title" style="margin-bottom:0.5rem;">Atau Langsung<br /><em class="serif" style="color:var(--gold);font-style:italic;font-weight:300;">Hubungi Kami</em></h2>
+        <span class="section-label" data-i18n="sec_why_label">Info Kontak</span>
+        <h2 class="section-title" style="margin-bottom:0.5rem;"><span data-i18n="cta_label">Atau Langsung</span><br /><em class="serif" style="color:var(--gold);font-style:italic;font-weight:300;">Hubungi Kami</em></h2>
         <div class="divider"></div>
         <div class="contact-info" style="margin-bottom:2rem;">
           <div class="contact-info-card">
@@ -249,31 +265,31 @@
 
         <!-- WA Agents -->
         <div class="wa-agents">
-          <h4>Pilih CS via WhatsApp</h4>
+          <h4 data-i18n="cta_btn1">Pilih CS via WhatsApp</h4>
           <div class="wa-agents-grid">
-            <a href="https://wa.me/6282119981710?text=Hello!%20Saya%20ingin%20konsultasi%20gratis." target="_blank" class="wa-agent">
+            <a href="https://wa.me/6287777746874?text=Hello!%20Saya%20ingin%20konsultasi%20gratis." target="_blank" class="wa-agent">
               <div class="wa-agent-av">U</div>
-              <div class="wa-agent-info"><strong>CS Julio</strong><span>Head Office</span></div>
+              <div class="wa-agent-info"><strong>CS Ufit</strong><span data-i18n="office_head">Head Office</span></div>
             </a>
-            <a href="https://wa.me/6282119981710?text=Hello!%20Saya%20ingin%20konsultasi%20gratis." target="_blank" class="wa-agent">
+            <a href="https://wa.me/6285123123874?text=Hello!%20Saya%20ingin%20konsultasi%20gratis." target="_blank" class="wa-agent">
               <div class="wa-agent-av">T</div>
-              <div class="wa-agent-info"><strong>CS Prabowo</strong><span>Head Office</span></div>
+              <div class="wa-agent-info"><strong>CS Tika</strong><span data-i18n="office_head">Head Office</span></div>
             </a>
-            <a href="https://wa.me/6282119981710?text=Hello!%20Saya%20ingin%20konsultasi%20gratis." target="_blank" class="wa-agent">
+            <a href="https://wa.me/628158818875?text=Hello!%20Saya%20ingin%20konsultasi%20gratis." target="_blank" class="wa-agent">
               <div class="wa-agent-av">R</div>
-              <div class="wa-agent-info"><strong>CS Jokowi</strong><span>Cikarang</span></div>
+              <div class="wa-agent-info"><strong>CS Risa</strong><span>Cikarang</span></div>
             </a>
-            <a href="https://wa.me/6282119981710?text=Hello!%20Saya%20ingin%20konsultasi%20gratis." target="_blank" class="wa-agent">
+            <a href="https://wa.me/628158818874?text=Hello!%20Saya%20ingin%20konsultasi%20gratis." target="_blank" class="wa-agent">
               <div class="wa-agent-av">A</div>
-              <div class="wa-agent-info"><strong>CS Susilo</strong><span>Jakarta</span></div>
+              <div class="wa-agent-info"><strong>CS April</strong><span>Jakarta</span></div>
             </a>
-            <a href="https://wa.me/6282119981710?text=Hello!%20Saya%20ingin%20konsultasi%20gratis." target="_blank" class="wa-agent">
+            <a href="https://wa.me/6287822999875?text=Hello!%20Saya%20ingin%20konsultasi%20gratis." target="_blank" class="wa-agent">
               <div class="wa-agent-av">N</div>
-              <div class="wa-agent-info"><strong>CS Soeharto</strong><span>Surabaya</span></div>
+              <div class="wa-agent-info"><strong>CS Nurul</strong><span>Surabaya</span></div>
             </a>
-            <a href="https://wa.me/6282119981710?text=Hello!%20Saya%20ingin%20konsultasi%20gratis." target="_blank" class="wa-agent">
+            <a href="https://wa.me/6287877598000?text=Hello!%20Saya%20ingin%20konsultasi%20gratis." target="_blank" class="wa-agent">
               <div class="wa-agent-av">E</div>
-              <div class="wa-agent-info"><strong>CS Soekarno</strong><span>Bogor</span></div>
+              <div class="wa-agent-info"><strong>CS Eka</strong><span>Bogor</span></div>
             </a>
           </div>
         </div>
@@ -288,16 +304,16 @@
   <div class="container">
     <div class="section-header centered">
       <span class="section-label">Kantor Kami</span>
-      <h2 class="section-title">Kunjungi Kami<br /><em class="serif" style="color:var(--gold);font-style:italic;font-weight:300;">Langsung</em></h2>
+      <h2 class="section-title"><span data-i18n="sec_office_title1">Kunjungi Kami</span><br /><em class="serif" style="color:var(--gold);font-style:italic;font-weight:300;" data-i18n="sec_office_title2">Langsung</em></h2>
       <div class="divider"></div>
     </div>
     <div class="office-cards">
       <div class="office-contact-card">
-        <span class="tag">Head Office</span>
+        <span class="tag" data-i18n="office_head">Head Office</span>
         <h4>Cibubur — Bekasi</h4>
         <p>Citra Grand Cibubur CBD, Ruko Marquette Blok AR1 No.27, Jatirangga, Kec. Jatisampurna, Kota Bekasi, Jawa Barat 17434</p>
         <div class="office-contact-links">
-          <a href="https://maps.app.goo.gl/o8hvksdFG1zWT3ETA" target="_blank" class="btn btn-outline" style="font-size:0.72rem;padding:0.55rem 0.9rem;">Google Maps →</a>
+          <a href="https://maps.app.goo.gl/o8hvksdFG1zWT3ETA" target="_blank" class="btn btn-outline" style="font-size:0.72rem;padding:0.55rem 0.9rem;" data-i18n="office_map">Google Maps →</a>
           <a href="https://wa.me/6287777746874" target="_blank" class="btn btn-outline" style="font-size:0.72rem;padding:0.55rem 0.9rem;">WhatsApp</a>
         </div>
       </div>
@@ -306,7 +322,7 @@
         <h4>Cikarang — Bekasi</h4>
         <p>Ruko Tanamera, Lippo Cikarang, Jl. Waterfront River Drive No.B32 Lt 2, Cibatu, Cikarang Sel., Kab. Bekasi, Jawa Barat 17530</p>
         <div class="office-contact-links">
-          <a href="https://maps.app.goo.gl/KTRz9UvB2kv5escLA" target="_blank" class="btn btn-outline" style="font-size:0.72rem;padding:0.55rem 0.9rem;">Google Maps →</a>
+          <a href="https://maps.app.goo.gl/KTRz9UvB2kv5escLA" target="_blank" class="btn btn-outline" style="font-size:0.72rem;padding:0.55rem 0.9rem;" data-i18n="office_map">Google Maps →</a>
           <a href="https://wa.me/628158818875" target="_blank" class="btn btn-outline" style="font-size:0.72rem;padding:0.55rem 0.9rem;">WhatsApp</a>
         </div>
       </div>
@@ -315,7 +331,7 @@
         <h4>Surabaya — Jawa Timur</h4>
         <p>Spazio Tower Office, Lantai 5 Unit 501A, Jl. Mayjend. Jonosewojo Kav.3, Dukuhpakis, Surabaya, Jawa Timur 60225</p>
         <div class="office-contact-links">
-          <a href="https://maps.app.goo.gl/gh4aCzBjtQcvUdYc7" target="_blank" class="btn btn-outline" style="font-size:0.72rem;padding:0.55rem 0.9rem;">Google Maps →</a>
+          <a href="https://maps.app.goo.gl/gh4aCzBjtQcvUdYc7" target="_blank" class="btn btn-outline" style="font-size:0.72rem;padding:0.55rem 0.9rem;" data-i18n="office_map">Google Maps →</a>
           <a href="https://wa.me/6287822999875" target="_blank" class="btn btn-outline" style="font-size:0.72rem;padding:0.55rem 0.9rem;">WhatsApp</a>
         </div>
       </div>
@@ -324,7 +340,7 @@
         <h4>Bogor — Jawa Barat</h4>
         <p>Bukit Cimanggu City, Ruko Prominent Blok KD1 No.16, Jl. Kencana Residence, Kel. Sukadamai, Kota Bogor, Jawa Barat 16165</p>
         <div class="office-contact-links">
-          <a href="https://maps.app.goo.gl/o8hvksdFG1zWT3ETA" target="_blank" class="btn btn-outline" style="font-size:0.72rem;padding:0.55rem 0.9rem;">Google Maps →</a>
+          <a href="https://maps.app.goo.gl/o8hvksdFG1zWT3ETA" target="_blank" class="btn btn-outline" style="font-size:0.72rem;padding:0.55rem 0.9rem;" data-i18n="office_map">Google Maps →</a>
           <a href="https://wa.me/6287877598000" target="_blank" class="btn btn-outline" style="font-size:0.72rem;padding:0.55rem 0.9rem;">WhatsApp</a>
         </div>
       </div>
@@ -333,7 +349,7 @@
         <h4>Jakarta Selatan</h4>
         <p>Menara Hijau Lt. 7, Jl. Letjen M.T. Haryono No. Kav.33, Cikoko, Kec. Pancoran, Jakarta Selatan 12770</p>
         <div class="office-contact-links">
-          <a href="https://maps.app.goo.gl/UwhL3aNBraKAeHga6" target="_blank" class="btn btn-outline" style="font-size:0.72rem;padding:0.55rem 0.9rem;">Google Maps →</a>
+          <a href="https://maps.app.goo.gl/UwhL3aNBraKAeHga6" target="_blank" class="btn btn-outline" style="font-size:0.72rem;padding:0.55rem 0.9rem;" data-i18n="office_map">Google Maps →</a>
           <a href="https://wa.me/628158818874" target="_blank" class="btn btn-outline" style="font-size:0.72rem;padding:0.55rem 0.9rem;">WhatsApp</a>
         </div>
       </div>
@@ -346,7 +362,7 @@
   <div class="container">
     <div class="section-header centered">
       <span class="section-label">FAQ</span>
-      <h2 class="section-title">Pertanyaan yang<br /><em class="serif" style="color:var(--gold);font-style:italic;font-weight:300;">Sering Diajukan</em></h2>
+      <h2 class="section-title"><span data-i18n="sec_process_label">Pertanyaan yang</span><br /><em class="serif" style="color:var(--gold);font-style:italic;font-weight:300;" data-i18n="sec_why_title">Sering Diajukan</em></h2>
       <div class="divider"></div>
     </div>
     <div style="max-width:700px;margin:2.5rem auto 0;display:flex;flex-direction:column;gap:0.75rem;" id="faqList">
@@ -363,14 +379,14 @@
         <div class="logo-mark" style="width:32px;height:32px;font-size:0.95rem;">S</div>
         <span class="logo-name">SGN-Law</span>
       </div>
-      <p style="font-size:0.78rem;max-width:400px;">Konsultan Legalitas dan Perizinan Usaha Terpercaya di Indonesia.</p>
+      <p style="font-size:0.78rem;max-width:400px;" data-i18n="footer_desc">Konsultan Legalitas dan Perizinan Usaha Terpercaya di Indonesia.</p>
       <div style="display:flex;gap:2rem;font-size:0.78rem;flex-wrap:wrap;justify-content:center;">
-        <a href="/" style="color:var(--text-muted);">Beranda</a>
+        <a href="/" style="color:var(--text-muted);" data-i18n="nav_home">Beranda</a>
         <a href="/layanan" style="color:var(--text-muted);">Layanan</a>
         <a href="/about" style="color:var(--text-muted);">Tentang</a>
         <a href="/contact" style="color:var(--text-muted);">Kontak</a>
       </div>
-      <p style="font-size:0.72rem;color:var(--text-dim);">© 2024 – 2026 SGN-Law. All rights reserved.</p>
+      <p style="font-size:0.72rem;color:var(--text-dim);" data-i18n="footer_copyright">© 2024 – 2026 SGN-Law. All rights reserved.</p>
     </div>
   </div>
 </footer>
@@ -382,13 +398,14 @@
   </button>
   <div class="wa-pulse"></div>
   <div class="wa-popup">
-    <div class="wa-popup-head"><div class="avatar">S</div><div class="info"><strong>SGN-Law Support</strong><span>Biasanya membalas dalam menit</span></div></div>
+    <div class="wa-popup-head"><div class="avatar">S</div><div class="info"><strong data-i18n="wa_title">SGN-Law Support</strong><span data-i18n="wa_subtitle">Biasanya membalas dalam menit</span></div></div>
     <div class="wa-popup-list"></div>
   </div>
 </div>
 <button class="back-top" aria-label="Back to top">↑</button>
 
-<script src="../assets/js/main.js"></script>
+  <script src="../assets/js/i18n.js"></script>
+  <script src="../assets/js/main.js"></script>
 <script>
   if (typeof lucide !== 'undefined') lucide.createIcons();
 
@@ -435,8 +452,8 @@
     const msg = encodeURIComponent(`Hello SGN-Law!\n\nNama: ${nama}\nTelepon: ${tel}\nLayanan: ${layanan}\n\n${pesan}`);
     const div = document.getElementById('formMsg');
     div.style.display = 'block';
-    div.style.background = 'rgba(29,110,71,0.15)';
-    div.style.border = '1px solid rgba(29,110,71,0.3)';
+    div.style.background = 'rgba(201,168,76,0.1)';
+    div.style.border = '1px solid rgba(201,168,76,0.28)';
     div.style.color = 'var(--text)';
     div.innerHTML = '✓ Pesan Anda sedang dikirim via WhatsApp...';
     setTimeout(() => { window.open(`https://wa.me/6287822999875?text=${msg}`, '_blank'); }, 800);

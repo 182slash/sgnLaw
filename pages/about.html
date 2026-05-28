@@ -24,7 +24,7 @@
     .page-hero .hero-glow {
       position: absolute; top: -20%; right: -5%;
       width: 500px; height: 500px;
-      background: radial-gradient(circle, rgba(29,110,71,0.14) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(201,168,76,0.09) 0%, transparent 70%);
       border-radius: 50%; pointer-events: none;
     }
 
@@ -83,7 +83,7 @@
     }
     .team-card:hover { border-color: var(--gold-border); transform: translateY(-2px); }
     .team-avatar {
-      height: 140px; background: linear-gradient(135deg, var(--surface-3), var(--green-dim));
+      height: 140px; background: linear-gradient(135deg, var(--surface-3), var(--surface-2));
       display: flex; align-items: center; justify-content: center;
       font-family: 'Cormorant Garamond', serif;
       font-size: 3rem; font-weight: 700; color: var(--gold); opacity: 0.6;
@@ -96,7 +96,7 @@
     @media (min-width: 1024px) { .team-grid { grid-template-columns: repeat(4, 1fr); } }
 
     /* Stats strip */
-    .stats-strip { background: linear-gradient(135deg, var(--green-dim), var(--surface-3)); padding: 3.5rem 0; border-top: 1px solid var(--gold-border); border-bottom: 1px solid var(--gold-border); }
+    .stats-strip { background: linear-gradient(135deg, var(--surface-2), var(--surface-3)); padding: 3.5rem 0; border-top: 1px solid var(--gold-border); border-bottom: 1px solid var(--gold-border); }
     .stats-strip-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
     .strip-stat { text-align: center; }
     .strip-num { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 700; color: var(--gold); display: block; line-height: 1; }
@@ -130,30 +130,37 @@
         <div class="logo-mark">S</div>
         <div class="logo-text">
           <span class="logo-name">SGN-Law</span>
-          <span class="logo-tagline">Legal &amp; Business Consultancy</span>
+          <span class="logo-tagline" data-i18n="footer_tagline">Legal &amp; Business Consultancy</span>
         </div>
       </a>
       <ul class="nav-links">
-        <li><a href="/">Beranda</a></li>
-        <li><a href="/about" style="color:var(--gold)">Tentang Kami</a></li>
-        <li class="has-dropdown"><a href="/layanan">Layanan</a>
+        <li><a href="/" data-i18n="nav_home">Beranda</a></li>
+        <li><a href="/about" style="color:var(--gold)" data-i18n="nav_about">Tentang Kami</a></li>
+        <li class="has-dropdown"><a href="/layanan" data-i18n="nav_services">Layanan</a>
           <div class="dropdown dropdown-mega">
-            <a href="/layanan#pendirian">Pendirian Perusahaan</a><a href="/layanan#penutupan">Penutupan Perusahaan</a>
-            <a href="/layanan#virtual-office">Virtual Office</a><a href="/layanan#perizinan-khusus">Perizinan Khusus</a>
-            <a href="/layanan#perizinan-usaha">Perizinan Usaha</a><a href="/layanan#perpajakan">Perpajakan</a>
-            <a href="/layanan#haki">HAKI</a><a href="/layanan#pma">PMA</a>
-            <a href="/layanan#hukum">Layanan Hukum</a><a href="/layanan#properti">Perizinan Properti</a>
-            <a href="/layanan#perjanjian">Pembuatan Perjanjian</a><a href="/layanan#dokumen">Pembuatan Dokumen</a>
-            <a href="/layanan#digital">Digital Marketing</a><a href="/layanan#idak">Dokter IDAK</a>
-            <a href="/layanan#ppiu">Dokter PPIU</a><a href="/layanan#siupkk">Dokter SIUPKK</a>
-            <a href="/layanan#keuangan">Keuangan</a><a href="/layanan#lainnya">Layanan Lainnya</a>
+            <a href="/layanan#pendirian" data-i18n="svc_pendirian">Pendirian Perusahaan</a><a href="/layanan#penutupan" data-i18n="svc_penutupan">Penutupan Perusahaan</a>
+            <a href="/layanan#virtual-office" data-i18n="svc_virtual">Virtual Office</a><a href="/layanan#perizinan-khusus" data-i18n="svc_khusus">Perizinan Khusus</a>
+            <a href="/layanan#perizinan-usaha" data-i18n="svc_usaha">Perizinan Usaha</a><a href="/layanan#perpajakan">Perpajakan</a>
+            <a href="/layanan#haki" data-i18n="svc_haki">HAKI</a><a href="/layanan#pma" data-i18n="svc_pma">PMA</a>
+            <a href="/layanan#hukum" data-i18n="svc_hukum">Layanan Hukum</a><a href="/layanan#properti" data-i18n="svc_properti">Perizinan Properti</a>
+            <a href="/layanan#perjanjian" data-i18n="svc_perjanjian">Pembuatan Perjanjian</a><a href="/layanan#dokumen" data-i18n="svc_dokumen">Pembuatan Dokumen</a>
+            <a href="/layanan#digital" data-i18n="svc_digital">Digital Marketing</a><a href="/layanan#idak" data-i18n="svc_idak">Dokter IDAK</a>
+            <a href="/layanan#ppiu" data-i18n="svc_ppiu">Dokter PPIU</a><a href="/layanan#siupkk" data-i18n="svc_siupkk">Dokter SIUPKK</a>
+            <a href="/layanan#keuangan" data-i18n="svc_keuangan">Keuangan</a><a href="/layanan#lainnya" data-i18n="svc_lainnya">Layanan Lainnya</a>
           </div>
         </li>
-        <li><a href="/fitur">Fitur</a></li>
-        <li><a href="/artikel">Info Bisnis</a></li>
-        <li><a href="/promo">Promo</a></li>
+        <li><a href="/fitur" data-i18n="nav_features">Fitur</a></li>
+        <li><a href="/artikel" data-i18n="nav_info">Info Bisnis</a></li>
+        <li><a href="/promo" data-i18n="nav_promo">Promo</a></li>
       </ul>
-      <div class="nav-cta"><a href="/contact" class="btn btn-gold">Konsultasi Gratis</a></div>
+      <div class="nav-cta">
+<!-- Language Switcher -->
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="ID">ID</button>
+          <button class="lang-btn" data-lang="EN">EN</button>
+          <button class="lang-btn" data-lang="CN">中</button>
+        </div>
+        <a href="/contact" class="btn btn-gold" data-i18n="nav_cta">Konsultasi Gratis</a></div>
       <button class="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -165,12 +172,21 @@
     <button class="drawer-close">✕</button>
   </div>
   <nav class="drawer-nav">
-    <a href="/">Beranda</a><a href="/about" style="color:var(--gold)">Tentang Kami</a>
-    <a href="/layanan">Layanan</a><a href="/fitur">Fitur</a>
-    <a href="/artikel">Info Bisnis</a><a href="/promo">Promo</a>
-    <a href="/contact">Hubungi Kami</a>
+    <a href="/" data-i18n="nav_home">Beranda</a><a href="/about" style="color:var(--gold)" data-i18n="nav_about">Tentang Kami</a>
+    <a href="/layanan" data-i18n="nav_services">Layanan</a><a href="/fitur" data-i18n="nav_features">Fitur</a>
+    <a href="/artikel" data-i18n="nav_info">Info Bisnis</a><a href="/promo" data-i18n="nav_promo">Promo</a>
+    <a href="/contact" data-i18n="nav_contact">Hubungi Kami</a>
   </nav>
-  <div class="drawer-footer"><a href="https://wa.me/6287822999875" target="_blank" class="btn btn-gold">Konsultasi via WhatsApp</a></div>
+  <!-- Lang switcher in mobile drawer -->
+  <div class="drawer-lang">
+    <span class="drawer-lang-label">Lang</span>
+    <div class="lang-switcher">
+      <button class="lang-btn active" data-lang="ID">ID</button>
+      <button class="lang-btn" data-lang="EN">EN</button>
+      <button class="lang-btn" data-lang="CN">中</button>
+    </div>
+  </div>
+  <div class="drawer-footer"><a href="https://wa.me/6287822999875" target="_blank" class="btn btn-gold" data-i18n="cta_btn1">Konsultasi via WhatsApp</a></div>
 </div>
 
 <!-- PAGE HERO -->
@@ -179,8 +195,8 @@
   <div class="hero-glow"></div>
   <div class="container" style="position:relative;z-index:2;">
     <span class="section-label">SGN-Law</span>
-    <h1 style="margin-bottom:0.75rem;">Tentang <em style="color:var(--gold);font-style:italic;font-weight:300;">Kami</em></h1>
-    <p style="max-width:560px;">Tim profesional yang berdedikasi membantu bisnis Indonesia berkembang di atas fondasi hukum yang kuat dan terpercaya.</p>
+    <h1 style="margin-bottom:0.75rem;" data-i18n="nav_about">Tentang</span> <em style="color:var(--gold);font-style:italic;font-weight:300;">Kami</em></h1>
+    <p style="max-width:560px;" data-i18n="sec_about_p1">Tim profesional yang berdedikasi membantu bisnis Indonesia berkembang di atas fondasi hukum yang kuat dan terpercaya.</p>
   </div>
 </section>
 
@@ -189,15 +205,15 @@
   <div class="container">
     <div style="display:grid;gap:3rem;" class="about-grid">
       <div>
-        <span class="section-label">Siapa Kami</span>
-        <h2 class="section-title">Konsultan Legalitas yang<br /><em class="serif" style="color:var(--gold);font-style:italic;font-weight:300;">Benar-Benar Peduli</em></h2>
+        <span class="section-label" data-i18n="sec_about_label">Siapa Kami</span>
+        <h2 class="section-title" data-i18n="sec_about_title1">Konsultan Legalitas yang</span><br /><em class="serif" style="color:var(--gold);font-style:italic;font-weight:300;" data-i18n="sec_about_title2">Benar-Benar Peduli</em></h2>
         <div class="divider"></div>
-        <p style="margin-bottom:1.25rem;">SGN-Law merupakan perusahaan Jasa Konsultan untuk Pengurusan Izin Usaha dan Legalitas Perusahaan yang ditangani oleh tenaga-tenaga muda profesional, yang tergabung dalam tim berpengalaman lebih dari 7 tahun di bidang hukum bisnis dan perizinan Indonesia.</p>
-        <p style="margin-bottom:1.25rem;">Kami hadir dengan satu misi: menyederhanakan proses legalitas yang rumit agar pengusaha Indonesia bisa fokus pada hal yang paling penting — membangun dan mengembangkan bisnis mereka.</p>
+        <p style="margin-bottom:1.25rem;" data-i18n="sec_about_p1">SGN-Law merupakan perusahaan Jasa Konsultan untuk Pengurusan Izin Usaha dan Legalitas Perusahaan yang ditangani oleh tenaga-tenaga muda profesional, yang tergabung dalam tim berpengalaman lebih dari 7 tahun di bidang hukum bisnis dan perizinan Indonesia.</p>
+        <p style="margin-bottom:1.25rem;" data-i18n="sec_about_p2">Kami hadir dengan satu misi: menyederhanakan proses legalitas yang rumit agar pengusaha Indonesia bisa fokus pada hal yang paling penting — membangun dan mengembangkan bisnis mereka.</p>
         <p>Dari pendirian perusahaan pertama kami hingga ribuan klien yang telah kami layani, semangat itu tidak pernah berubah. SGN-Law bukan sekadar konsultan — kami adalah mitra terpercaya dalam perjalanan bisnis Anda.</p>
         <div style="display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap;">
-          <a href="/layanan" class="btn btn-gold">Lihat Layanan Kami</a>
-          <a href="/contact" class="btn btn-outline">Hubungi Kami</a>
+          <a href="/layanan" class="btn btn-gold" data-i18n="services_cta">Lihat Layanan Kami</a>
+          <a href="/contact" class="btn btn-outline" data-i18n="nav_contact">Hubungi Kami</a>
         </div>
       </div>
       <div class="about-visual">
@@ -228,11 +244,11 @@
     <div class="stats-strip-grid">
       <div class="strip-stat">
         <span class="strip-num" data-count="1500" data-suffix="+">1500+</span>
-        <span class="strip-label">Projects Selesai</span>
+        <span class="strip-label" data-i18n="stat_projects">Projects Selesai</span>
       </div>
       <div class="strip-stat">
         <span class="strip-num" data-count="99" data-suffix="%">99%</span>
-        <span class="strip-label">Tingkat Keberhasilan</span>
+        <span class="strip-label" data-i18n="stat_success">Tingkat Keberhasilan</span>
       </div>
       <div class="strip-stat">
         <span class="strip-num">30+</span>
@@ -250,8 +266,8 @@
 <section class="values">
   <div class="container">
     <div class="section-header centered">
-      <span class="section-label">Nilai Kami</span>
-      <h2 class="section-title">Prinsip yang Memandu<br /><em class="serif" style="color:var(--gold);font-style:italic;font-weight:300;">Setiap Langkah Kami</em></h2>
+      <span class="section-label" data-i18n="sec_why_label">Nilai Kami</span>
+      <h2 class="section-title" data-i18n="sec_about_title1">Prinsip yang Memandu</span><br /><em class="serif" style="color:var(--gold);font-style:italic;font-weight:300;">Setiap Langkah Kami</em></h2>
       <div class="divider"></div>
     </div>
     <div class="values-grid">
@@ -311,8 +327,8 @@
 <section class="history">
   <div class="container">
     <div class="section-header">
-      <span class="section-label">Perjalanan Kami</span>
-      <h2 class="section-title">Tumbuh Bersama<br /><em class="serif" style="color:var(--gold);font-style:italic;font-weight:300;">Bisnis Indonesia</em></h2>
+      <span class="section-label" data-i18n="sec_process_label">Perjalanan Kami</span>
+      <h2 class="section-title" data-i18n="step1_title">Tumbuh Bersama</span><br /><em class="serif" style="color:var(--gold);font-style:italic;font-weight:300;">Bisnis Indonesia</em></h2>
       <div class="divider"></div>
     </div>
     <div class="timeline">
@@ -372,7 +388,7 @@
 <section class="team">
   <div class="container">
     <div class="section-header centered">
-      <span class="section-label">Tim Kami</span>
+      <span class="section-label" data-i18n="sec_about_label">Tim Kami</span>
       <h2 class="section-title">Orang-Orang di Balik<br /><em class="serif" style="color:var(--gold);font-style:italic;font-weight:300;">SGN-Law</em></h2>
       <div class="divider"></div>
       <p class="section-sub">Tim profesional multidisiplin yang berdedikasi memberikan solusi legalitas terbaik untuk bisnis Anda.</p>
@@ -418,7 +434,7 @@
 <section class="awards">
   <div class="container">
     <div class="section-header">
-      <span class="section-label">Kepercayaan &amp; Pengakuan</span>
+      <span class="section-label" data-i18n="sec_why_label">Kepercayaan &amp; Pengakuan</span>
       <h2 class="section-title">Dipercaya Ribuan<br /><em class="serif" style="color:var(--gold);font-style:italic;font-weight:300;">Klien &amp; Mitra</em></h2>
       <div class="divider"></div>
     </div>
@@ -458,12 +474,12 @@
 <!-- CTA BANNER -->
 <section class="cta-banner">
   <div class="container">
-    <span class="section-label" style="justify-content:center;">Bergabung Bersama Kami</span>
-    <h2>Siap Membangun Bisnis<br />di Atas Fondasi Hukum yang Kuat?</h2>
-    <p>Lebih dari 1.500 pengusaha telah mempercayakan legalitas bisnis mereka kepada SGN-Law.</p>
+    <span class="section-label" style="justify-content:center;" data-i18n="cta_label">Bergabung Bersama Kami</span>
+    <h2><span data-i18n="cta_title1">Siap Membangun Bisnis</span><br /><span data-i18n="cta_title2">di Atas Fondasi Hukum yang Kuat?</span></h2>
+    <p data-i18n="cta_desc">Lebih dari 1.500 pengusaha telah mempercayakan legalitas bisnis mereka kepada SGN-Law.</p>
     <div class="btn-group">
-      <a href="https://wa.me/6287822999875?text=Hello!%20Saya%20ingin%20konsultasi%20gratis%20mengenai%20layanan%20SGN-Law." target="_blank" class="btn btn-gold">Konsultasi via WhatsApp</a>
-      <a href="/layanan" class="btn btn-outline">Lihat Layanan Kami</a>
+      <a href="https://wa.me/6287822999875?text=Hello!%20Saya%20ingin%20konsultasi%20gratis%20mengenai%20layanan%20SGN-Law." target="_blank" class="btn btn-gold" data-i18n="cta_btn1">Konsultasi via WhatsApp</a>
+      <a href="/layanan" class="btn btn-outline" data-i18n="services_cta">Lihat Layanan Kami</a>
     </div>
   </div>
 </section>
@@ -476,13 +492,13 @@
         <div class="logo-mark" style="width:32px;height:32px;font-size:0.95rem;">S</div>
         <span class="logo-name">SGN-Law</span>
       </div>
-      <p style="font-size:0.78rem;max-width:400px;">Konsultan Legalitas dan Perizinan Usaha Terpercaya di Indonesia.</p>
+      <p style="font-size:0.78rem;max-width:400px;" data-i18n="footer_desc">Konsultan Legalitas dan Perizinan Usaha Terpercaya di Indonesia.</p>
       <div style="display:flex;gap:2rem;font-size:0.78rem;">
-        <a href="/" style="color:var(--text-muted);">Beranda</a>
+        <a href="/" style="color:var(--text-muted);" data-i18n="nav_home">Beranda</a>
         <a href="/layanan" style="color:var(--text-muted);">Layanan</a>
         <a href="/contact" style="color:var(--text-muted);">Kontak</a>
       </div>
-      <p style="font-size:0.72rem;color:var(--text-dim);">© 2024 – 2026 SGN-Law. All rights reserved.</p>
+      <p style="font-size:0.72rem;color:var(--text-dim);" data-i18n="footer_copyright">© 2024 – 2026 SGN-Law. All rights reserved.</p>
     </div>
   </div>
 </footer>
@@ -498,14 +514,15 @@
   <div class="wa-popup">
     <div class="wa-popup-head">
       <div class="avatar">S</div>
-      <div class="info"><strong>SGN-Law Support</strong><span>Biasanya membalas dalam menit</span></div>
+      <div class="info"><strong data-i18n="wa_title">SGN-Law Support</strong><span data-i18n="wa_subtitle">Biasanya membalas dalam menit</span></div>
     </div>
     <div class="wa-popup-list"></div>
   </div>
 </div>
 <button class="back-top" aria-label="Back to top">↑</button>
 
-<script src="../assets/js/main.js"></script>
+  <script src="../assets/js/i18n.js"></script>
+  <script src="../assets/js/main.js"></script>
 <script>if (typeof lucide !== 'undefined') lucide.createIcons();</script>
 </body>
 </html>

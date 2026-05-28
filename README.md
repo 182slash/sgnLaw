@@ -59,13 +59,14 @@ Update WhatsApp numbers in `assets/js/main.js` inside the `WA_CONTACTS` array.
 
 ## Color Tokens
 
-| Token          | Value     | Usage              |
-|----------------|-----------|--------------------|
-| --bg           | #060F09   | Page background    |
-| --surface      | #0E2416   | Cards, sections    |
-| --gold         | #C8A45A   | Accents, CTAs      |
-| --green        | #1D6E47   | Highlights         |
-| --text         | #F2EDE4   | Body text          |
+| Token          | Value     | Usage                    |
+|----------------|-----------|--------------------------|
+| --bg           | #080706   | Page background          |
+| --surface      | #141210   | Cards, sections          |
+| --gold         | #C9A84C   | Primary brand accent     |
+| --gold-bright  | #E2C47A   | Hover highlights         |
+| --white        | #FFFFFF   | Secondary brand accent   |
+| --text         | #F5F2EC   | Body text (warm white)   |
 
 ---
 

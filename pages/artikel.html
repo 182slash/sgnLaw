@@ -10,14 +10,14 @@
   <style>
     .page-hero { min-height: 40vh; display: flex; align-items: flex-end; padding-top: 100px; padding-bottom: 3rem; background: var(--bg); position: relative; overflow: hidden; }
     .page-hero .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(200,164,90,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(200,164,90,0.04) 1px, transparent 1px); background-size: 60px 60px; mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, black 30%, transparent 100%); }
-    .page-hero .hero-glow { position: absolute; top: -20%; right: -5%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(29,110,71,0.14) 0%, transparent 70%); border-radius: 50%; }
+    .page-hero .hero-glow { position: absolute; top: -20%; right: -5%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(201,168,76,0.09) 0%, transparent 70%); border-radius: 50%; }
     .artikel-section { background: var(--bg); padding: 5rem 0; }
     .filter-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
     .filter-btn { padding: 0.5rem 1rem; border: 1px solid var(--border); border-radius: 100px; font-size: 0.75rem; letter-spacing: 0.08em; color: var(--text-muted); background: var(--surface); cursor: pointer; transition: var(--transition); }
     .filter-btn:hover, .filter-btn.active { border-color: var(--gold); color: var(--gold); background: var(--gold-dim); }
     .featured-article { display: grid; gap: 1.5rem; border: 1px solid var(--gold-border); border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 2.5rem; background: var(--surface); }
     @media (min-width: 768px) { .featured-article { grid-template-columns: 1.2fr 1fr; } }
-    .featured-thumb { min-height: 240px; background: linear-gradient(135deg, var(--surface-3), var(--green-dim)); display: flex; align-items: center; justify-content: center; font-size: 4rem; color: var(--gold); opacity: 0.4; }
+    .featured-thumb { min-height: 240px; background: linear-gradient(135deg, var(--surface-3), var(--surface-2)); display: flex; align-items: center; justify-content: center; font-size: 4rem; color: var(--gold); opacity: 0.4; }
     .featured-body { padding: 2rem; display: flex; flex-direction: column; justify-content: center; }
     .featured-tag { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
     .featured-tag::before { content: '★'; }
@@ -58,30 +58,46 @@
 <nav class="navbar">
   <div class="container">
     <div class="nav-inner">
-      <a href="/" class="nav-logo"><div class="logo-mark">S</div><div class="logo-text"><span class="logo-name">SGN-Law</span><span class="logo-tagline">Legal &amp; Business Consultancy</span></div></a>
+      <a href="/" class="nav-logo"><div class="logo-mark">S</div><div class="logo-text"><span class="logo-name">SGN-Law</span><span class="logo-tagline" data-i18n="footer_tagline">Legal &amp; Business Consultancy</span></div></a>
       <ul class="nav-links">
-        <li><a href="/">Beranda</a></li><li><a href="/about">Tentang Kami</a></li>
-        <li class="has-dropdown"><a href="/layanan">Layanan</a>
+        <li><a href="/" data-i18n="nav_home">Beranda</a></li><li><a href="/about" data-i18n="nav_about">Tentang Kami</a></li>
+        <li class="has-dropdown"><a href="/layanan" data-i18n="nav_services">Layanan</a>
           <div class="dropdown dropdown-mega">
-            <a href="/layanan#pendirian">Pendirian Perusahaan</a><a href="/layanan#perizinan-usaha">Perizinan Usaha</a>
-            <a href="/layanan#perpajakan">Perpajakan</a><a href="/layanan#haki">HAKI</a>
-            <a href="/layanan#pma">PMA</a><a href="/layanan#hukum">Layanan Hukum</a>
-            <a href="/layanan#virtual-office">Virtual Office</a><a href="/layanan#lainnya">Layanan Lainnya</a>
+            <a href="/layanan#pendirian" data-i18n="svc_pendirian">Pendirian Perusahaan</a><a href="/layanan#perizinan-usaha" data-i18n="svc_usaha">Perizinan Usaha</a>
+            <a href="/layanan#perpajakan">Perpajakan</a><a href="/layanan#haki" data-i18n="svc_haki">HAKI</a>
+            <a href="/layanan#pma" data-i18n="svc_pma">PMA</a><a href="/layanan#hukum" data-i18n="svc_hukum">Layanan Hukum</a>
+            <a href="/layanan#virtual-office" data-i18n="svc_virtual">Virtual Office</a><a href="/layanan#lainnya" data-i18n="svc_lainnya">Layanan Lainnya</a>
           </div>
         </li>
-        <li><a href="/fitur">Fitur</a></li>
-        <li><a href="/artikel" style="color:var(--gold)">Info Bisnis</a></li>
-        <li><a href="/promo">Promo</a></li>
+        <li><a href="/fitur" data-i18n="nav_features">Fitur</a></li>
+        <li><a href="/artikel" style="color:var(--gold)" data-i18n="nav_info">Info Bisnis</a></li>
+        <li><a href="/promo" data-i18n="nav_promo">Promo</a></li>
       </ul>
-      <div class="nav-cta"><a href="/contact" class="btn btn-gold">Konsultasi Gratis</a></div>
+      <div class="nav-cta">
+<!-- Language Switcher -->
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="ID">ID</button>
+          <button class="lang-btn" data-lang="EN">EN</button>
+          <button class="lang-btn" data-lang="CN">中</button>
+        </div>
+        <a href="/contact" class="btn btn-gold" data-i18n="nav_cta">Konsultasi Gratis</a></div>
       <button class="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
     </div>
   </div>
 </nav>
 <div class="mobile-drawer">
   <div class="drawer-header"><a href="/" class="nav-logo"><div class="logo-mark">S</div><div class="logo-text"><span class="logo-name">SGN-Law</span></div></a><button class="drawer-close">✕</button></div>
-  <nav class="drawer-nav"><a href="/">Beranda</a><a href="/about">Tentang Kami</a><a href="/layanan">Layanan</a><a href="/fitur">Fitur</a><a href="/artikel" style="color:var(--gold)">Info Bisnis</a><a href="/promo">Promo</a><a href="/contact">Hubungi Kami</a></nav>
-  <div class="drawer-footer"><a href="https://wa.me/6287822999875" target="_blank" class="btn btn-gold">Konsultasi via WhatsApp</a></div>
+  <nav class="drawer-nav"><a href="/" data-i18n="nav_home">Beranda</a><a href="/about" data-i18n="nav_about">Tentang Kami</a><a href="/layanan" data-i18n="nav_services">Layanan</a><a href="/fitur" data-i18n="nav_features">Fitur</a><a href="/artikel" style="color:var(--gold)" data-i18n="nav_info">Info Bisnis</a><a href="/promo" data-i18n="nav_promo">Promo</a><a href="/contact" data-i18n="nav_contact">Hubungi Kami</a></nav>
+  <!-- Lang switcher in mobile drawer -->
+  <div class="drawer-lang">
+    <span class="drawer-lang-label">Lang</span>
+    <div class="lang-switcher">
+      <button class="lang-btn active" data-lang="ID">ID</button>
+      <button class="lang-btn" data-lang="EN">EN</button>
+      <button class="lang-btn" data-lang="CN">中</button>
+    </div>
+  </div>
+  <div class="drawer-footer"><a href="https://wa.me/6287822999875" target="_blank" class="btn btn-gold" data-i18n="cta_btn1">Konsultasi via WhatsApp</a></div>
 </div>
 
 <!-- HERO -->
@@ -90,8 +106,8 @@
   <div class="hero-glow"></div>
   <div class="container" style="position:relative;z-index:2;">
     <span class="section-label">SGN-Law Blog</span>
-    <h1 style="margin-bottom:0.75rem;">Info <em style="color:var(--gold);font-style:italic;font-weight:300;">Bisnis</em></h1>
-    <p style="max-width:500px;">Artikel, tips, dan panduan seputar legalitas usaha, perizinan, pajak, dan bisnis di Indonesia.</p>
+    <h1 style="margin-bottom:0.75rem;"><span data-i18n="sec_news_title1">Info</span> <em style="color:var(--gold);font-style:italic;font-weight:300;" data-i18n="sec_news_title2">Bisnis</em></h1>
+    <p style="max-width:500px;" data-i18n="sec_about_p1">Artikel, tips, dan panduan seputar legalitas usaha, perizinan, pajak, dan bisnis di Indonesia.</p>
   </div>
 </section>
 
@@ -118,7 +134,7 @@
         <div class="featured-article">
           <div class="featured-thumb">⚖️</div>
           <div class="featured-body">
-            <div class="featured-tag">Artikel Pilihan</div>
+            <div class="featured-tag" data-i18n="sec_news_label">Artikel Pilihan</div>
             <h2>Mengapa Legalitas Usaha Adalah Fondasi Bisnis yang Kuat di 2025</h2>
             <p>Di tengah persaingan bisnis yang semakin ketat, legalitas usaha bukan lagi pilihan, melainkan keharusan bagi setiap pengusaha yang ingin berkembang lebih jauh dan lebih aman.</p>
             <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;">
@@ -224,7 +240,7 @@
         </div>
 
         <div style="text-align:center;margin-top:2.5rem;">
-          <button class="btn btn-outline">Muat Lebih Banyak Artikel</button>
+          <button class="btn btn-outline" data-i18n="news_cta">Muat Lebih Banyak Artikel</button>
         </div>
       </div>
 
@@ -249,9 +265,9 @@
           <div class="recent-item"><div class="recent-num">05</div><div><h6>Panduan PT PMA untuk Investor Asing</h6><p>20 Apr 2025</p></div></div>
         </div>
         <div class="sidebar-card" style="background:var(--gold-dim);border-color:var(--gold-border);">
-          <h5>Konsultasi Gratis</h5>
+          <h5 data-i18n="nav_cta">Konsultasi Gratis</h5>
           <p style="font-size:0.82rem;margin-bottom:1rem;">Punya pertanyaan seputar legalitas bisnis? Tim ahli SGN-Law siap membantu!</p>
-          <a href="https://wa.me/6287822999875?text=Hello!%20Saya%20ingin%20konsultasi%20gratis." target="_blank" class="btn btn-gold" style="width:100%;justify-content:center;">WhatsApp Sekarang</a>
+          <a href="https://wa.me/6287822999875?text=Hello!%20Saya%20ingin%20konsultasi%20gratis." target="_blank" class="btn btn-gold" style="width:100%;justify-content:center;" data-i18n="cta_btn1">WhatsApp Sekarang</a>
         </div>
       </aside>
     </div>
@@ -263,8 +279,8 @@
   <div class="container">
     <div style="display:flex;flex-direction:column;gap:1rem;align-items:center;text-align:center;padding:2rem 0;">
       <div style="display:flex;align-items:center;gap:0.75rem;"><div class="logo-mark" style="width:32px;height:32px;font-size:0.95rem;">S</div><span class="logo-name">SGN-Law</span></div>
-      <div style="display:flex;gap:2rem;font-size:0.78rem;flex-wrap:wrap;justify-content:center;"><a href="/" style="color:var(--text-muted);">Beranda</a><a href="/layanan" style="color:var(--text-muted);">Layanan</a><a href="/contact" style="color:var(--text-muted);">Kontak</a></div>
-      <p style="font-size:0.72rem;color:var(--text-dim);">© 2024 – 2026 SGN-Law. All rights reserved.</p>
+      <div style="display:flex;gap:2rem;font-size:0.78rem;flex-wrap:wrap;justify-content:center;"><a href="/" style="color:var(--text-muted);" data-i18n="nav_home">Beranda</a><a href="/layanan" style="color:var(--text-muted);">Layanan</a><a href="/contact" style="color:var(--text-muted);">Kontak</a></div>
+      <p style="font-size:0.72rem;color:var(--text-dim);" data-i18n="footer_copyright">© 2024 – 2026 SGN-Law. All rights reserved.</p>
     </div>
   </div>
 </footer>
@@ -272,10 +288,11 @@
 <div class="wa-fab">
   <button class="wa-fab-btn" aria-label="Chat WhatsApp"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></button>
   <div class="wa-pulse"></div>
-  <div class="wa-popup"><div class="wa-popup-head"><div class="avatar">S</div><div class="info"><strong>SGN-Law Support</strong><span>Biasanya membalas dalam menit</span></div></div><div class="wa-popup-list"></div></div>
+  <div class="wa-popup"><div class="wa-popup-head"><div class="avatar">S</div><div class="info"><strong data-i18n="wa_title">SGN-Law Support</strong><span data-i18n="wa_subtitle">Biasanya membalas dalam menit</span></div></div><div class="wa-popup-list"></div></div>
 </div>
 <button class="back-top" aria-label="Back to top">↑</button>
-<script src="../assets/js/main.js"></script>
+  <script src="../assets/js/i18n.js"></script>
+  <script src="../assets/js/main.js"></script>
 <script>
   if (typeof lucide !== 'undefined') lucide.createIcons();
   document.querySelectorAll('.filter-btn').forEach(btn => {

@@ -1,6 +1,6 @@
 /* ============================================================
    SGN-LAW — Main Stylesheet
-   Theme: Luxury / Elegant / Calming Deep Green + Gold
+   Theme: Luxury / Elegant / Gold & White Premium
    Approach: Mobile-first
    ============================================================ */
 
@@ -8,27 +8,28 @@
 
 /* ── CSS Variables ──────────────────────────────────────── */
 :root {
-  --bg:           #060F09;
-  --bg-2:         #091509;
-  --surface:      #0C1F11;
-  --surface-2:    #112918;
-  --surface-3:    #163320;
-  --green:        #1D6E47;
-  --green-light:  #28A363;
-  --green-dim:    #0F3D28;
-  --gold:         #C8A45A;
-  --gold-light:   #E0C07A;
-  --gold-dim:     rgba(200, 164, 90, 0.15);
-  --gold-border:  rgba(200, 164, 90, 0.25);
-  --text:         #F2EDE4;
-  --text-muted:   #9E9890;
+  --bg:           #080706;
+  --bg-2:         #0D0B0A;
+  --surface:      #141210;
+  --surface-2:    #1C1916;
+  --surface-3:    #231F1B;
+  --gold:         #C9A84C;
+  --gold-bright:  #E2C47A;
+  --gold-light:   #EDD9A3;
+  --gold-dim:     rgba(201, 168, 76, 0.13);
+  --gold-border:  rgba(201, 168, 76, 0.28);
+  --white:        #FFFFFF;
+  --white-dim:    rgba(255, 255, 255, 0.08);
+  --white-border: rgba(255, 255, 255, 0.12);
+  --text:         #F5F2EC;
+  --text-muted:   #A8A49C;
   --text-dim:     #5C584F;
-  --border:       rgba(255,255,255,0.06);
+  --border:       rgba(255,255,255,0.07);
   --radius:       4px;
   --radius-lg:    8px;
   --transition:   0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  --shadow:       0 8px 40px rgba(0,0,0,0.5);
-  --shadow-gold:  0 4px 24px rgba(200, 164, 90, 0.15);
+  --shadow:       0 8px 40px rgba(0,0,0,0.6);
+  --shadow-gold:  0 4px 28px rgba(201, 168, 76, 0.2);
 }
 
 /* ── Reset ──────────────────────────────────────────────── */
@@ -272,21 +273,21 @@ p  { font-size: 0.95rem; color: var(--text-muted); line-height: 1.75; }
 .hero-grid {
   position: absolute; inset: 0;
   background-image:
-    linear-gradient(rgba(200,164,90,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(200,164,90,0.04) 1px, transparent 1px);
+    linear-gradient(rgba(201,168,76,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,168,76,0.05) 1px, transparent 1px);
   background-size: 60px 60px;
   mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, black 30%, transparent 100%);
 }
 .hero-glow {
   position: absolute; top: -20%; right: -10%;
   width: 600px; height: 600px;
-  background: radial-gradient(circle, rgba(29,110,71,0.18) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(201,168,76,0.1) 0%, transparent 70%);
   border-radius: 50%;
 }
 .hero-glow-2 {
   position: absolute; bottom: 10%; left: -10%;
   width: 400px; height: 400px;
-  background: radial-gradient(circle, rgba(200,164,90,0.07) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%);
   border-radius: 50%;
 }
 .hero-content {
@@ -598,13 +599,18 @@ section { padding: 4.5rem 0; }
 .why-card:hover::after { opacity: 1; }
 .why-card-icon {
   width: 48px; height: 48px;
-  background: var(--green-dim);
-  border: 1px solid rgba(29,110,71,0.4);
+  background: var(--white-dim);
+  border: 1px solid var(--white-border);
   display: grid; place-items: center;
-  color: var(--green-light);
+  color: var(--gold);
   border-radius: var(--radius);
   margin-bottom: 1.25rem;
   position: relative; z-index: 1;
+  transition: var(--transition);
+}
+.why-card:hover .why-card-icon {
+  background: var(--gold-dim);
+  border-color: var(--gold-border);
 }
 .why-card h3 { font-size: 1.15rem; margin-bottom: 0.5rem; position: relative; z-index: 1; }
 .why-card p { font-size: 0.82rem; position: relative; z-index: 1; }
@@ -686,9 +692,9 @@ section { padding: 4.5rem 0; }
 .pricing-features li:last-child { border-bottom: none; }
 .pricing-features li::before {
   content: ''; width: 14px; height: 14px; flex-shrink: 0;
-  border: 1px solid var(--green-light);
+  border: 1px solid var(--gold-border);
   border-radius: 50%;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath d='M3 7l2.5 2.5L11 4' stroke='%2328A363' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") center/12px no-repeat;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath d='M3 7l2.5 2.5L11 4' stroke='%23C9A84C' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") center/12px no-repeat;
 }
 .pricing-action { padding: 0 1.5rem 1.5rem; }
 .pricing-action .btn { width: 100%; justify-content: center; }
@@ -801,7 +807,7 @@ section { padding: 4.5rem 0; }
    CTA BANNER
    ============================================================ */
 .cta-banner {
-  background: linear-gradient(135deg, var(--green-dim), var(--surface-3));
+  background: linear-gradient(135deg, var(--surface-2), var(--surface-3));
   border-top: 1px solid var(--gold-border);
   border-bottom: 1px solid var(--gold-border);
   padding: 4rem 0; text-align: center;
@@ -964,3 +970,50 @@ footer {
 .fade-up:nth-child(4) { transition-delay: 0.3s; }
 .fade-up:nth-child(5) { transition-delay: 0.4s; }
 .fade-up:nth-child(6) { transition-delay: 0.5s; }
+
+/* ============================================================
+   LANGUAGE SWITCHER
+   ============================================================ */
+.lang-switcher {
+  display: flex; align-items: center;
+  border: 1px solid var(--gold-border);
+  border-radius: var(--radius);
+  overflow: hidden; flex-shrink: 0;
+}
+.lang-btn {
+  padding: 0 0.65rem; height: 32px;
+  font-size: 0.65rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text-dim); background: transparent;
+  border: none; cursor: pointer;
+  transition: var(--transition);
+  font-family: 'DM Sans', sans-serif;
+  border-right: 1px solid var(--gold-border);
+  line-height: 1;
+}
+.lang-btn:last-child { border-right: none; }
+.lang-btn:hover { color: var(--gold); background: var(--gold-dim); }
+.lang-btn.active {
+  background: var(--gold);
+  color: var(--bg);
+  font-weight: 700;
+}
+
+/* Mobile lang switcher inside drawer */
+.drawer-lang {
+  display: flex; align-items: center; gap: 0.5rem;
+  padding: 1.25rem;
+  border-top: 1px solid var(--border);
+}
+.drawer-lang-label {
+  font-size: 0.65rem; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--text-dim);
+  margin-right: 0.25rem;
+}
+.drawer-lang .lang-switcher {
+  flex: 1;
+}
+.drawer-lang .lang-btn {
+  flex: 1; justify-content: center;
+  height: 36px; font-size: 0.7rem;
+}
