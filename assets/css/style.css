@@ -273,7 +273,7 @@ p  { font-size: 0.95rem; color: var(--text-muted); line-height: 1.78; letter-spa
       rgba(255,255,255,0.82) 80%,
       rgba(255,255,255,0.97) 100%
     ),
-    url('/assets/img/SGN.png') center center / cover no-repeat;
+    url('/public/assets/img/SGN.png') center center / cover no-repeat;
 }
 .hero-bg {
   position: absolute; inset: 0; pointer-events: none;

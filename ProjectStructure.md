@@ -4,6 +4,7 @@ Volume serial number is 30B6-2486
 X:.
 │   .gitignore
 │   index.html
+│   ProjectStructure.md
 │   README.md
 │   vercel.json
 │   
@@ -16,11 +17,17 @@ X:.
 │           i18n.js
 │           main.js
 │           
-└───pages
-        about.html
-        artikel.html
-        contact.html
-        fitur.html
-        layanan.html
-        promo.html
-        
+├───pages
+│       about.html
+│       artikel.html
+│       contact.html
+│       fitur.html
+│       layanan.html
+│       promo.html
+│       
+└───public
+    └───assets
+        └───img
+                SGN.png
+                
+PS X:\Project\sgnLaw> 
